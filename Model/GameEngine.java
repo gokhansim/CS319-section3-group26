@@ -5,6 +5,9 @@ public class GameEngine {
 	private GameBody[][] map;
 	private CollisionManager colMngr;
 
+	public GameEngine(){
+
+	}
 
 	public void addScore( int scoreGiven){
 
