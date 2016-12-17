@@ -21,13 +21,15 @@ public class IronWall extends Wall implements Destroyable{
 	public void decreaseHitsToDestroy() { --hitsToDestroy; }
 
 	@Override
-	public void getDestroyed(GameEngine engine) {
+	public boolean getDestroyed(GameEngine engine) {
 		if( this.getHitsToDestroy() == 0 ){
 			engine.destroyGameBody( this);
 			engine.addScore( this.getScore() );
+			return true;
 		}
 		else{ // in every collision, getDestroyed method will be invoked.
 			this.decreaseHitsToDestroy();
+			return false;
 		}
 	}
 }

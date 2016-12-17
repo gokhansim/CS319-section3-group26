@@ -13,9 +13,10 @@ public class SacredObject extends GameBody implements Destroyable{
 	public void setIsDestroyed(boolean bool) { isDestroyed = bool; }
 
 	@Override
-	public void getDestroyed(GameEngine engine) {
+	public boolean getDestroyed(GameEngine engine) {
 		engine.destroyGameBody( this);
 		this.setIsDestroyed(true);
+		return this.getIsDestroyed();
 	}
 	
 }

@@ -21,10 +21,14 @@ public class BrickWall extends Wall implements Destroyable{
 	public void getIndestructible() { isDestructible = false; }
 
 	@Override
-	public void getDestroyed(GameEngine engine) {
+	public boolean getDestroyed(GameEngine engine) {
 		if( this.isDestructible ){
 			engine.destroyGameBody( this);
 			engine.addScore( this.getScore() );
+			return true;
+		}
+		else{
+			return false;
 		}
 	}
 

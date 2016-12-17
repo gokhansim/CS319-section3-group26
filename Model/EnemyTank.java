@@ -16,13 +16,15 @@ public class EnemyTank extends Tank implements Destroyable{
 	public int getScoreGiven() { return scoreGiven; }
 
 	@Override
-	public void getDestroyed(GameEngine engine) {
+	public boolean getDestroyed(GameEngine engine) {
 		if( this.getHistToKill() == 0){
 			engine.destroyGameBody( this);
 			engine.addScore( this.getScoreGiven() );
+			return true;
 		}
 		else{
 			this.decreaseHitsToKill();
+			return false;
 		}
 	}
 }

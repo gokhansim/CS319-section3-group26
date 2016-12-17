@@ -18,8 +18,9 @@ public class Bullet extends GameBody implements Destroyable{
 	}
 
 	@Override
-	public void getDestroyed(GameEngine engine) {
+	public boolean getDestroyed(GameEngine engine) {
 		engine.destroyGameBody( this);
+		return true;
 	}
 
 }

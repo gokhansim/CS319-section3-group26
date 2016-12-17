@@ -53,14 +53,19 @@ public class PlayerTank extends Tank implements Destroyable{
 	public int getCurrentLives(){ return currentLives; }
 
 
-	public void getDestroyed( GameEngine engine){
+	public boolean getDestroyed( GameEngine engine){
 		if( this.getShield() == 0){
 			if( this.getCurrentLives() == 0){
 				engine.destroyGameBody( this);
+				return true;
+			}
+			else{
+				return false;
 			}
 		}
 		else{
 			this.decreaseShield();
+			return false;
 		}
 	}
 

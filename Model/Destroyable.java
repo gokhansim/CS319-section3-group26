@@ -2,6 +2,6 @@ package Model;
 
 public interface Destroyable {
 
-	void getDestroyed( GameEngine engine );
+	boolean getDestroyed( GameEngine engine );
 
 }
