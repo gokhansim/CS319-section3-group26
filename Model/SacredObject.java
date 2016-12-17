@@ -1,18 +1,21 @@
 package Model;
 
-public class SacredObject extends GameBody{
+public class SacredObject extends GameBody implements Destroyable{
+
+	private boolean isDestroyed;
 	
-	private int xPosition;
-	private int yPosition;
-	private int type;
-	
-	public SacredObject(){
-		x = xPosition;
-		y = yPosition;
-		type = 4;
+	public SacredObject(int x, int y){
+		super(x, y);
+		this.isDestroyed = false;
 	}
-	public int getTypeSacred(){
-		return type;
+
+	public boolean getIsDestroyed() { return isDestroyed; }
+	public void setIsDestroyed(boolean bool) { isDestroyed = bool; }
+
+	@Override
+	public void getDestroyed(GameEngine engine) {
+		engine.destroyGameBody( this);
+		this.setIsDestroyed(true);
 	}
 	
 }
