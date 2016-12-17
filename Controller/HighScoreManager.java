@@ -1,5 +1,7 @@
 package Controller;
 
+import java.util.ArrayList;
+
 public class HighScoreManager {
 
 	private ArrayList scoreList;

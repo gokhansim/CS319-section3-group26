@@ -1,10 +1,16 @@
 package Controller;
 
+import Model.GameEngine;
+import View.MainFrame;
+
+import java.awt.image.BufferedImage;
+
 public class Game {
 
 	private int level;
 	private int score;
 	private int enemyTanksLeft;
+	private int[][] intMap;
 	private HighScoreManager HighScoreMngr;
 	private InputManager InputMngr;
 	private SoundManager SoundMngr;
@@ -13,76 +19,60 @@ public class Game {
 	private GameEngine engine;
 	private int volume;
 
-	/**
-	 * 
-	 * @param level
-	 */
+	public Game(int level){
+		engine = new GameEngine();
+		intMap = engine.getIntMap();
+		this.score = 0;
+		this.level = level;
+		this.startLevel(this.level);
+		this.frame = MainFrame.getInstance(this);
+		this.frame.setVisible(true);
+		this.updateView();
+	}
+
+	public int[][] getIntMap() { return intMap; }
+
 	public void startLevel(int level) {
-		// TODO - implement Game.startLevel
-		throw new UnsupportedOperationException();
+		engine.placeAllBodies(level);
 	}
 
 	public void endGame() {
-		// TODO - implement Game.endGame
-		throw new UnsupportedOperationException();
+
 	}
 
-	/**
-	 * 
-	 * @param score
-	 */
 	public void updateScore(int score) {
-		// TODO - implement Game.updateScore
-		throw new UnsupportedOperationException();
+
 	}
 
-	/**
-	 * 
-	 * @param score
-	 */
 	public void writeHighScore(int score) {
-		// TODO - implement Game.writeHighScore
-		throw new UnsupportedOperationException();
+
 	}
 
 	public void pauseGame() {
-		// TODO - implement Game.pauseGame
-		throw new UnsupportedOperationException();
+
 	}
 
 	public void resumeGame() {
-		// TODO - implement Game.resumeGame
-		throw new UnsupportedOperationException();
+
 	}
 
-	/**
-	 * 
-	 * @param x
-	 * @param y
-	 */
 	public void movePlayer(int x, int y) {
-		// TODO - implement Game.movePlayer
-		throw new UnsupportedOperationException();
+
 	}
 
 	public void moveEnemyTanks() {
-		// TODO - implement Game.moveEnemyTanks
-		throw new UnsupportedOperationException();
+
 	}
 
 	public void shootPlayer() {
-		// TODO - implement Game.shootPlayer
-		throw new UnsupportedOperationException();
+
 	}
 
 	public void isLivesZero() {
-		// TODO - implement Game.isLivesZero
-		throw new UnsupportedOperationException();
+
 	}
 
 	public void updateView() {
-		// TODO - implement Game.updateView
-		throw new UnsupportedOperationException();
+		this.frame.updateView();
 	}
-
 }

@@ -5,6 +5,7 @@ public class PlayerTank extends Tank implements Destroyable{
 	private int currentLives;
 	private int shield;
 	private boolean isUltimate;
+	private static final int ID = 0;
 
 	public PlayerTank(int x, int y){
 		super(x, y);
@@ -49,9 +50,13 @@ public class PlayerTank extends Tank implements Destroyable{
 	}
 
 	public int getShield(){ return this.shield; }
-	public void decreaseShield() { this.shield--; }
+	public void decreaseShield() {
+		if (shield > 0) {
+			this.shield--;
+		}
+	}
 	public int getCurrentLives(){ return currentLives; }
-
+	public int getId() { return ID; }
 
 	public boolean getDestroyed( GameEngine engine){
 		if( this.getShield() == 0){
@@ -60,6 +65,7 @@ public class PlayerTank extends Tank implements Destroyable{
 				return true;
 			}
 			else{
+				this.decreaseLife();
 				return false;
 			}
 		}

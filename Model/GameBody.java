@@ -3,6 +3,7 @@ package Model;
 public class GameBody {
 	private int x;
 	private int y;
+	private int id;
 
 	public GameBody( int x, int y){
 		this.x = x;
@@ -10,7 +11,7 @@ public class GameBody {
 	}
 
 	public int getX(){
-		return this.y;
+		return this.x;
 	}
 
 	public int getY() {
@@ -24,4 +25,5 @@ public class GameBody {
 	public void setY( int y) {
 		this.y = y;
 	}
+
 }

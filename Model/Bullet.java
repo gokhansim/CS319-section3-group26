@@ -4,6 +4,7 @@ package Model;
 public class Bullet extends GameBody implements Destroyable{
 
 	private int moveSpeed;
+	private static final int ID = 2;
 
 	public Bullet( int x, int y, int moveSpeed){
 		super(x, y);
@@ -11,6 +12,7 @@ public class Bullet extends GameBody implements Destroyable{
 	}
 
 	public int getMoveSpeed() { return moveSpeed; }
+	public int getId() { return ID; }
 
 	public void move() {
 		this.setX( this.getX() + this.getMoveSpeed() );
