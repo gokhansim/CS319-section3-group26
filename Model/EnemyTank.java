@@ -1,6 +1,6 @@
 package Model;
 
-public class EnemyTank extends Tank {
+public class EnemyTank extends Tank implements Destroyable{
 
 	private int hitsToKill;
 	private int scoreGiven;

@@ -1,6 +1,6 @@
 package Model;
 
-public class PlayerTank extends Tank {
+public class PlayerTank extends Tank implements Destroyable{
 
 	private int currentLives;
 	private int shield;
@@ -52,7 +52,7 @@ public class PlayerTank extends Tank {
 	public void decreaseShield() { this.shield--; }
 	public int getCurrentLives(){ return currentLives; }
 
-	@Override
+
 	public void getDestroyed( GameEngine engine){
 		if( this.getShield() == 0){
 			if( this.getCurrentLives() == 0){

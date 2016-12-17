@@ -1,18 +1,32 @@
 package Model;
 
-public class BrickWall extends Wall{
+public class BrickWall extends Wall implements Destroyable{
 	
 	private int type;
-	private int score;
+	private static final int SCORE = 10;
+	private boolean isDestructible;
 	
-	public BrickWall(){
+	public BrickWall(int x, int y){
+		super(x, y);
 		type = 1;
-		score = 10;
+		this.isDestructible = true;
 	}
-	public int getTypeBrick(){
+	public int getType(){
 		return type;
 	}
-	public int getScoreBrick(){
-		return score;
+	public int getScore(){
+		return SCORE;
 	}
+
+	public void getIndestructible() { isDestructible = false; }
+
+	@Override
+	public void getDestroyed(GameEngine engine) {
+		if( this.isDestructible ){
+			engine.destroyGameBody( this);
+			engine.addScore( this.getScore() );
+		}
+	}
+
+
 }

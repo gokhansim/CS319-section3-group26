@@ -1,19 +1,27 @@
 package Model;
 
 public class GameBody {
-	private Place location;
-	//image object will be here	
+	private int x;
+	private int y;
 
-	public GameBody(Place p){ //it will also take an image as a parameter
-		location = p;
-		//image = i;
-	}
-	
-	public Place getLocation(){
-		return location;
+	public GameBody( int x, int y){
+		this.x = x;
+		this.y = y;
 	}
 
-	public void setLocation(Place loc){
-		location = loc;
+	public int getX(){
+		return this.y;
+	}
+
+	public int getY() {
+		return this.y;
+	}
+
+	public void setX( int x){
+		this.x = x;
+	}
+
+	public void setY( int y) {
+		this.y = y;
 	}
 }

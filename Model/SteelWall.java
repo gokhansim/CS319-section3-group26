@@ -3,16 +3,15 @@ package Model;
 public class SteelWall extends Wall{
 	
 	private int type;
-	private int score;
 	
-	public SteelWall(){
-		type = 3;
-		score = 0;
+	public SteelWall(int x, int y){
+		super(x,y);
+		this.type = 3;
+
 	}
-	public int getScoreSteel(){
-		return score;
-	}
-	public int getTypeSteel(){
+
+	public int getType(){
 		return type;
 	}
+
 }
