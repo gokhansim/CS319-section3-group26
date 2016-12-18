@@ -38,10 +38,10 @@ public class EnemyTank extends Tank implements Destroyable{
 		else if ( direction == 2) {
 			this.move(-1, 0);
 		}
-		else if ( direction == 2) {
+		else if ( direction == 3) {
 			this.move(0, 1);
 		}
-		else if ( direction == 2) {
+		else if ( direction == 4) {
 			this.move(0, -1);
 		}
 		
