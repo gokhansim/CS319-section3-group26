@@ -160,6 +160,7 @@ public class GamePanel extends JPanel{
 			switch (keyCode) {
 				case KeyEvent.VK_LEFT: {
 					GamePanel.this.dx = -1;
+					MainFrame.getInstance().movePlayer(GamePanel.this.dx, GamePanel.this.dy);
 					break;
 				}
 				case KeyEvent.VK_UP: {
