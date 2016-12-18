@@ -60,7 +60,7 @@ public class Game {
 	public void movePlayer(int x, int y) {
 		engine.movePlayer(x,y);
 		this.updateView();
-	}
+}
 
 	public void moveEnemyTanks() {
 

@@ -18,6 +18,7 @@ public class GamePanel extends JPanel{
 	Timer timer;
 	int delay = 10;
 	*/
+
 	private BufferedImage playerTank;
 	private BufferedImage enemyTank;
 	private BufferedImage brickWall;
@@ -36,10 +37,10 @@ public class GamePanel extends JPanel{
 		this.setPreferredSize(new Dimension(1000, 1000));
 		this.setLayout(null);
 		this.setMaximumSize(this.getPreferredSize());
+		this.addKeyListener(new KeyboardListener());
 		this.setFocusable(true);
 		this.requestFocusInWindow(true);
-		this.addKeyListener(new KeyboardListener());
-		//this.timer = new Timer(this.delay, new TimerListener());
+		// this.timer = new Timer(this.delay, new TimerListener());
 		try{
 			this.playerTank = ImageIO.read(new File("Resources/playerTank.png"));
 			this.enemyTank = ImageIO.read(new File("Resources/EnemyTank.png"));
@@ -52,6 +53,29 @@ public class GamePanel extends JPanel{
 		catch (IOException ex) {
 			ex.printStackTrace();
 		}
+
+		//----------
+
+		Font font = new Font("Century", 1, 20);
+		JButton playButton = new JButton("LEFT");
+		playButton.setSize( 150, 100 );
+		playButton.setFont(font);
+		this.add(playButton);
+		playButton.setLocation(800,800);
+		playButton.setOpaque(false);
+		playButton.setContentAreaFilled(false);
+		playButton.setBorderPainted(false);
+		playButton.setForeground(Color.RED);
+		playButton.addActionListener( new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				System.out.println("Do Something Clicked");
+			}
+		});
+
+		this.revalidate();
+		//-------------
+
 	}
 
 	public void startGame() {
@@ -107,7 +131,8 @@ public class GamePanel extends JPanel{
 		}
 
 	}
-	/*
+
+
 	private class TimerListener implements ActionListener {
 
 		private TimerListener() {
@@ -120,7 +145,7 @@ public class GamePanel extends JPanel{
 			GamePanel.this.dy = 0;
 		}
 	}
-	*/
+
 
 	private class KeyboardListener implements KeyListener {
 		private KeyboardListener() {
@@ -135,9 +160,7 @@ public class GamePanel extends JPanel{
 			int keyCode = e.getKeyCode();
 			switch (keyCode) {
 				case KeyEvent.VK_LEFT: {
-					System.out.println("Key Pressed.");
 					GamePanel.this.dx = -1;
-					MainFrame.getInstance().movePlayer(GamePanel.this.dx, GamePanel.this.dy);
 					break;
 				}
 				case KeyEvent.VK_UP: {
