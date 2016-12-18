@@ -23,7 +23,10 @@ public class GamePanel extends JPanel{
 	private BufferedImage playerTankR;
 	private BufferedImage playerTankD;
 	private BufferedImage playerTankL;
-	private BufferedImage enemyTank;
+	private BufferedImage enemyTankU;
+	private BufferedImage enemyTankR;
+	private BufferedImage enemyTankD;
+	private BufferedImage enemyTankL;
 	private BufferedImage brickWall;
 	private BufferedImage ironWall;
 	private BufferedImage steelWall;
@@ -49,7 +52,10 @@ public class GamePanel extends JPanel{
 			this.playerTankD = ImageIO.read(new File("Resources/playerTankD.png"));
 			this.playerTankL = ImageIO.read(new File("Resources/playerTankL.png"));
 			this.playerTankR = ImageIO.read(new File("Resources/playerTankR.png"));
-			this.enemyTank = ImageIO.read(new File("Resources/EnemyTank.png"));
+			this.enemyTankU = ImageIO.read(new File("Resources/EnemyTankU.png"));
+			this.enemyTankR = ImageIO.read(new File("Resources/EnemyTankR.png"));
+			this.enemyTankD = ImageIO.read(new File("Resources/EnemyTankD.png"));
+			this.enemyTankL = ImageIO.read(new File("Resources/EnemyTankL.png"));
 			this.brickWall = ImageIO.read(new File("Resources/BrickWall.png"));
 			this.ironWall = ImageIO.read(new File("Resources/IronWall.png"));
 			this.steelWall = ImageIO.read(new File("Resources/SteelWall.png"));
@@ -122,9 +128,21 @@ public class GamePanel extends JPanel{
 							g2d.drawImage(this.playerTankL, (xCoordinate + (i * 100)), (yCoordinate + (j * 100)), 100, 100, Color.gray, null);
 						}
 					}
-					else if( intMap[i][j] == 1){
+					else if( intMap[i][j] == 10){
 						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
-						g2d.drawImage(this.enemyTank, (xCoordinate + (i*100)), (yCoordinate + (j*100)), 100, 100, Color.gray, null);
+						g2d.drawImage(this.enemyTankR, (xCoordinate + (i*100)), (yCoordinate + (j*100)), 100, 100, Color.gray, null);
+					}
+					else if( intMap[i][j] == 11){
+						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
+						g2d.drawImage(this.enemyTankL, (xCoordinate + (i*100)), (yCoordinate + (j*100)), 100, 100, Color.gray, null);
+					}
+					else if( intMap[i][j] == 12){
+						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
+						g2d.drawImage(this.enemyTankD, (xCoordinate + (i*100)), (yCoordinate + (j*100)), 100, 100, Color.gray, null);
+					}
+					else if( intMap[i][j] == 13){
+						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
+						g2d.drawImage(this.enemyTankU, (xCoordinate + (i*100)), (yCoordinate + (j*100)), 100, 100, Color.gray, null);
 					}
 					else if( intMap[i][j] == 3){
 						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);

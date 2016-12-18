@@ -23,13 +23,13 @@ public class GameBody {
 	}
 
 	public void setX( int x){
-		if( x < 10) { // mapSize in GameEngine is 10, thus 10.
+		if( x < 10 && x > -1) { // mapSize in GameEngine is 10, thus 10.
 			this.x = x;
 		}
 	}
 
 	public void setY( int y) {
-		if( y < 10) {
+		if( y < 10 && y > -1) {
 			this.y = y;
 		}
 	}

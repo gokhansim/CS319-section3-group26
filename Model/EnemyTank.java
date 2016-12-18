@@ -4,18 +4,21 @@ public class EnemyTank extends Tank implements Destroyable{
 
 	private int hitsToKill;
 	private int scoreGiven;
-	private static final int ID = 1;
+	private int id;
 
 	public EnemyTank( int x, int y, int hitsToKill, int scoreGiven){
 		super(x, y);
 		this.hitsToKill = hitsToKill;
 		this.scoreGiven = scoreGiven;
+		this.id = 13;
 	};
 
 	public int getHistToKill() { return hitsToKill; }
 	public void decreaseHitsToKill() { hitsToKill--; }
 	public int getScoreGiven() { return scoreGiven; }
-	public int getId() { return ID; }
+	public int getId() { return id; }
+	public void setId(int id) { this.id = id; }
+
 
 	@Override
 	public boolean getDestroyed(GameEngine engine) {
@@ -30,7 +33,11 @@ public class EnemyTank extends Tank implements Destroyable{
 		}
 	}
 	
-	public void moveTank() {
+	public void moveTank(int x, int y) {
+
+		this.setX(this.getX() + x);
+		this.setY(this.getY() + y);
+		/*
 		int direction = 1 + (int) Math.random() * 4;
 		if ( direction == 1) {
 			this.move(1, 0);
@@ -44,6 +51,7 @@ public class EnemyTank extends Tank implements Destroyable{
 		else if ( direction == 2) {
 			this.move(0, -1);
 		}
+		*/
 		
 	}
 }

@@ -7,6 +7,9 @@ import java.awt.image.BufferedImage;
 
 public class Game {
 
+    private Runnable r = new EnemyTankThread(this);
+    Thread thr = new Thread(r);
+
 	private int level;
 	private int score;
 	private int enemyTanksLeft;
@@ -25,6 +28,7 @@ public class Game {
 		this.score = 0;
 		this.level = level;
 		this.startLevel(this.level);
+		thr.start();
 		this.frame = MainFrame.getInstance(this);
 		this.frame.setVisible(true);
 		// this.InputMngr = new InputManager();
@@ -58,12 +62,14 @@ public class Game {
 	}
 
 	public void movePlayer(int x, int y) {
-		engine.movePlayer(x,y);
-		this.updateView();
+            engine.movePlayer(x, y);
+            this.updateView();
+
 }
 
-	public void moveEnemyTanks() {
-
+	public void moveEnemyTank() {
+        engine.moveEnemy();
+	    this.updateView();
 	}
 
 	public void shootPlayer() {
@@ -91,4 +97,18 @@ public class Game {
 	public void updateView() {
 		this.frame.updateView();
 	}
+
+	// --  THREAD  ---------------------------------
+	public class EnemyTankThread implements Runnable {
+        private final Game game;
+
+	    public EnemyTankThread( Game game){
+            this.game = game;
+        }
+
+        public void run(){
+	        game.moveEnemyTank();
+        }
+    }
+    //-----------------------------------------------
 }

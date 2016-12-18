@@ -11,6 +11,7 @@ public class GameEngine {
 	private CollisionManager colMngr;
 	private int score;
 	PlayerTank playerTank;
+	EnemyTank enemyTank;
 
 	public GameEngine(){
 		this.map = new GameBody[MAP_SIZE][MAP_SIZE];
@@ -77,7 +78,7 @@ public class GameEngine {
 			playerTank = new PlayerTank(4,7);
 			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
 
-			EnemyTank enemyTank = new EnemyTank(0,0, 3, 10 );
+			enemyTank = new EnemyTank(0,0, 3, 10 );
 			this.createGameBody(enemyTank, enemyTank.getX(), enemyTank.getY() );
 			EnemyTank enemyTank2 = new EnemyTank(9,0, 3, 10 );
 			this.createGameBody(enemyTank2, enemyTank2.getX(), enemyTank2.getY() );
@@ -105,6 +106,7 @@ public class GameEngine {
 			this.createGameBody(new BrickWall(5,9), 5, 9 );
 			// this.createGameBody( new Bullet(1,1, 1), 1, 1 );
 		}
+		// this.printIntMap();
 	}
 
 	public GameBody[][] getMap() { return map; }
@@ -119,6 +121,57 @@ public class GameEngine {
 			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
 		}
 		else{}
+	}
+	public void moveEnemy()  {
+		boolean flag = true;
+		int x = 0;
+		int y = 0;
+		int direction = 0;
+		while( this.enemyTank.getHistToKill() > 0){
+			try {
+				Thread.sleep(200);
+			} catch(InterruptedException e){
+				return;
+			}
+			if(flag) {
+				x = (-1) + (int) (Math.random() * 3);
+				if( x != 0){
+					y = 0;
+					direction = x;
+					// setting EnemyTank id for image arrangements
+					if( direction == 1){
+						enemyTank.setId(10);
+					}
+					else if(direction == -1){
+						enemyTank.setId(11);
+					}
+				}
+				flag = false;
+			}
+			else{
+				y = (-1) + (int) (Math.random() * 3);
+				if( y != 0){
+					x = 0;
+					direction = y;
+					// setting EnemyTank id for image arrangements
+					if( direction == 1){
+						enemyTank.setId(12);
+					}
+					else if(direction == -1){
+						enemyTank.setId(13);
+					}
+				}
+				flag = true;
+			}
+
+			if( enemyTank.getX() + x < 10 && enemyTank.getX() + x > -1 && enemyTank.getY() + y < 10 && enemyTank.getY() + y > -1) {
+				if (intMap[enemyTank.getX() + x][enemyTank.getY() + y] == -1) {
+					this.destroyGameBody(enemyTank);
+					enemyTank.move(x, y);
+					this.createGameBody(enemyTank, enemyTank.getX(), enemyTank.getY());
+				}
+			}
+		}
 	}
 
 
