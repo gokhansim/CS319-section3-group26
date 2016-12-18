@@ -29,4 +29,21 @@ public class EnemyTank extends Tank implements Destroyable{
 			return false;
 		}
 	}
+	
+	public void moveTank() {
+		int direction = 1 + (int) Math.random() * 4;
+		if ( direction == 1) {
+			this.move(1, 0);
+		}
+		else if ( direction == 2) {
+			this.move(-1, 0);
+		}
+		else if ( direction == 2) {
+			this.move(0, 1);
+		}
+		else if ( direction == 2) {
+			this.move(0, -1);
+		}
+		
+	}
 }

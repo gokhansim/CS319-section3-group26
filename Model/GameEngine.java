@@ -4,7 +4,7 @@ import Controller.Game;
 
 public class GameEngine {
 
-	private static final int MAP_SIZE = 10;
+	private static final int MAP_SIZE = 100;
 
 	private GameBody[][] map;
 	private int[][] intMap;
@@ -34,6 +34,7 @@ public class GameEngine {
 		GameBody aBody = body;
 		if( map[x][y] == null ) {
 			map[x][y] = aBody;
+
 			if( aBody instanceof PlayerTank){
 				intMap[x][y] = ((PlayerTank)aBody).getId();
 			}

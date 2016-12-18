@@ -9,7 +9,11 @@ public class GameBody {
 		this.x = x;
 		this.y = y;
 	}
-
+	
+	public int getID() {
+		return this.id;
+	}
+	
 	public int getX(){
 		return this.x;
 	}
