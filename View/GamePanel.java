@@ -19,7 +19,10 @@ public class GamePanel extends JPanel{
 	int delay = 10;
 	*/
 
-	private BufferedImage playerTank;
+	private BufferedImage playerTankU;
+	private BufferedImage playerTankR;
+	private BufferedImage playerTankD;
+	private BufferedImage playerTankL;
 	private BufferedImage enemyTank;
 	private BufferedImage brickWall;
 	private BufferedImage ironWall;
@@ -30,6 +33,7 @@ public class GamePanel extends JPanel{
 	private int[][] intMap;
 	private int dx = 0;
 	private int dy = 0;
+	private int direction = 0; // By Default -> points to the top
 
 	public GamePanel( ){
 		this.setBackground(Color.BLACK);
@@ -41,7 +45,10 @@ public class GamePanel extends JPanel{
 		this.requestFocusInWindow(true);
 		// this.timer = new Timer(this.delay, new TimerListener());
 		try{
-			this.playerTank = ImageIO.read(new File("Resources/playerTank.png"));
+			this.playerTankU = ImageIO.read(new File("Resources/playerTankU.png"));
+			this.playerTankD = ImageIO.read(new File("Resources/playerTankD.png"));
+			this.playerTankL = ImageIO.read(new File("Resources/playerTankL.png"));
+			this.playerTankR = ImageIO.read(new File("Resources/playerTankR.png"));
 			this.enemyTank = ImageIO.read(new File("Resources/EnemyTank.png"));
 			this.brickWall = ImageIO.read(new File("Resources/BrickWall.png"));
 			this.ironWall = ImageIO.read(new File("Resources/IronWall.png"));
@@ -99,11 +106,21 @@ public class GamePanel extends JPanel{
 		int yCoordinate = 0;
 
 		for(int i = 0; i < 10 ; i++){
-			for(int j = 0; j < 10 ; j++){
+			for(int j = 0; j < 10 ; j=j+1){
 				if( intMap[i][j] != -1){
 					if( intMap[i][j] == 0){
-						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
-						g2d.drawImage(this.playerTank, (xCoordinate + (i*100)), (yCoordinate + (j*100)), 100, 100, Color.gray, null);
+						if( this.direction == 0) {
+							g2d.drawImage(this.playerTankU, (xCoordinate + (i * 100)), (yCoordinate + (j * 100)), 100, 100, Color.gray, null);
+						}
+						if( this.direction == 1) {
+							g2d.drawImage(this.playerTankR, (xCoordinate + (i * 100)), (yCoordinate + (j * 100)), 100, 100, Color.gray, null);
+						}
+						if( this.direction == 2) {
+							g2d.drawImage(this.playerTankD, (xCoordinate + (i * 100)), (yCoordinate + (j * 100)), 100, 100, Color.gray, null);
+						}
+						if( this.direction == 3) {
+							g2d.drawImage(this.playerTankL, (xCoordinate + (i * 100)), (yCoordinate + (j * 100)), 100, 100, Color.gray, null);
+						}
 					}
 					else if( intMap[i][j] == 1){
 						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
@@ -160,21 +177,25 @@ public class GamePanel extends JPanel{
 			switch (keyCode) {
 				case KeyEvent.VK_LEFT: {
 					GamePanel.this.dx = -1;
+					GamePanel.this.direction = 3;
 					MainFrame.getInstance().movePlayer(GamePanel.this.dx, GamePanel.this.dy);
 					break;
 				}
 				case KeyEvent.VK_UP: {
 					GamePanel.this.dy = -1;
+					GamePanel.this.direction = 0;
 					MainFrame.getInstance().movePlayer(GamePanel.this.dx, GamePanel.this.dy);
 					break;
 				}
 				case KeyEvent.VK_RIGHT: {
 					GamePanel.this.dx = 1;
+					GamePanel.this.direction = 1;
 					MainFrame.getInstance().movePlayer(GamePanel.this.dx, GamePanel.this.dy);
 					break;
 				}
 				case KeyEvent.VK_DOWN: {
 					GamePanel.this.dy = 1;
+					GamePanel.this.direction = 2;
 					MainFrame.getInstance().movePlayer(GamePanel.this.dx, GamePanel.this.dy);
 					break;
 				}

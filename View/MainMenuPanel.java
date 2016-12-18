@@ -49,8 +49,8 @@ public class MainMenuPanel extends JPanel{
 
         // Getting Image
         try {
-            this.playerTank = ImageIO.read(new File("Resources/playerTank.png"));
-            this.playerTank2 = ImageIO.read(new File("Resources/playerTank.png"));
+            this.playerTank = ImageIO.read(new File("Resources/playerTankU.png"));
+            this.playerTank2 = ImageIO.read(new File("Resources/playerTankU.png"));
         }
         catch(IOException ex){
             ex.printStackTrace();
