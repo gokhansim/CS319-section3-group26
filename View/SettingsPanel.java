@@ -1,4 +1,6 @@
 package View;
 
-public class SettingsPanel {
+import javax.swing.*;
+
+public class SettingsPanel extends JPanel {
 }

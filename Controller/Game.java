@@ -27,6 +27,7 @@ public class Game {
 		this.startLevel(this.level);
 		this.frame = MainFrame.getInstance(this);
 		this.frame.setVisible(true);
+		// this.InputMngr = new InputManager();
 		this.updateView();
 	}
 
@@ -57,7 +58,8 @@ public class Game {
 	}
 
 	public void movePlayer(int x, int y) {
-
+		engine.movePlayer(x,y);
+		this.updateView();
 	}
 
 	public void moveEnemyTanks() {
@@ -70,6 +72,20 @@ public class Game {
 
 	public void isLivesZero() {
 
+	}
+
+	public void changeGameCase(int caseNo){
+		switch (caseNo) {
+			case 1: {
+				this.frame.startGame();
+				break;
+			}
+			case 5: {
+				// Not Decided Yet.
+				break;
+			}
+		}
+		this.frame.updateStatusView(caseNo);
 	}
 
 	public void updateView() {

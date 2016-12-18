@@ -1,4 +1,6 @@
 package View;
 
-public class HelpPanel {
+import javax.swing.*;
+
+public class HelpPanel extends JPanel {
 }

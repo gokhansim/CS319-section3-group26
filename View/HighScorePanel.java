@@ -1,10 +1,11 @@
 package View;
 
-public class HighScorePanel {
+import javax.swing.*;
+
+public class HighScorePanel extends JPanel {
 
 	public void drawScores() {
-		// TODO - implement HighScorePanel.drawScores
-		throw new UnsupportedOperationException();
+
 	}
 
 }

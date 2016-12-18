@@ -10,6 +10,7 @@ public class GameEngine {
 	private int[][] intMap;
 	private CollisionManager colMngr;
 	private int score;
+	PlayerTank playerTank;
 
 	public GameEngine(){
 		this.map = new GameBody[MAP_SIZE][MAP_SIZE];
@@ -66,13 +67,15 @@ public class GameEngine {
 		int yCoor = body.getY();
 		if( map[xCoor][yCoor] != null ) {
 			map[xCoor][yCoor] = null;
+			intMap[xCoor][yCoor] = -1;
 		}
 	}
 
 	public void placeAllBodies(int level){
 		if( level == 1){
-			PlayerTank playerTank = new PlayerTank(4,7);
+			playerTank = new PlayerTank(4,7);
 			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
+
 			EnemyTank enemyTank = new EnemyTank(0,0, 3, 10 );
 			this.createGameBody(enemyTank, enemyTank.getX(), enemyTank.getY() );
 			EnemyTank enemyTank2 = new EnemyTank(9,0, 3, 10 );
@@ -108,6 +111,16 @@ public class GameEngine {
 	public int getMapSize() { return MAP_SIZE; }
 	public int[][] getIntMap() { return intMap; }
 
+	public void movePlayer(int x, int y){
+		if( intMap[playerTank.getX()+x][playerTank.getY()+y] == -1 ){
+			this.destroyGameBody(playerTank);
+			playerTank.move(x,y);
+			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
+		}
+		else{}
+	}
+
+
 
 	// just for testing. To be deleted later
 	public void printMap(){
@@ -132,36 +145,7 @@ public class GameEngine {
 	}
 
 	public void updateMap() {
-		
-	}
-
-	/*
-	public static void main(String[] args) {
-		//PLAYER TANK AND ENEMY TANK TRIALS
-		/*
-		PlayerTank playerTank = new PlayerTank(3,3);
-		engine.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
-
-		System.out.println( engine.getMapItem(3,3));
-		System.out.println(engine.getMapItem( playerTank.getX(), playerTank.getY()) );
-		playerTank.move();
-		System.out.println(playerTank.getX());
-
-		System.out.println( engine.getMapItem(3,3));
-		System.out.println(engine.getMapItem( playerTank.getX(), playerTank.getY()) );
-
-		EnemyTank enemyTank = new EnemyTank(3, 5, 3, 5);
-		engine.createGameBody(enemyTank, enemyTank.getX(), enemyTank.getY() );
-		*/
-
-		/*
-		for( int i = 0; i < engine.getMapSize(); i++){
-			for( int j = 0; j < engine.getMapSize(); j++){
-				System.out.println(engine.getMapItem(i, j));
-				count++;
-			}
-		}
 
 	}
-	*/
+
 }

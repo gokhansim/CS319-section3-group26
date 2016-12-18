@@ -12,10 +12,12 @@ public class MainFrame extends JFrame{
 	private Game game;
 	private JPanel container;
 	private GamePanel gamePanel;
-
-
+	private MainMenuPanel menuPanel;
+	private SettingsPanel settingsPanel;
+	private HelpPanel helpPanel;
+	private HighScorePanel scorePanel;
 	private JPanel activePanel;
-	private ArrayList<Panel> panels;
+	private boolean isClosed;
 
 
 	public MainFrame( Game game){
@@ -26,12 +28,20 @@ public class MainFrame extends JFrame{
 		this.setResizable(false);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(3);
-		this.container = new JPanel();
+
+		// Panel initializations
+		this.menuPanel = new MainMenuPanel();
 		this.gamePanel = new GamePanel();
+		this.helpPanel = new HelpPanel();
+		this.settingsPanel = new SettingsPanel();
+		this.scorePanel = new HighScorePanel();
+		this.activePanel = menuPanel;
+
+		this.container = new JPanel();
 		this.container.setLayout(new BorderLayout());
-		this.container.add((Component)this.gamePanel, "Center");
+		this.container.add((Component)this.activePanel, "Center");
 		this.add( this.container);
-		this.gamePanel.setVisible(true);
+		this.activePanel.setVisible(true);
 		this.pack();
 	}
 
@@ -44,8 +54,14 @@ public class MainFrame extends JFrame{
 		return instance;
 	}
 
+	public void setActivePanel(JPanel activePanel){ this.activePanel = activePanel; }
+
 	public void startGame() {
 		this.gamePanel.startGame();
+	}
+
+	public void movePlayer( int x, int y){
+		this.game.movePlayer(x,y);
 	}
 
 
@@ -53,5 +69,30 @@ public class MainFrame extends JFrame{
 		this.gamePanel.draw( game.getIntMap() );
 	}
 
+	public void updateStatusView(int status){
+		this.getContentPane().removeAll();
+		switch (status) {
+			case 1: {
+				this.setActivePanel(this.gamePanel);
+				break;
+			}
+			case 5: {
+				isClosed = true;
+			}
+		}
+		if( !isClosed) {
+			this.getContentPane().add(activePanel);
+			this.getContentPane().revalidate();
+			this.getContentPane().repaint();
+		}
+		else{
+			this.setVisible(false);
+			this.dispose();
+		}
+	}
+
+	public void changeCase( int caseNo){
+		this.game.changeGameCase(caseNo);
+	}
 
 }

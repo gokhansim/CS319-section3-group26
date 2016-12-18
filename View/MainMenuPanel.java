@@ -194,11 +194,16 @@ public class MainMenuPanel extends JPanel{
             Object obj = event.getSource();
             switch (str = ((JButton)obj).getText()) {
                 case "PLAY": {
-                    // MainFrame.getInstance().changeStatus(1);
+                    MainFrame.getInstance().changeCase(1);
+                    break;
+                }
+                case "EXIT":{
+                    MainFrame.getInstance().changeCase(5);
                     break;
                 }
             }
         }
     }
+
 
 }

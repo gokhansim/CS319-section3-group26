@@ -5,12 +5,19 @@ import Controller.Game;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 public class GamePanel extends JPanel{
-
+	/*
+	Timer timer;
+	int delay = 10;
+	*/
 	private BufferedImage playerTank;
 	private BufferedImage enemyTank;
 	private BufferedImage brickWall;
@@ -18,18 +25,21 @@ public class GamePanel extends JPanel{
 	private BufferedImage steelWall;
 	private BufferedImage sacredObject;
 
+
 	private int[][] intMap;
+	private int dx = 0;
+	private int dy = 0;
 
 
 	public GamePanel( ){
-		// this.intMap = game.getIntMap();
-
 		this.setBackground(Color.BLACK);
 		this.setPreferredSize(new Dimension(1000, 1000));
 		this.setLayout(null);
 		this.setMaximumSize(this.getPreferredSize());
 		this.setFocusable(true);
 		this.requestFocusInWindow(true);
+		this.addKeyListener(new KeyboardListener());
+		//this.timer = new Timer(this.delay, new TimerListener());
 		try{
 			this.playerTank = ImageIO.read(new File("Resources/playerTank.png"));
 			this.enemyTank = ImageIO.read(new File("Resources/EnemyTank.png"));
@@ -52,10 +62,7 @@ public class GamePanel extends JPanel{
 
 	public void draw(int[][] map) {
 		this.intMap = map;
-		for(int i = 0; i < 5; i++) {
-			System.out.println(i);
-			this.repaint();
-		}
+		this.repaint();
 	}
 
 
@@ -99,6 +106,77 @@ public class GamePanel extends JPanel{
 			}
 		}
 
+	}
+	/*
+	private class TimerListener implements ActionListener {
+
+		private TimerListener() {
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent event) {
+			MainFrame.getInstance().movePlayer(GamePanel.this.dx, GamePanel.this.dy);
+			GamePanel.this.dx = 0;
+			GamePanel.this.dy = 0;
+		}
+	}
+	*/
+
+	private class KeyboardListener implements KeyListener {
+		private KeyboardListener() {
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+		}
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			int keyCode = e.getKeyCode();
+			switch (keyCode) {
+				case KeyEvent.VK_LEFT: {
+					System.out.println("Key Pressed.");
+					GamePanel.this.dx = -1;
+					MainFrame.getInstance().movePlayer(GamePanel.this.dx, GamePanel.this.dy);
+					break;
+				}
+				case KeyEvent.VK_UP: {
+					dy = -1;
+					break;
+				}
+				case KeyEvent.VK_RIGHT: {
+					dx = 1;
+					break;
+				}
+				case KeyEvent.VK_DOWN: {
+					dy = 1;
+					break;
+				}
+			}
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			int keyCode = e.getKeyCode();
+			switch (keyCode) {
+				case 37: {
+					dx = 0;
+					break;
+				}
+				case 38: {
+					dy = 0;
+					break;
+				}
+				case 39: {
+					dx = 0;
+					break;
+				}
+				case 40: {
+					dy = 0;
+					break;
+				}
+			}
+		}
 	}
 
 }
