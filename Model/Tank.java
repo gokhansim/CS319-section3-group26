@@ -14,9 +14,9 @@ public abstract class Tank extends GameBody {
 
 	public boolean isDoubleShot() { return isDoubleShot; }
 
-	public void move() {
-		setX( getX() + moveSpeed);
-		setY( getY() + moveSpeed);
+	public void move(int x, int y) {
+		setX( getX() + (x * moveSpeed) );
+		setY( getY() + (y * moveSpeed));
 	}
 
 }
