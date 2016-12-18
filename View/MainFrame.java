@@ -1,9 +1,11 @@
 package View;
 
 import Controller.Game;
+import View.GamePanel.KeyboardListener;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class MainFrame extends JFrame{
@@ -25,7 +27,7 @@ public class MainFrame extends JFrame{
 		instance = this;
 		this.game = game;
 		this.setSize(1024, 768);
-		this.setResizable(false);
+		this.setResizable(true);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(3);
 
@@ -36,7 +38,18 @@ public class MainFrame extends JFrame{
 		this.settingsPanel = new SettingsPanel();
 		this.scorePanel = new HighScorePanel();
 		this.activePanel = menuPanel;
-
+		
+		///CHANGED
+		this.add(gamePanel);
+		this.add(menuPanel);
+		this.add(helpPanel);
+		this.add(settingsPanel);
+		this.add(scorePanel);
+		this.addKeyListener(gamePanel.new KeyboardListener());
+		this.gamePanel.setFocusable(true);
+		this.gamePanel.requestFocusInWindow();
+		////
+		
 		this.container = new JPanel();
 		this.container.setLayout(new BorderLayout());
 		this.container.add((Component)this.activePanel, "Center");

@@ -31,7 +31,6 @@ public class GamePanel extends JPanel{
 	private int dx = 0;
 	private int dy = 0;
 
-
 	public GamePanel( ){
 		this.setBackground(Color.BLACK);
 		this.setPreferredSize(new Dimension(1000, 1000));
@@ -147,8 +146,8 @@ public class GamePanel extends JPanel{
 	}
 
 
-	private class KeyboardListener implements KeyListener {
-		private KeyboardListener() {
+	public class KeyboardListener implements KeyListener {
+		public KeyboardListener() {
 		}
 
 		@Override
@@ -164,15 +163,18 @@ public class GamePanel extends JPanel{
 					break;
 				}
 				case KeyEvent.VK_UP: {
-					dy = -1;
+					GamePanel.this.dy = -1;
+					MainFrame.getInstance().movePlayer(GamePanel.this.dx, GamePanel.this.dy);
 					break;
 				}
 				case KeyEvent.VK_RIGHT: {
-					dx = 1;
+					GamePanel.this.dx = 1;
+					MainFrame.getInstance().movePlayer(GamePanel.this.dx, GamePanel.this.dy);
 					break;
 				}
 				case KeyEvent.VK_DOWN: {
-					dy = 1;
+					GamePanel.this.dy = 1;
+					MainFrame.getInstance().movePlayer(GamePanel.this.dx, GamePanel.this.dy);
 					break;
 				}
 			}

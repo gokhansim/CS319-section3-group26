@@ -3,7 +3,7 @@ package Model;
 public class PlayerTank extends Tank implements Destroyable{
 
 	private int currentLives;
-	private int shield;
+	protected int shield;
 	private boolean isUltimate;
 	private static final int ID = 0;
 
