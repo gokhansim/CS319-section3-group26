@@ -33,6 +33,7 @@ public class Game {
 		this.frame = MainFrame.getInstance(this);
 		this.frame.setVisible(true);
 		// this.InputMngr = new InputManager();
+		this.highScoreMngr = new HighScoreManager();
 		this.updateView();
 	}
 
@@ -51,7 +52,7 @@ public class Game {
 	}
 
 	public void writeHighScore(int score) {
-
+		highScoreMngr.registerHighScore(score);
 	}
 
 	public void pauseGame() {
@@ -63,14 +64,13 @@ public class Game {
 	}
 
 	public void movePlayer(int x, int y) {
-            engine.movePlayer(x, y);
-            this.updateView();
-
-}
+		engine.movePlayer(x, y);
+		this.updateView();
+	}
 
 	public void moveEnemyTank() {
-        engine.moveEnemy();
-	    this.updateView();
+        	engine.moveEnemy();
+		this.updateView();
 	}
 
 	public void shootPlayer(int direction) {
