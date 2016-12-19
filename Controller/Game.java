@@ -29,7 +29,7 @@ public class Game {
 		this.score = 0;
 		this.level = level;
 		this.startLevel(this.level);
-		// thr.start();
+		thr.start();
 		this.frame = MainFrame.getInstance(this);
 		this.frame.setVisible(true);
 		// this.InputMngr = new InputManager();
