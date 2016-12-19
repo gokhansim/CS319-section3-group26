@@ -13,7 +13,7 @@ public class HighScoreManager {
 		file = new File("C:/Users/HP/Downloads/test.txt"); //must be changed
 	}
 	
-	//this method takes the score of the player and adds it to the high scores if it is in the top 5
+	//takes the score when the game ends and adds it to the high scores if it is in the top 5
 	public void registerHighScore(int score) {
 		
 		this.readHighScore();
@@ -47,8 +47,8 @@ public class HighScoreManager {
 			catch (IOException e){}
 		}
 	}
-
-	//returns the top 5 high scores
+	
+	//returns the high scores
 	public ArrayList<Integer> showHighScore() {
 		this.readHighScore();
 		return scoreList;
