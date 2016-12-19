@@ -1,4 +1,3 @@
-@@ -0,0 +1,13 @@
 # CS319 Group Project - Group 26 - Tank Game
 
 The Tank Game is a remake of the famous game, Tank 1990. Player plays as a tank, guarding a certain banner from the other invading tanks. 
