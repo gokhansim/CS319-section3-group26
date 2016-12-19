@@ -1,6 +1,7 @@
 package View;
 
 import javax.imageio.ImageIO;
+
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
@@ -196,6 +197,10 @@ public class MainMenuPanel extends JPanel{
                 case "PLAY": {
                     MainFrame.getInstance().changeCase(1);
                     break;
+                }
+                case "SETTINGS":{
+                	MainFrame.getInstance().changeCase(3);
+                	break;
                 }
                 case "EXIT":{
                     MainFrame.getInstance().changeCase(5);

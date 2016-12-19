@@ -89,6 +89,10 @@ public class MainFrame extends JFrame{
 				this.setActivePanel(this.gamePanel);
 				break;
 			}
+			case 3:{
+				this.setActivePanel(this.settingsPanel);
+				break;
+			}
 			case 5: {
 				isClosed = true;
 			}
