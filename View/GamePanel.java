@@ -32,6 +32,8 @@ public class GamePanel extends JPanel{
 	private BufferedImage steelWall;
 	private BufferedImage sacredObject;
 
+	private KeyboardListener keyboardListener;
+
 
 	private int[][] intMap;
 	private int dx = 0;
@@ -43,7 +45,8 @@ public class GamePanel extends JPanel{
 		this.setPreferredSize(new Dimension(1000, 1000));
 		this.setLayout(null);
 		this.setMaximumSize(this.getPreferredSize());
-		this.addKeyListener(new KeyboardListener());
+		//keyboardListener = new KeyboardListener();
+		//this.addKeyListener( keyboardListener );
 		this.setFocusable(true);
 		this.requestFocusInWindow(true);
 		// this.timer = new Timer(this.delay, new TimerListener());
@@ -68,30 +71,14 @@ public class GamePanel extends JPanel{
 
 		//----------
 
-		Font font = new Font("Century", 1, 20);
-		JButton playButton = new JButton("LEFT");
-		playButton.setSize( 150, 100 );
-		playButton.setFont(font);
-		this.add(playButton);
-		playButton.setLocation(800,800);
-		playButton.setOpaque(false);
-		playButton.setContentAreaFilled(false);
-		playButton.setBorderPainted(false);
-		playButton.setForeground(Color.RED);
-		playButton.addActionListener( new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-			{
-				System.out.println("Do Something Clicked");
-			}
-		});
-
-		this.revalidate();
 		//-------------
 
 	}
 
 	public void startGame() {
 		this.removeAll();
+		keyboardListener = new KeyboardListener();
+		this.addKeyListener(keyboardListener);
 		this.validate();
 		this.repaint();
 	}
@@ -215,6 +202,10 @@ public class GamePanel extends JPanel{
 					GamePanel.this.dy = 1;
 					GamePanel.this.direction = 2;
 					MainFrame.getInstance().movePlayer(GamePanel.this.dx, GamePanel.this.dy);
+					break;
+				}
+				case KeyEvent.VK_SPACE: {
+					MainFrame.getInstance().shootPlayer(GamePanel.this.direction);
 					break;
 				}
 			}

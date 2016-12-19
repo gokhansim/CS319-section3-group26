@@ -14,21 +14,22 @@ public class Game {
 	private int score;
 	private int enemyTanksLeft;
 	private int[][] intMap;
-	private HighScoreManager HighScoreMngr;
-	private InputManager InputMngr;
-	private SoundManager SoundMngr;
-	private SettingsManager SettingsMngr;
+	private HighScoreManager highScoreMngr;
+	private InputManager inputMngr;
+	private SoundManager soundMngr;
+	private SettingsManager settingsMngr;
 	private MainFrame frame;
 	private GameEngine engine;
 	private int volume;
 
 	public Game(int level){
 		engine = new GameEngine();
+		settingsMngr = new SettingsManager(this);
 		intMap = engine.getIntMap();
 		this.score = 0;
 		this.level = level;
 		this.startLevel(this.level);
-		thr.start();
+		// thr.start();
 		this.frame = MainFrame.getInstance(this);
 		this.frame.setVisible(true);
 		// this.InputMngr = new InputManager();
@@ -42,7 +43,7 @@ public class Game {
 	}
 
 	public void endGame() {
-
+		this.frame.updateCaseView(6);
 	}
 
 	public void updateScore(int score) {
@@ -72,26 +73,50 @@ public class Game {
 	    this.updateView();
 	}
 
-	public void shootPlayer() {
-
+	public void shootPlayer(int direction) {
+		engine.shootPlayer(direction);
+		if( !(engine.getIsGameOver()) ) {
+			this.updateView();
+		}
+		else{
+			this.endGame();
+		}
 	}
 
 	public void isLivesZero() {
 
 	}
 
-	public void changeGameCase(int caseNo){
+	public void changeGameCase(int caseNo, int level){
 		switch (caseNo) {
+			case 0: { // show main menu
+				this.frame.updateCaseView(caseNo);
+				break;
+			}
 			case 1: {
+				this.startLevel(1);
 				this.frame.startGame();
+                this.frame.updateCaseView(caseNo);
+				break;
+			}
+			// Level Change
+            case 2: {
+                this.settingsMngr.changeLevel(level);
+				//this.frame.startGame();
+                this.frame.updateCaseView(1);
+                break;
+            }
+            // Settings Panel
+			case 3:{
+				this.frame.updateCaseView(caseNo);
 				break;
 			}
 			case 5: {
-				// Not Decided Yet.
+				this.frame.updateCaseView(caseNo);
 				break;
 			}
 		}
-		this.frame.updateStatusView(caseNo);
+
 	}
 
 	public void updateView() {

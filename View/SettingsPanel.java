@@ -206,10 +206,10 @@ public class SettingsPanel extends JPanel {
 			Object obj = e.getSource();
 			switch (str = ((JButton)obj).getText()){
 				case "1":{
-					
+                    MainFrame.getInstance().changeCase(2, 1);
 				}
 				case "2":{
-					
+                    MainFrame.getInstance().changeCase(2, 2);
 				}
 				case "3":{
 					

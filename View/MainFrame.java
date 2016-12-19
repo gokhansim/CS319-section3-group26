@@ -18,6 +18,7 @@ public class MainFrame extends JFrame{
 	private SettingsPanel settingsPanel;
 	private HelpPanel helpPanel;
 	private HighScorePanel scorePanel;
+	private GameOverPanel gameOverPanel;
 	private JPanel activePanel;
 	private boolean isClosed;
 
@@ -27,7 +28,7 @@ public class MainFrame extends JFrame{
 		instance = this;
 		this.game = game;
 		this.setSize(1024, 768);
-		this.setResizable(true);
+		this.setResizable(false);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(3);
 
@@ -37,6 +38,7 @@ public class MainFrame extends JFrame{
 		this.helpPanel = new HelpPanel();
 		this.settingsPanel = new SettingsPanel();
 		this.scorePanel = new HighScorePanel();
+		this.gameOverPanel = new GameOverPanel();
 		this.activePanel = menuPanel;
 		
 		///CHANGED
@@ -45,7 +47,8 @@ public class MainFrame extends JFrame{
 		this.add(helpPanel);
 		this.add(settingsPanel);
 		this.add(scorePanel);
-		this.addKeyListener(gamePanel.new KeyboardListener());
+		this.add(gameOverPanel);
+		// this.addKeyListener(gamePanel.new KeyboardListener());
 		this.gamePanel.setFocusable(true);
 		this.gamePanel.requestFocusInWindow();
 		////
@@ -70,6 +73,12 @@ public class MainFrame extends JFrame{
 	public void setActivePanel(JPanel activePanel){ this.activePanel = activePanel; }
 
 	public void startGame() {
+		/*
+		this.gamePanel = new GamePanel();
+		this.add(gamePanel);
+		this.gamePanel.setFocusable(true);
+		this.gamePanel.requestFocusInWindow();
+		*/
 		this.gamePanel.startGame();
 	}
 
@@ -77,14 +86,22 @@ public class MainFrame extends JFrame{
 		this.game.movePlayer(x,y);
 	}
 
+	public void shootPlayer(int direction){
+		this.game.shootPlayer(direction);
+	}
+
 
 	public void updateView() {
 		this.gamePanel.draw( game.getIntMap() );
 	}
 
-	public void updateStatusView(int status){
+	public void updateCaseView(int caseNo){
 		this.getContentPane().removeAll();
-		switch (status) {
+		switch (caseNo) {
+			case 0: {
+				this.setActivePanel(this.menuPanel);
+				break;
+			}
 			case 1: {
 				this.setActivePanel(this.gamePanel);
 				break;
@@ -95,6 +112,10 @@ public class MainFrame extends JFrame{
 			}
 			case 5: {
 				isClosed = true;
+			}
+			case 6: { // GameOver panel would be shown
+				this.setActivePanel(this.gameOverPanel);
+				break;
 			}
 		}
 		if( !isClosed) {
@@ -108,8 +129,9 @@ public class MainFrame extends JFrame{
 		}
 	}
 
-	public void changeCase( int caseNo){
-		this.game.changeGameCase(caseNo);
+	public void changeCase( int caseNo, int level) {
+		this.game.changeGameCase(caseNo, level);
 	}
+
 
 }

@@ -6,11 +6,13 @@ public class PlayerTank extends Tank implements Destroyable{
 	protected int shield;
 	private boolean isUltimate;
 	private static final int ID = 0;
+	private int shootSpeed;
 
 	public PlayerTank(int x, int y){
 		super(x, y);
 		this.currentLives = 3;
 		this.shield = 0;
+		this.shootSpeed = 1;
 		this.isUltimate = false;
 	}
 
@@ -48,6 +50,8 @@ public class PlayerTank extends Tank implements Destroyable{
 			currentLives--;
 		}
 	}
+	public int getShootSpeed(){ return this.shootSpeed; }
+	public void setShootSpeed(int shootSpeed){ this.shootSpeed = shootSpeed; }
 
 	public int getShield(){ return this.shield; }
 	public void decreaseShield() {

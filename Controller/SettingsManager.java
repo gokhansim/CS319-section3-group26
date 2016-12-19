@@ -1,23 +1,20 @@
 package Controller;
 
+
 public class SettingsManager {
 
-	/**
-	 * 
-	 * @param level
-	 */
+	private Game game;
+
+	public SettingsManager( Game game){
+		this.game = game;
+	}
 	public void changeLevel(int level) {
-		// TODO - implement SettingsManager.changeLevel
-		throw new UnsupportedOperationException();
+		game.startLevel(level);
 	}
 
-	/**
-	 * 
-	 * @param volume
-	 */
+
 	public void changeVolume(int volume) {
-		// TODO - implement SettingsManager.changeVolume
-		throw new UnsupportedOperationException();
+
 	}
 
 }
