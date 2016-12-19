@@ -36,16 +36,15 @@ public class HighScoreManager {
 		}
 		if(added){
 	
-		try{
-			FileOutputStream fos = new FileOutputStream(file);
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			oos.writeObject( scoreList );
-			oos.close();
-			fos.close();
-			
-		}
-		catch (IOException e){}
-		
+			try{
+				FileOutputStream fos = new FileOutputStream(file);
+				ObjectOutputStream oos = new ObjectOutputStream(fos);
+				oos.writeObject( scoreList );
+				oos.close();
+				fos.close();
+
+			}
+			catch (IOException e){}
 		}
 	}
 
