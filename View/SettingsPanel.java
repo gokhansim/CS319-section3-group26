@@ -1,7 +1,6 @@
 package View;
 
 import static java.awt.Font.createFont;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -27,12 +26,13 @@ public class SettingsPanel extends JPanel {
 	private Font customFont;
     private Font buttonFont;
     private Font hoverFont;
-    MenuListener menuListener;
+    private MenuListener menuListener;
 	public SettingsPanel(){
 		
 	    this.setBackground(Color.BLACK);
         this.setPreferredSize(new Dimension(1000, 1000));
         this.setLayout(null);
+        menuListener = new MenuListener();
        
 		try {
             this.customFont = createFont(Font.TRUETYPE_FONT, new File("Resources/WeekendWarrior.ttf")).deriveFont(70f);
@@ -193,6 +193,26 @@ public class SettingsPanel extends JPanel {
 	    changeVolumeLable.setSize(450,150);
 	    changeVolumeLable.setLocation(265,570);
         this.add(changeVolumeLable);
+        
+        //Back to main menu button
+        JButton backToMain = new JButton("Back");
+        backToMain.setFont(this.buttonFont);
+        backToMain.setSize( 300, 200 );
+        this.add(backToMain);
+        backToMain.setLocation(45,750);
+        backToMain.setOpaque(false);
+        backToMain.setContentAreaFilled(false);
+        backToMain.setBorderPainted(false);
+        backToMain.setForeground(Color.RED);
+        backToMain.addActionListener(menuListener);
+        backToMain.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt){
+            	backToMain.setFont(hoverFont);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+            	backToMain.setFont(buttonFont);
+            }
+        });
 	}
 	private class MenuListener implements ActionListener{
     	
@@ -201,24 +221,33 @@ public class SettingsPanel extends JPanel {
     	}
 
 		@Override
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent event) {
 			String str;
-			Object obj = e.getSource();
+			Object obj = event.getSource();
 			switch (str = ((JButton)obj).getText()){
 				case "1":{
                     MainFrame.getInstance().changeCase(2, 1);
+                    break;
 				}
 				case "2":{
                     MainFrame.getInstance().changeCase(2, 2);
+                    break;
 				}
 				case "3":{
-					
+					MainFrame.getInstance().changeCase(2, 3);
+                    break;
 				}
 				case "4":{
-					
+					MainFrame.getInstance().changeCase(2, 4);
+                    break;
 				}
 				case "5":{
-					
+					MainFrame.getInstance().changeCase(2, 5);
+                    break;
+				}
+				case "Back":{
+					MainFrame.getInstance().changeCase(0, 1);
+					break;
 				}
 			}
 			

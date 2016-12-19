@@ -110,6 +110,10 @@ public class MainFrame extends JFrame{
 				this.setActivePanel(this.settingsPanel);
 				break;
 			}
+			case 4: {
+				this.setActivePanel(this.helpPanel);
+				break;
+			}
 			case 5: {
 				isClosed = true;
 			}

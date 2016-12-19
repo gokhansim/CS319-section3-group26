@@ -111,6 +111,10 @@ public class Game {
 				this.frame.updateCaseView(caseNo);
 				break;
 			}
+			case 4:{
+				this.frame.updateCaseView(caseNo);
+				break;
+			}
 			case 5: {
 				this.frame.updateCaseView(caseNo);
 				break;

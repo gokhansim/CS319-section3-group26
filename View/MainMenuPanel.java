@@ -198,6 +198,10 @@ public class MainMenuPanel extends JPanel{
                     MainFrame.getInstance().changeCase(1,1);
                     break;
                 }
+                case "HELP":{
+                	MainFrame.getInstance().changeCase(4,1);
+                	break;
+                }
                 case "SETTINGS":{
                 	MainFrame.getInstance().changeCase(3,1);
                 	break;
