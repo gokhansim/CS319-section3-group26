@@ -208,13 +208,11 @@ public class Game{
 		this.frame.updateView();
 	}
 
-<<<<<<< HEAD
 
-=======
 	public HighScoreManager getHighScoreManager(){
 		return highScoreMngr;
 	}
->>>>>>> efcd3d461285e8428f8e36406170aaa9add99c70
+
 	// --  THREAD  ---------------------------------
 	public class EnemyTankThread implements Runnable {
         private final Game game;
