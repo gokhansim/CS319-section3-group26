@@ -29,9 +29,9 @@ public class Bullet extends GameBody implements Destroyable{
 	public int getId() { return id; }
 	public int getDirection() { return direction; }
 
-	public void move() {
-		this.setX( this.getX() + this.getMoveSpeed() );
-		this.setY( this.getY() + this.getMoveSpeed() );
+	public void move(int x, int y) {
+		this.setX( this.getX() + (this.getMoveSpeed() * x) );
+		this.setY( this.getY() + (this.getMoveSpeed() * y) );
 	}
 
 	@Override

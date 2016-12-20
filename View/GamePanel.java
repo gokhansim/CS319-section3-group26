@@ -49,8 +49,7 @@ public class GamePanel extends JPanel{
 
 	public GamePanel( ){
 		this.setBackground(Color.BLACK);
-		this.setPreferredSize(new Dimension(1000, 1000));
-		// this.setBorder(BorderFactory.createEmptyBorder(0, 50, 50, 50));
+		this.setPreferredSize(new Dimension(1200, 1000));
 		this.setLayout(null);
 		this.setMaximumSize(this.getPreferredSize());
 		keyboardListener = new KeyboardListener();
@@ -82,16 +81,19 @@ public class GamePanel extends JPanel{
 		}
 
 		//----------
-		/*
+/*
 		JLabel scoreLabel = new JLabel("score", JLabel.CENTER);
 		scoreLabel.setOpaque(true);
 		// scoreLabel.setFont();
 		scoreLabel.setForeground(Color.RED);
-		scoreLabel.setBackground(Color.BLACK);
+		scoreLabel.setBackground(Color.WHITE);
+		scoreLabel.setBounds(100,100,200,30);
 		scoreLabel.setSize(450,150);
-		scoreLabel.setLocation(265,150);
+		scoreLabel.setLocation(800,800);
 		this.add(scoreLabel);
-		*/
+		this.revalidate();
+		this.repaint();
+*/
 		//----------
 
 	}

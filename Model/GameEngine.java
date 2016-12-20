@@ -2,6 +2,8 @@ package Model;
 
 import Controller.Game;
 
+import java.util.LinkedList;
+
 public class GameEngine {
 
 	private static final int MAP_SIZE = 100;
@@ -14,6 +16,7 @@ public class GameEngine {
 	PlayerTank playerTank;
 	EnemyTank enemyTank;
 	private int enemyTanksLeft;
+	private LinkedList<Bullet> bulletList = new LinkedList<Bullet>();
 
 	public GameEngine(){
 		this.map = new GameBody[MAP_SIZE][MAP_SIZE];
@@ -29,6 +32,34 @@ public class GameEngine {
 		this.isGameOver = false;
 		colMngr = new CollisionManager();
 	}
+
+	// BULLET
+	public void addBullet(Bullet bullet){
+		bulletList.add(bullet);
+	}
+	public void removeBullet(Bullet bullet){
+		bulletList.remove(bullet);
+	}
+	public void moveBullet( Bullet bullet) {
+		Bullet tempBullet;
+		for( int i = 0; i < bulletList.size(); i++){
+			tempBullet = bulletList.get(i);
+			if( tempBullet.getId() == 23){
+				this.createGameBody( tempBullet, bullet.getX() - bullet.getMoveSpeed(), bullet.getY());
+			}
+			else if( tempBullet.getId() == 22){
+				this.createGameBody( tempBullet, bullet.getX() , bullet.getY() + bullet.getMoveSpeed());
+			}
+			if( tempBullet.getId() == 21){
+				this.createGameBody( tempBullet, bullet.getX() + bullet.getMoveSpeed(), bullet.getY());
+			}
+			if( tempBullet.getId() == 20){
+				this.createGameBody( tempBullet, bullet.getX(), bullet.getY() - bullet.getMoveSpeed());
+			}
+		}
+
+	}
+	//	----
 
 	public void addScore( int scoreGiven){ score = score + scoreGiven; }
 	public int getScore() { return score; }
@@ -64,13 +95,14 @@ public class GameEngine {
 			}
 			else if( aBody instanceof Bullet){
 				intMap[x][y] = ((Bullet)aBody).getId();
-				this.moveBullet((Bullet)aBody);
+				bulletList.add((Bullet)aBody);
 			}
 
 		}
 		else if( map[x][y] != null ){
 			if( colMngr.checkCollision( aBody, map[x][y], this) ){
 					this.destroyGameBody(aBody);
+					bulletList.remove(aBody);
 			}
 		}
 	}
@@ -374,22 +406,23 @@ public class GameEngine {
 		else{}
 	}
 
-	public void moveBullet( Bullet bullet){
-		int direction = bullet.getDirection();
-
-	}
 	/*
 	Runnable r = new Runnable() {
 		public void run() {*/
 			public void shootPlayer ( int direction){
+				Bullet bullet;
 				if (direction == 0) {
-					createGameBody(new Bullet(playerTank.getX(), (playerTank.getY() - 1), playerTank.getShootSpeed(), direction), playerTank.getX(), playerTank.getY() - 1);
+					bullet = new Bullet(playerTank.getX(), (playerTank.getY() - 1), playerTank.getShootSpeed(), direction);
+					createGameBody(bullet, playerTank.getX(), playerTank.getY() - 1);
 				} else if (direction == 1) {
-					createGameBody(new Bullet(playerTank.getX() + 1, playerTank.getY(), playerTank.getShootSpeed(), direction), playerTank.getX() + 1, playerTank.getY());
+					bullet = new Bullet(playerTank.getX() + 1, playerTank.getY(), playerTank.getShootSpeed(), direction);
+					createGameBody(bullet,playerTank.getX() + 1, playerTank.getY());
 				} else if (direction == 2) {
-					createGameBody(new Bullet(playerTank.getX(), (playerTank.getY() + 1), playerTank.getShootSpeed(), direction), playerTank.getX(), playerTank.getY() + 1);
+					bullet = new Bullet(playerTank.getX(), (playerTank.getY() + 1), playerTank.getShootSpeed(), direction);
+					createGameBody(bullet, playerTank.getX(), playerTank.getY() + 1);
 				} else if (direction == 3) {
-					createGameBody(new Bullet(playerTank.getX() - 1, (playerTank.getY()), playerTank.getShootSpeed(), direction), playerTank.getX() - 1, playerTank.getY());
+					bullet = new Bullet(playerTank.getX() - 1, (playerTank.getY()), playerTank.getShootSpeed(), direction);
+					createGameBody(bullet,playerTank.getX() - 1, playerTank.getY());
 				}
 			}/*
 		}
@@ -402,7 +435,7 @@ public class GameEngine {
 		int direction = 0;
 		while( this.enemyTank.getHistToKill() > 0){
 			try {
-				Thread.sleep(200);
+				Thread.sleep(150);
 			} catch(InterruptedException e){
 				return;
 			}
