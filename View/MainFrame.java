@@ -124,6 +124,7 @@ public class MainFrame extends JFrame{
 		}
 		if( !isClosed) {
 			this.getContentPane().add(activePanel);
+			activePanel.requestFocusInWindow();
 			this.getContentPane().revalidate();
 			this.getContentPane().repaint();
 		}

@@ -50,11 +50,11 @@ public class GamePanel extends JPanel{
 	public GamePanel( ){
 		this.setBackground(Color.BLACK);
 		this.setPreferredSize(new Dimension(1000, 1000));
-		this.setBorder(BorderFactory.createEmptyBorder(0, 50, 50, 50));
+		// this.setBorder(BorderFactory.createEmptyBorder(0, 50, 50, 50));
 		this.setLayout(null);
 		this.setMaximumSize(this.getPreferredSize());
-		//keyboardListener = new KeyboardListener();
-		//this.addKeyListener( keyboardListener );
+		keyboardListener = new KeyboardListener();
+		this.addKeyListener( keyboardListener );
 		this.setFocusable(true);
 		this.requestFocusInWindow(true);
 		// this.timer = new Timer(this.delay, new TimerListener());
@@ -98,8 +98,6 @@ public class GamePanel extends JPanel{
 
 	public void startGame() {
 		this.removeAll();
-		keyboardListener = new KeyboardListener();
-		this.addKeyListener(keyboardListener);
 		this.validate();
 		this.repaint();
 	}
