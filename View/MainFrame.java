@@ -37,7 +37,7 @@ public class MainFrame extends JFrame{
 		this.gamePanel = new GamePanel();
 		this.helpPanel = new HelpPanel();
 		this.settingsPanel = new SettingsPanel();
-		this.scorePanel = new HighScorePanel();
+		this.scorePanel = new HighScorePanel(game.getHighScoreManager());
 		this.gameOverPanel = new GameOverPanel();
 		this.activePanel = menuPanel;
 		
