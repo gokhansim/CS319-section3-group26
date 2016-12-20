@@ -90,7 +90,6 @@ public class MainFrame extends JFrame{
 		this.game.shootPlayer(direction);
 	}
 
-
 	public void updateView() {
 		this.gamePanel.draw( game.getIntMap() );
 	}

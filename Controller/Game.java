@@ -3,12 +3,14 @@ package Controller;
 import Model.GameEngine;
 import View.MainFrame;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Game {
+public class Game{
 
     private Runnable r = new EnemyTankThread(this);
     Thread thr = new Thread(r);
+
 
 	private int level;
 	private int score;
@@ -21,7 +23,10 @@ public class Game {
 	private MainFrame frame;
 	private GameEngine engine;
 	private int volume;
-
+	/*
+	private boolean running = false;
+	private Thread thread;
+	*/
 	public Game(int level){
 		engine = new GameEngine();
 		settingsMngr = new SettingsManager(this);
@@ -34,8 +39,65 @@ public class Game {
 		this.frame.setVisible(true);
 		// this.InputMngr = new InputManager();
 		this.highScoreMngr = new HighScoreManager();
+		//this.start();
 		this.updateView();
 	}
+
+	// THREAD TRIALS
+	/*
+	public synchronized void start(){
+		if( running){
+			return;
+		}
+
+		running = true;
+		thread = new Thread(this);
+		thread.start();
+	}
+
+	public synchronized void stop(){
+		if( !running){
+			return;
+		}
+		try {
+			thread.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	public void run(){
+		long lastTime = System.nanoTime();
+		final double amountOfTicks = 60.0;
+		double ns = 1000000000 / amountOfTicks;
+		double delta = 0;
+		long timer = System.currentTimeMillis();
+
+		while(running){
+			long now = System.nanoTime();
+			delta += (now - lastTime) / ns;
+			lastTime = now;
+			if(delta >= 1){
+				this.tick();
+				delta--;
+			}
+			this.render();
+
+			if( System.currentTimeMillis() - timer > 1000){
+				timer += 1000;
+			}
+		}
+		this.stop();
+	}
+
+	public void tick(){
+		this.moveEnemyTank();
+		this.shootPlayer();
+		//this.movePlayer();
+	}
+	public void render(){
+		this.updateView();
+	}
+	*/
 
 	public int[][] getIntMap() { return intMap; }
 
@@ -142,6 +204,7 @@ public class Game {
 		this.frame.updateView();
 	}
 
+
 	// --  THREAD  ---------------------------------
 	public class EnemyTankThread implements Runnable {
         private final Game game;
@@ -155,4 +218,5 @@ public class Game {
         }
     }
     //-----------------------------------------------
+
 }
