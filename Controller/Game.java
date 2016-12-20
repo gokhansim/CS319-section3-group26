@@ -142,6 +142,9 @@ public class Game {
 		this.frame.updateView();
 	}
 
+	public HighScoreManager getHighScoreManager(){
+		return highScoreMngr;
+	}
 	// --  THREAD  ---------------------------------
 	public class EnemyTankThread implements Runnable {
         private final Game game;
