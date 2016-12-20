@@ -121,6 +121,10 @@ public class MainFrame extends JFrame{
 				this.setActivePanel(this.gameOverPanel);
 				break;
 			}
+			case 7:{
+				this.setActivePanel(this.scorePanel);
+				break;
+			}
 		}
 		if( !isClosed) {
 			this.getContentPane().add(activePanel);

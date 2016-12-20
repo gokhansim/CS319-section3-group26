@@ -126,6 +126,7 @@ public class Game {
 				this.frame.updateCaseView(caseNo);
 				break;
 			}
+			//Help Panel
 			case 4:{
 				this.frame.updateCaseView(caseNo);
 				break;
@@ -133,6 +134,9 @@ public class Game {
 			case 5: {
 				this.frame.updateCaseView(caseNo);
 				break;
+			}
+			case 7:{
+				this.frame.updateCaseView(caseNo);
 			}
 		}
 

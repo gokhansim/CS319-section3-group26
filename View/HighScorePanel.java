@@ -1,6 +1,7 @@
 package View;
 
 import Controller.HighScoreManager;
+
 import static java.awt.Font.createFont;
 
 import java.awt.*;
@@ -23,11 +24,11 @@ public class HighScorePanel extends JPanel {
 	
 		this.setBackground(Color.BLACK);
 		this.setPreferredSize(new Dimension(1000, 1000));
-        	this.setLayout(null);
-       		 menuListener = new MenuListener();
+        this.setLayout(null);
+       	menuListener = new MenuListener();
         
 		try {
-		    this.customFont = createFont(Font.TRUETYPE_FONT, new File("C:/Users/HP/Desktop/CS319-section3-group26-master/Resources/WeekendWarrior.ttf")).deriveFont(70f);
+		    this.customFont = createFont(Font.TRUETYPE_FONT, new File("Resources/WeekendWarrior.ttf")).deriveFont(50f);
 		    this.buttonFont = customFont.deriveFont(30f);
 		    this.hoverFont = customFont.deriveFont(33f);
 		}

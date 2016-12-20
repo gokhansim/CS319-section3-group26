@@ -206,6 +206,10 @@ public class MainMenuPanel extends JPanel{
                 	MainFrame.getInstance().changeCase(3,1);
                 	break;
                 }
+                case "HIGH SCORE":{
+                	MainFrame.getInstance().changeCase(7,1);
+                	break;
+                }
                 case "EXIT":{
                     MainFrame.getInstance().changeCase(5, 1);
                     break;
