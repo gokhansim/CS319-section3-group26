@@ -8,6 +8,7 @@ public class SettingsManager {
 	public SettingsManager( Game game){
 		this.game = game;
 	}
+
 	public void changeLevel(int level) {
 		game.startLevel(level);
 	}

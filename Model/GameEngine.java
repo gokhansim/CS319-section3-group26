@@ -13,6 +13,7 @@ public class GameEngine {
 	protected boolean isGameOver;
 	PlayerTank playerTank;
 	EnemyTank enemyTank;
+	private int enemyTanksLeft;
 
 	public GameEngine(){
 		this.map = new GameBody[MAP_SIZE][MAP_SIZE];
@@ -32,6 +33,10 @@ public class GameEngine {
 	public void addScore( int scoreGiven){ score = score + scoreGiven; }
 	public int getScore() { return score; }
 	public boolean getIsGameOver() { return isGameOver; }
+
+	public int getEnemyTanksLeft(){ return enemyTanksLeft; }
+	public void setEnemyTanksLeft( int enemyTanksLeft){ this.enemyTanksLeft = enemyTanksLeft;}
+	public void decreaseEnemyTanksLeft() { this.enemyTanksLeft--;}
 
 	// places new GameBody in the map.
 	public void createGameBody(GameBody body, int x, int y) {
@@ -83,6 +88,7 @@ public class GameEngine {
 	public void placeAllBodies(int level){
 		if( level == 1){
 			this.cleanMap();
+			this.setEnemyTanksLeft(2);
 			playerTank = new PlayerTank(4,7);
 			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
 
@@ -117,9 +123,10 @@ public class GameEngine {
 
 		// this.printIntMap();
 
-		/*
+
 		else if(level == 2){
 			this.cleanMap();
+			this.setEnemyTanksLeft(3);
 			playerTank = new PlayerTank(9,9);
 			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
 
@@ -166,7 +173,8 @@ public class GameEngine {
 		}
 
 		else if(level == 3){
-
+			this.cleanMap();
+			this.setEnemyTanksLeft(4);
 			playerTank = new PlayerTank(4,8);
 			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
 
@@ -223,7 +231,8 @@ public class GameEngine {
 		}
 		
 		else if(level == 4){
-
+			this.cleanMap();
+			this.setEnemyTanksLeft(6);
 			playerTank = new PlayerTank(4, 4);
 			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
 
@@ -275,13 +284,14 @@ public class GameEngine {
 			this.createGameBody(new IronWall(3,9), 4, 9);
 			this.createGameBody(new IronWall(5,9), 5, 9);
 
-			this.createGameBody(new SacredObject(4,9), 4, 9);
+			this.createGameBody(new SacredObject(4,7), 4, 7);
 
 
 		}
 
 		else if(level == 5){
-
+			this.cleanMap();
+			this.setEnemyTanksLeft(6);
 			playerTank = new PlayerTank(4,7);
 			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
 
@@ -346,7 +356,7 @@ public class GameEngine {
 			this.createGameBody(new SacredObject(4,5), 4, 5);
 
 		}
-		*/
+
 	}
 
 	public GameBody[][] getMap() { return map; }
@@ -368,22 +378,23 @@ public class GameEngine {
 		int direction = bullet.getDirection();
 
 	}
-
-	public void shootPlayer(int direction){
-		if(direction == 0){
-			createGameBody(new Bullet(playerTank.getX(), (playerTank.getY()-1), playerTank.getShootSpeed(), direction ), playerTank.getX(), playerTank.getY()-1);
+	/*
+	Runnable r = new Runnable() {
+		public void run() {*/
+			public void shootPlayer ( int direction){
+				if (direction == 0) {
+					createGameBody(new Bullet(playerTank.getX(), (playerTank.getY() - 1), playerTank.getShootSpeed(), direction), playerTank.getX(), playerTank.getY() - 1);
+				} else if (direction == 1) {
+					createGameBody(new Bullet(playerTank.getX() + 1, playerTank.getY(), playerTank.getShootSpeed(), direction), playerTank.getX() + 1, playerTank.getY());
+				} else if (direction == 2) {
+					createGameBody(new Bullet(playerTank.getX(), (playerTank.getY() + 1), playerTank.getShootSpeed(), direction), playerTank.getX(), playerTank.getY() + 1);
+				} else if (direction == 3) {
+					createGameBody(new Bullet(playerTank.getX() - 1, (playerTank.getY()), playerTank.getShootSpeed(), direction), playerTank.getX() - 1, playerTank.getY());
+				}
+			}/*
 		}
-		else if(direction == 1){
-			createGameBody(new Bullet(playerTank.getX()+1, playerTank.getY(), playerTank.getShootSpeed(), direction), playerTank.getX()+1, playerTank.getY());
-		}
-		else if(direction == 2){
-			createGameBody(new Bullet(playerTank.getX(), (playerTank.getY()+1), playerTank.getShootSpeed(), direction), playerTank.getX(), playerTank.getY()+1);
-		}
-		else if(direction == 3){
-			createGameBody(new Bullet(playerTank.getX()-1, (playerTank.getY()), playerTank.getShootSpeed(), direction), playerTank.getX()-1, playerTank.getY());
-		}
-	}
-
+	};
+*/
 	public void moveEnemy()  {
 		boolean flag = true;
 		int x = 0;

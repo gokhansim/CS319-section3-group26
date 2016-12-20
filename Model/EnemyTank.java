@@ -25,6 +25,7 @@ public class EnemyTank extends Tank implements Destroyable{
 		if( this.getHistToKill() == 0){
 			engine.destroyGameBody( this);
 			engine.addScore( this.getScoreGiven() );
+			engine.decreaseEnemyTanksLeft();
 			return true;
 		}
 		else{

@@ -4,6 +4,7 @@ import Controller.Game;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,6 +32,10 @@ public class GamePanel extends JPanel{
 	private BufferedImage ironWall;
 	private BufferedImage steelWall;
 	private BufferedImage sacredObject;
+	private BufferedImage bulletU;
+	private BufferedImage bulletR;
+	private BufferedImage bulletD;
+	private BufferedImage bulletL;
 
 	private KeyboardListener keyboardListener;
 
@@ -39,10 +44,13 @@ public class GamePanel extends JPanel{
 	private int dx = 0;
 	private int dy = 0;
 	private int direction = 0; // By Default -> points to the top
+	JPanel mainGamePanel;
+	JPanel scorePanel;
 
 	public GamePanel( ){
 		this.setBackground(Color.BLACK);
 		this.setPreferredSize(new Dimension(1000, 1000));
+		this.setBorder(BorderFactory.createEmptyBorder(0, 50, 50, 50));
 		this.setLayout(null);
 		this.setMaximumSize(this.getPreferredSize());
 		//keyboardListener = new KeyboardListener();
@@ -63,6 +71,10 @@ public class GamePanel extends JPanel{
 			this.ironWall = ImageIO.read(new File("Resources/IronWall.png"));
 			this.steelWall = ImageIO.read(new File("Resources/SteelWall.png"));
 			this.sacredObject = ImageIO.read(new File("Resources/SacredObject.png"));
+			this.bulletU = ImageIO.read(new File("Resources/BulletU.png"));
+			this.bulletR = ImageIO.read(new File("Resources/BulletR.png"));
+			this.bulletD = ImageIO.read(new File("Resources/BulletD.png"));
+			this.bulletL = ImageIO.read(new File("Resources/BulletL.png"));
 
 		}
 		catch (IOException ex) {
@@ -70,8 +82,17 @@ public class GamePanel extends JPanel{
 		}
 
 		//----------
-
-		//-------------
+		/*
+		JLabel scoreLabel = new JLabel("score", JLabel.CENTER);
+		scoreLabel.setOpaque(true);
+		// scoreLabel.setFont();
+		scoreLabel.setForeground(Color.RED);
+		scoreLabel.setBackground(Color.BLACK);
+		scoreLabel.setSize(450,150);
+		scoreLabel.setLocation(265,150);
+		this.add(scoreLabel);
+		*/
+		//----------
 
 	}
 
@@ -130,6 +151,18 @@ public class GamePanel extends JPanel{
 					else if( intMap[i][j] == 13){
 						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
 						g2d.drawImage(this.enemyTankU, (xCoordinate + (i*100)), (yCoordinate + (j*100)), 100, 100, Color.gray, null);
+					}
+					else if( intMap[i][j] == 20){
+						g2d.drawImage(this.bulletU, (xCoordinate + (i*100)), (yCoordinate + (j*100)), 100, 100, Color.gray, null);
+					}
+					else if( intMap[i][j] == 21){
+						g2d.drawImage(this.bulletR, (xCoordinate + (i*100)), (yCoordinate + (j*100)), 100, 100, Color.gray, null);
+					}
+					else if( intMap[i][j] == 22){
+						g2d.drawImage(this.bulletD, (xCoordinate + (i*100)), (yCoordinate + (j*100)), 100, 100, Color.gray, null);
+					}
+					else if( intMap[i][j] == 23){
+						g2d.drawImage(this.bulletL, (xCoordinate + (i*100)), (yCoordinate + (j*100)), 100, 100, Color.gray, null);
 					}
 					else if( intMap[i][j] == 3){
 						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);

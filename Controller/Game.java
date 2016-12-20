@@ -40,6 +40,7 @@ public class Game {
 	public int[][] getIntMap() { return intMap; }
 
 	public void startLevel(int level) {
+		this.level = level;
 		engine.placeAllBodies(level);
 	}
 
@@ -69,18 +70,31 @@ public class Game {
 	}
 
 	public void moveEnemyTank() {
-        	engine.moveEnemy();
+		engine.moveEnemy();
 		this.updateView();
 	}
 
 	public void shootPlayer(int direction) {
 		engine.shootPlayer(direction);
+		/*
 		if( !(engine.getIsGameOver()) ) {
 			this.updateView();
 		}
 		else{
 			this.endGame();
 		}
+		*/
+
+		if( !(engine.getIsGameOver()) && ( engine.getEnemyTanksLeft() != 0) ) {
+			this.updateView();
+		}
+		else if( (engine.getIsGameOver()) && ( engine.getEnemyTanksLeft() != 0) ) {
+			this.endGame();
+		}
+		else if( !(engine.getIsGameOver()) && ( engine.getEnemyTanksLeft() == 0) ){
+			this.changeGameCase( 2, ++level);
+		}
+
 	}
 
 	public void isLivesZero() {
@@ -101,6 +115,7 @@ public class Game {
 			}
 			// Level Change
             case 2: {
+            	// this.level = level;
                 this.settingsMngr.changeLevel(level);
 				//this.frame.startGame();
                 this.frame.updateCaseView(1);
