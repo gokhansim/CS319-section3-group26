@@ -188,6 +188,7 @@ public class Game{
 				this.frame.updateCaseView(caseNo);
 				break;
 			}
+			//Help Panel
 			case 4:{
 				this.frame.updateCaseView(caseNo);
 				break;
@@ -195,6 +196,9 @@ public class Game{
 			case 5: {
 				this.frame.updateCaseView(caseNo);
 				break;
+			}
+			case 7:{
+				this.frame.updateCaseView(caseNo);
 			}
 		}
 
@@ -204,7 +208,13 @@ public class Game{
 		this.frame.updateView();
 	}
 
+<<<<<<< HEAD
 
+=======
+	public HighScoreManager getHighScoreManager(){
+		return highScoreMngr;
+	}
+>>>>>>> efcd3d461285e8428f8e36406170aaa9add99c70
 	// --  THREAD  ---------------------------------
 	public class EnemyTankThread implements Runnable {
         private final Game game;
