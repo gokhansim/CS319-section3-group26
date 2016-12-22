@@ -4,20 +4,19 @@ public class EnemyTank extends Tank implements Destroyable{
 
 	private int hitsToKill;
 	private int scoreGiven;
-	private int id;
 
 	public EnemyTank( int x, int y, int hitsToKill, int scoreGiven){
 		super(x, y);
 		this.hitsToKill = hitsToKill;
 		this.scoreGiven = scoreGiven;
-		this.id = 13;
+		this.setId(13);
+		this.setShootSpeed(1);
 	};
 
 	public int getHistToKill() { return hitsToKill; }
 	public void decreaseHitsToKill() { hitsToKill--; }
 	public int getScoreGiven() { return scoreGiven; }
-	public int getId() { return id; }
-	public void setId(int id) { this.id = id; }
+
 
 
 	@Override

@@ -385,7 +385,13 @@ public class GameEngine {
 	}
 
 	public GameBody[][] getMap() { return map; }
+	public void setMap(GameBody[][] map) {
+		this.map = map;
+	}
 	public GameBody getMapItem(int x, int y) { return map[x][y]; }
+	public void setMapItem(int x, int y, GameBody body) {
+		this.map[x][y] = body;
+	}
 	public int getMapSize() { return MAP_SIZE; }
 	public int[][] getIntMap() { return intMap; }
 
@@ -402,25 +408,41 @@ public class GameEngine {
 	/*
 	Runnable r = new Runnable() {
 		public void run() {*/
-			public void shootPlayer ( int direction){
+			public void shootTank ( int direction, Tank t){
 				Bullet bullet;
 				if (direction == 0) {
-					bullet = new Bullet(playerTank.getX(), (playerTank.getY() - 1), playerTank.getShootSpeed(), direction);
-					createGameBody(bullet, playerTank.getX(), playerTank.getY() - 1);
+					if (t.getY() - 1 > -1) {
+						bullet = new Bullet(t.getX(), (t.getY() - 1), t.getShootSpeed(), direction);
+						createGameBody(bullet, t.getX(), t.getY() - 1);
+					}
 				} else if (direction == 1) {
-					bullet = new Bullet(playerTank.getX() + 1, playerTank.getY(), playerTank.getShootSpeed(), direction);
-					createGameBody(bullet,playerTank.getX() + 1, playerTank.getY());
+					if (t.getX() + 1 < 10) {
+						bullet = new Bullet(t.getX() + 1, t.getY(), t.getShootSpeed(), direction);
+						createGameBody(bullet,t.getX() + 1, t.getY());
+					}
 				} else if (direction == 2) {
-					bullet = new Bullet(playerTank.getX(), (playerTank.getY() + 1), playerTank.getShootSpeed(), direction);
-					createGameBody(bullet, playerTank.getX(), playerTank.getY() + 1);
+					if (t.getY() + 1 < 10) {
+						bullet = new Bullet(t.getX(), (t.getY() + 1), t.getShootSpeed(), direction);
+						createGameBody(bullet, t.getX(), t.getY() + 1);
+					}
 				} else if (direction == 3) {
-					bullet = new Bullet(playerTank.getX() - 1, (playerTank.getY()), playerTank.getShootSpeed(), direction);
-					createGameBody(bullet,playerTank.getX() - 1, playerTank.getY());
+					if (t.getX() - 1 > -1) {
+						bullet = new Bullet(t.getX() - 1, (t.getY()), t.getShootSpeed(), direction);
+						createGameBody(bullet,t.getX() - 1, t.getY());
+					}
 				}
 			}/*
 		}
 	};
 */
+	public PlayerTank getPlayerTank() {
+				return playerTank;
+			}
+
+			public void setPlayerTank(PlayerTank playerTank) {
+				this.playerTank = playerTank;
+			}
+
 	public void moveEnemy(EnemyTank t)  {
 		boolean flag = true;
 		int x = 0;
@@ -576,6 +598,10 @@ public class GameEngine {
 			this.destroyGameBody(t);
 		}
 	}
+	
+	public void enemyShoot() {
+		
+	}
 
 	public void cleanMap(){
 		for( int i = 0; i < this.getMapSize(); i++){
@@ -613,14 +639,18 @@ public class GameEngine {
 	
 	public boolean isBlocked(Tank t) {
 		int dir = t.getID() % 4;
-		if ( dir == 0 && intMap[t.getX()][t.getY()+1] != -1) 
-			return true;
-		else if ( dir == 1 && intMap[t.getX()][t.getY()-1] != -1) 
-			return true;
-		else if ( dir == 2 && intMap[t.getX() + 1][t.getY()] != -1)
-			return true;
-		else if ( dir == 3 && intMap[t.getX() - 1][t.getY()] != -1)
-			return true;
+		if ( t.getX() - 1 > -1 && t.getX() + 1 < 10 && t.getY() - 1 > -1 && t.getY() + 1 < 10) {
+			if ( dir == 0 && intMap[t.getX()][t.getY()+1] != -1) 
+				return true;
+			else if ( dir == 1 && intMap[t.getX()][t.getY()-1] != -1) 
+				return true;
+			else if ( dir == 2 && intMap[t.getX() + 1][t.getY()] != -1)
+				return true;
+			else if ( dir == 3 && intMap[t.getX() - 1][t.getY()] != -1)
+				return true;
+			else 
+				return false;
+		}
 		else 
 			return false;
 	}

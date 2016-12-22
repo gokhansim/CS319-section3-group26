@@ -138,7 +138,7 @@ public class Game{
 	}
 
 	public void shootPlayer(int direction) {
-		engine.shootPlayer(direction);
+		engine.shootTank(direction, engine.getPlayerTank());
 		/*
 		if( !(engine.getIsGameOver()) ) {
 			this.updateView();
@@ -216,7 +216,7 @@ public class Game{
 	public void gameLoop()
 	{
 	   long lastLoopTime = System.nanoTime();
-	   final int TARGET_FPS = 10;
+	   final int TARGET_FPS = 1;
 	   final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;   
 	   long lastFpsTime = 0;
 
@@ -243,7 +243,8 @@ public class Game{
 	      }
 	      
 	      // update the game logic
-	      this.doLoop();
+	      
+	      this.doLoop(0);
 	      
 	      
 	      // we want each frame to take 10 milliseconds, to do this
@@ -254,13 +255,23 @@ public class Game{
 	   }
 	}
 	
-	public void doLoop () {
+	public void doLoop (int iter) {
 		for ( int i = 0; i < engine.getTank().size(); i++) {
 			engine.moveEnemy(engine.getTank().get(i));
+			if ( iter % 10 == 0)
+			engine.shootTank(engine.getTank().get(i).getId() % 4, engine.getTank().get(i));
+		}
+		for ( int i = 0; i < engine.getMapSize(); i++) {
+			for ( int j = 0; j < engine.getMapSize(); j++) {
+				if (engine.getMapItem(i, j) instanceof EnemyTank) {
+					if (!engine.getTank().contains(engine.getMapItem(i, j))) {
+						engine.destroyGameBody(engine.getMapItem(i,j));
+					}
+				}
+			}
 		}
 		engine.moveBullet();
-		engine.moveBullet();
-		System.out.println();
+		iter++;
 		this.updateView();
 	}
 

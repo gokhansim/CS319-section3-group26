@@ -51,6 +51,8 @@ public class MainFrame extends JFrame{
 		// this.addKeyListener(gamePanel.new KeyboardListener());
 		this.gamePanel.setFocusable(true);
 		this.gamePanel.requestFocusInWindow();
+		
+	
 		////
 		
 		this.container = new JPanel();
@@ -58,7 +60,11 @@ public class MainFrame extends JFrame{
 		this.container.add((Component)this.activePanel, "Center");
 		this.add( this.container);
 		this.activePanel.setVisible(true);
+		
+
 		this.pack();
+		//Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+		//this.setSize(screen.width, screen.height);
 	}
 
 	public static MainFrame getInstance() {
@@ -73,12 +79,6 @@ public class MainFrame extends JFrame{
 	public void setActivePanel(JPanel activePanel){ this.activePanel = activePanel; }
 
 	public void startGame() {
-		/*
-		this.gamePanel = new GamePanel();
-		this.add(gamePanel);
-		this.gamePanel.setFocusable(true);
-		this.gamePanel.requestFocusInWindow();
-		*/
 		this.gamePanel.startGame();
 	}
 
