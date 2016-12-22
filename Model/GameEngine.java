@@ -106,6 +106,8 @@ public class GameEngine {
 			map[xCoor][yCoor] = null;
 			intMap[xCoor][yCoor] = -1;
 		}
+		if ( body instanceof Bullet) 
+			bulletList.remove(body);
 	}
 
 	public void placeAllBodies(int level){
@@ -598,10 +600,6 @@ public class GameEngine {
 			this.destroyGameBody(t);
 		}
 	}
-	
-	public void enemyShoot() {
-		
-	}
 
 	public void cleanMap(){
 		for( int i = 0; i < this.getMapSize(); i++){
@@ -668,7 +666,7 @@ public class GameEngine {
 			}
 		}
 		else if( b.getId() == 22){
-			if ( b.getY()+1 < 10) {
+			if ( b.getY() + 1 < 10) {
 				this.destroyGameBody(b);
 				b.move(0, 1);
 				this.createGameBody( b, b.getX(), b.getY());

@@ -22,7 +22,6 @@ public class MainFrame extends JFrame{
 	private JPanel activePanel;
 	private boolean isClosed;
 
-
 	public MainFrame( Game game){
 		super("Siege");
 		instance = this;
@@ -140,6 +139,5 @@ public class MainFrame extends JFrame{
 	public void changeCase( int caseNo, int level) {
 		this.game.changeGameCase(caseNo, level);
 	}
-
 
 }

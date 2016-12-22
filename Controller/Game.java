@@ -7,12 +7,11 @@ import View.MainFrame;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-public class Game{
+public class Game {
 	/*
     private Runnable r = new EnemyTankThread(this);
     Thread thr = new Thread(r);
 */
-
 	private int level;
 	private int score;
 	private int enemyTanksLeft;
@@ -24,6 +23,7 @@ public class Game{
 	private MainFrame frame;
 	private GameEngine engine;
 	private int volume;
+
 	/*
 	private boolean running = false;
 	private Thread thread;
@@ -100,12 +100,13 @@ public class Game{
 		this.updateView();
 	}
 	*/
-
+	
 	public int[][] getIntMap() { return intMap; }
 
 	public void startLevel(int level) {
 		this.level = level;
 		engine.placeAllBodies(level);
+
 	}
 
 	public void endGame() {
@@ -243,8 +244,7 @@ public class Game{
 	      }
 	      
 	      // update the game logic
-	      
-	      this.doLoop(0);
+	      this.doLoop();
 	      
 	      
 	      // we want each frame to take 10 milliseconds, to do this
@@ -252,14 +252,22 @@ public class Game{
 	      // to this and then factor in the current time to give 
 	      // us our final value to wait for
 	      // remember this is in ms, whereas our lastLoopTime etc. vars are in ns.
+	      try {
+	            Thread.sleep(20);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
 	   }
 	}
 	
-	public void doLoop (int iter) {
+	public void doLoop () {
 		for ( int i = 0; i < engine.getTank().size(); i++) {
 			engine.moveEnemy(engine.getTank().get(i));
-			if ( iter % 10 == 0)
-			engine.shootTank(engine.getTank().get(i).getId() % 4, engine.getTank().get(i));
+			int x = (int) (Math.random() * 100);
+			System.out.println(x);
+			if ( x % 4 == 0) { 
+				engine.shootTank(engine.getTank().get(i).getId() % 4, engine.getTank().get(i));
+			}
 		}
 		for ( int i = 0; i < engine.getMapSize(); i++) {
 			for ( int j = 0; j < engine.getMapSize(); j++) {
@@ -271,7 +279,6 @@ public class Game{
 			}
 		}
 		engine.moveBullet();
-		iter++;
 		this.updateView();
 	}
 

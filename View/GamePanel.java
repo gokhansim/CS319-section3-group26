@@ -37,7 +37,6 @@ public class GamePanel extends JPanel{
 
 	private KeyboardListener keyboardListener;
 
-
 	private int[][] intMap;
 	private int dx = 0;
 	private int dy = 0;
@@ -95,7 +94,7 @@ public class GamePanel extends JPanel{
 		//----------
 
 	}
-
+	
 	public void startGame() {
 		this.removeAll();
 		this.validate();
@@ -184,7 +183,7 @@ public class GamePanel extends JPanel{
 
 	}
 
-
+	
 	private class TimerListener implements ActionListener {
 
 		private TimerListener() {
@@ -265,5 +264,6 @@ public class GamePanel extends JPanel{
 			}
 		}
 	}
+
 
 }
