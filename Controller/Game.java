@@ -1,16 +1,17 @@
 package Controller;
 
+import Model.EnemyTank;
 import Model.GameEngine;
 import View.MainFrame;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class Game{
-
+	/*
     private Runnable r = new EnemyTankThread(this);
     Thread thr = new Thread(r);
-
+*/
 
 	private int level;
 	private int score;
@@ -34,13 +35,14 @@ public class Game{
 		this.score = 0;
 		this.level = level;
 		this.startLevel(this.level);
-		thr.start();
+		//thr.start();
 		this.frame = MainFrame.getInstance(this);
 		this.frame.setVisible(true);
 		// this.InputMngr = new InputManager();
 		this.highScoreMngr = new HighScoreManager();
 		//this.start();
 		this.updateView();
+		gameLoop();
 	}
 
 	// THREAD TRIALS
@@ -132,8 +134,7 @@ public class Game{
 	}
 
 	public void moveEnemyTank() {
-		engine.moveEnemy();
-		this.updateView();
+		
 	}
 
 	public void shootPlayer(int direction) {
@@ -147,13 +148,13 @@ public class Game{
 		}
 		*/
 
-		if( !(engine.getIsGameOver()) && ( engine.getEnemyTanksLeft() != 0) ) {
+		if( !(engine.getIsGameOver()) && ( engine.getTank().size() != 0) ) {
 			this.updateView();
 		}
-		else if( (engine.getIsGameOver()) && ( engine.getEnemyTanksLeft() != 0) ) {
+		else if( (engine.getIsGameOver()) && ( engine.getTank().size() != 0) ) {
 			this.endGame();
 		}
-		else if( !(engine.getIsGameOver()) && ( engine.getEnemyTanksLeft() == 0) ){
+		else if( !(engine.getIsGameOver()) && ( engine.getTank().size() == 0) ){
 			this.changeGameCase( 2, ++level);
 		}
 
@@ -212,19 +213,69 @@ public class Game{
 	public HighScoreManager getHighScoreManager(){
 		return highScoreMngr;
 	}
+	public void gameLoop()
+	{
+	   long lastLoopTime = System.nanoTime();
+	   final int TARGET_FPS = 10;
+	   final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;   
+	   long lastFpsTime = 0;
+
+	   // keep looping round til the game ends
+	   while (true)
+	   {
+	      // work out how long its been since the last update, this
+	      // will be used to calculate how far the entities should
+	      // move this loop
+	      long now = System.nanoTime();
+	      long updateLength = now - lastLoopTime;
+	      lastLoopTime = now;
+	      double delta = updateLength / ((double)OPTIMAL_TIME);
+
+	      // update the frame counter
+	      lastFpsTime += updateLength;
+	      
+	      
+	      // update our FPS counter if a second has passed since
+	      // we last recorded
+	      if (lastFpsTime >= 1000000000)
+	      {
+	         lastFpsTime = 0;
+	      }
+	      
+	      // update the game logic
+	      this.doLoop();
+	      
+	      
+	      // we want each frame to take 10 milliseconds, to do this
+	      // we've recorded when we started the frame. We add 10 milliseconds
+	      // to this and then factor in the current time to give 
+	      // us our final value to wait for
+	      // remember this is in ms, whereas our lastLoopTime etc. vars are in ns.
+	   }
+	}
+	
+	public void doLoop () {
+		for ( int i = 0; i < engine.getTank().size(); i++) {
+			engine.moveEnemy(engine.getTank().get(i));
+		}
+		engine.moveBullet();
+		engine.moveBullet();
+		System.out.println();
+		this.updateView();
+	}
 
 	// --  THREAD  ---------------------------------
 	public class EnemyTankThread implements Runnable {
-        private final Game game;
+        private final Game game2;
 
 	    public EnemyTankThread( Game game){
-            this.game = game;
+             game2 = game;
         }
 
         public void run(){
-	        game.moveEnemyTank();
+        	
         }
     }
-    //-----------------------------------------------
+	//-----------------------------------------------
 
 }

@@ -1,7 +1,5 @@
 package View;
 
-import Controller.Game;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

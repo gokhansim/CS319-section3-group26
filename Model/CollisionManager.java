@@ -9,7 +9,7 @@ public class CollisionManager {
 				return false;
 			} else if ( GameBody2 instanceof BrickWall) {
 				return ((BrickWall)GameBody2).getDestroyed(engine);
-			} else if ( GameBody2 instanceof IronWall){
+			} else if ( GameBody2 instanceof IronWall && ((IronWall) GameBody2).getHitsToDestroy() == 1){
 				return ((IronWall)GameBody2).getDestroyed(engine);
 			} else if ( GameBody2 instanceof EnemyTank){
 				return ((EnemyTank)GameBody2).getDestroyed(engine);

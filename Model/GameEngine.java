@@ -1,12 +1,12 @@
 package Model;
 
-import Controller.Game;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class GameEngine {
 
-	private static final int MAP_SIZE = 100;
+	private static final int MAP_SIZE = 10;
 
 	private GameBody[][] map;
 	private int[][] intMap;
@@ -14,9 +14,11 @@ public class GameEngine {
 	private int score;
 	protected boolean isGameOver;
 	PlayerTank playerTank;
-	EnemyTank enemyTank;
+	private ArrayList<EnemyTank> tank;
+	
+
 	private int enemyTanksLeft;
-	private LinkedList<Bullet> bulletList = new LinkedList<Bullet>();
+	private ArrayList<Bullet> bulletList;
 
 	public GameEngine(){
 		this.map = new GameBody[MAP_SIZE][MAP_SIZE];
@@ -29,6 +31,8 @@ public class GameEngine {
 			}
 		}
 		this.score = 0;
+		tank = new ArrayList<EnemyTank>();
+		bulletList =  new ArrayList<Bullet>();
 		this.isGameOver = false;
 		colMngr = new CollisionManager();
 	}
@@ -40,22 +44,9 @@ public class GameEngine {
 	public void removeBullet(Bullet bullet){
 		bulletList.remove(bullet);
 	}
-	public void moveBullet( Bullet bullet) {
-		Bullet tempBullet;
+	public void moveBullet() {
 		for( int i = 0; i < bulletList.size(); i++){
-			tempBullet = bulletList.get(i);
-			if( tempBullet.getId() == 23){
-				this.createGameBody( tempBullet, bullet.getX() - bullet.getMoveSpeed(), bullet.getY());
-			}
-			else if( tempBullet.getId() == 22){
-				this.createGameBody( tempBullet, bullet.getX() , bullet.getY() + bullet.getMoveSpeed());
-			}
-			if( tempBullet.getId() == 21){
-				this.createGameBody( tempBullet, bullet.getX() + bullet.getMoveSpeed(), bullet.getY());
-			}
-			if( tempBullet.getId() == 20){
-				this.createGameBody( tempBullet, bullet.getX(), bullet.getY() - bullet.getMoveSpeed());
-			}
+			checkBullet(bulletList.get(i));
 		}
 
 	}
@@ -120,14 +111,16 @@ public class GameEngine {
 	public void placeAllBodies(int level){
 		if( level == 1){
 			this.cleanMap();
+			tank.clear();
 			this.setEnemyTanksLeft(2);
 			playerTank = new PlayerTank(4,7);
 			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
-
-			enemyTank = new EnemyTank(0,0, 3, 10 );
-			this.createGameBody(enemyTank, enemyTank.getX(), enemyTank.getY() );
-			EnemyTank enemyTank2 = new EnemyTank(9,0, 3, 10 );
-			this.createGameBody(enemyTank2, enemyTank2.getX(), enemyTank2.getY() );
+			
+			
+			tank.add(new EnemyTank(0,0, 3, 10 ));
+			this.createGameBody(tank.get(0), tank.get(0).getX(), tank.get(0).getY() );
+			tank.add(new EnemyTank(6,0, 3, 10 ));
+			this.createGameBody(tank.get(1), tank.get(1).getX(), tank.get(1).getY() );
 
 			IronWall ironWall = new IronWall(3,8);
 			this.createGameBody(ironWall, ironWall.getX(), ironWall.getY());
@@ -428,16 +421,112 @@ public class GameEngine {
 		}
 	};
 */
-	public void moveEnemy()  {
+	public void moveEnemy(EnemyTank t)  {
 		boolean flag = true;
 		int x = 0;
 		int y = 0;
-		int direction = 0;
-		while( this.enemyTank.getHistToKill() > 0){
+		int dir = t.getId() % 4; 
+		// 0 - up 1 - down 2 - right 3- left
+		//int direction = 0;
+		if( t.getHistToKill() > 0){
 			try {
 				Thread.sleep(150);
 			} catch(InterruptedException e){
 				return;
+			}
+			if ( flag) {
+				int next = (int) (Math.random() * 100);
+				if ( next < 50 || isBlocked(t)) {
+					int a = (int) (Math.random() * 4);
+					if ( a == 0 && dir != 0) {
+						y = 1;
+						t.setId(12);
+					}
+					
+					else if (a == 1) {
+						y = -1;
+						t.setId(13);
+					}
+					else if (a == 2 && dir != 0){
+						x = 1;
+						t.setId(10);
+					}
+					else if (a == 3) {
+						x = -1;
+						t.setId(11);
+					}
+				}
+				else { 
+					switch(dir) {
+					case 0: 
+						y = 1;
+						t.setId(12);
+						break;
+					case 1: 
+						y = -1;
+						t.setId(13);
+						break;
+					case 2: 
+						x = 1;
+						t.setId(10);
+						break;
+					case 3:
+						x = -1;
+						t.setId(11);
+						break;
+					}
+					
+				}
+				flag = false;
+			}
+			else {
+				int next = (int) (Math.random() * 100);
+				if ( next < 50 && !isBlocked(t)) {
+					int a = (int) (Math.random() * 4);
+					if ( a == 0) {
+						y = 1;
+						t.setId(12);
+					}
+					
+					else if (a == 1) {
+						y = -1;
+						t.setId(13);
+					}
+					else if (a == 2){
+						x = 1;
+						t.setId(10);
+					}
+					else if (a == 3) {
+						x = -1;
+						t.setId(11);
+					}
+					else {
+					}
+				}
+				else { 
+					switch(dir) {
+					case 0: 
+						y = 1;
+						t.setId(12);
+						break;
+					case 1: 
+						y = -1;
+						t.setId(13);
+						break;
+					case 2: 
+						x = 1;
+						t.setId(10);
+						break;
+					case 3:
+						x = -1;
+						t.setId(11);
+						break;
+					}
+					
+				}
+				flag = true;
+			}
+			/*
 			}
 			if(flag) {
 				x = (-1) + (int) (Math.random() * 3);
@@ -446,10 +535,10 @@ public class GameEngine {
 					direction = x;
 					// setting EnemyTank id for image arrangements
 					if( direction == 1){
-						enemyTank.setId(10);
+						t.setId(10);
 					}
 					else if(direction == -1){
-						enemyTank.setId(11);
+						t.setId(11);
 					}
 				}
 				flag = false;
@@ -461,22 +550,30 @@ public class GameEngine {
 					direction = y;
 					// setting EnemyTank id for image arrangements
 					if( direction == 1){
-						enemyTank.setId(12);
+						t.setId(12);
 					}
 					else if(direction == -1){
-						enemyTank.setId(13);
+						t.setId(13);
 					}
 				}
 				flag = true;
-			}
+			}*/
 
-			if( enemyTank.getX() + x < 10 && enemyTank.getX() + x > -1 && enemyTank.getY() + y < 10 && enemyTank.getY() + y > -1) {
-				if (intMap[enemyTank.getX() + x][enemyTank.getY() + y] == -1) {
-					this.destroyGameBody(enemyTank);
-					enemyTank.move(x, y);
-					this.createGameBody(enemyTank, enemyTank.getX(), enemyTank.getY());
+			if( t.getX() + x < 10 && t.getX() + x > -1 && t.getY() + y < 10 && t.getY() + y > -1) {
+				if (intMap[t.getX() + x][t.getY() + y] == -1) {
+					this.destroyGameBody(t);
+					t.move(x, y);
+					this.createGameBody(t, t.getX(), t.getY());
 				}
+				
 			}
+			else {
+				moveEnemy(t);
+			}
+		}
+		else {
+			tank.remove(t);
+			this.destroyGameBody(t);
 		}
 	}
 
@@ -513,9 +610,80 @@ public class GameEngine {
 			}
 		}
 	}
-
+	
+	public boolean isBlocked(Tank t) {
+		int dir = t.getID() % 4;
+		if ( dir == 0 && intMap[t.getX()][t.getY()+1] != -1) 
+			return true;
+		else if ( dir == 1 && intMap[t.getX()][t.getY()-1] != -1) 
+			return true;
+		else if ( dir == 2 && intMap[t.getX() + 1][t.getY()] != -1)
+			return true;
+		else if ( dir == 3 && intMap[t.getX() - 1][t.getY()] != -1)
+			return true;
+		else 
+			return false;
+	}
+	
+	public void checkBullet(Bullet b) {
+		if( b.getId() == 23){
+			if ( b.getX() - 1 >= 0) {
+				this.destroyGameBody(b);
+				b.move(-1, 0);
+				this.createGameBody( b, b.getX(), b.getY());
+			}
+			else {
+				this.destroyGameBody(b);
+				removeBullet(b);
+			}
+		}
+		else if( b.getId() == 22){
+			if ( b.getY()+1 < 10) {
+				this.destroyGameBody(b);
+				b.move(0, 1);
+				this.createGameBody( b, b.getX(), b.getY());
+			}
+			else {
+				this.destroyGameBody(b);
+				removeBullet(b);
+			}
+		}
+		else if( b.getId() == 21){
+			if ( b.getX() +1 < 10) {
+				this.destroyGameBody(b);
+				b.move(1, 0);
+				this.createGameBody( b, b.getX(), b.getY());
+			}
+			else {
+				this.destroyGameBody(b);
+				removeBullet(b);
+			}
+		}
+		else if( b.getId() == 20){
+			if (b.getY() - 1 >= 0) {
+				this.destroyGameBody(b);
+				b.move(0, -1);
+				this.createGameBody( b, b.getX(), b.getY());
+			}
+			else {
+				this.destroyGameBody(b);
+				removeBullet(b);
+			}
+		}
+	}
+	
 	public void updateMap() {
 
 	}
+	//GETTER AND SETTERS
+	public ArrayList<EnemyTank> getTank() {
+		return tank;
+	}
 
+	public void setTank(ArrayList<EnemyTank> tank) {
+		this.tank = tank;
+	}
+	
+	
+	
 }
