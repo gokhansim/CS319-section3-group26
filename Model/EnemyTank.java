@@ -9,7 +9,7 @@ public class EnemyTank extends Tank implements Destroyable{
 		super(x, y);
 		this.hitsToKill = hitsToKill;
 		this.scoreGiven = scoreGiven;
-		this.setId(13);
+		this.id = 13;
 		this.setShootSpeed(1);
 	};
 

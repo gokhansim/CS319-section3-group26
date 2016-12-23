@@ -5,7 +5,7 @@ public class PlayerTank extends Tank implements Destroyable{
 	private int currentLives;
 	protected int shield;
 	private boolean isUltimate;
-	private static final int ID = 0;
+	//private static final int ID = 0;
 
 	public PlayerTank(int x, int y){
 		super(x, y);
@@ -13,6 +13,7 @@ public class PlayerTank extends Tank implements Destroyable{
 		this.shield = 0;
 		this.setShootSpeed(1);
 		this.isUltimate = false;
+		this.id = 0;
 	}
 
 	public void getPowerUp( int type) {
@@ -58,7 +59,6 @@ public class PlayerTank extends Tank implements Destroyable{
 		}
 	}
 	public int getCurrentLives(){ return currentLives; }
-	public int getId() { return ID; }
 
 	public boolean getDestroyed( GameEngine engine){
 		if( this.getShield() == 0){

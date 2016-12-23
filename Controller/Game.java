@@ -269,15 +269,16 @@ public class Game {
 				engine.moveEnemy(engine.getTank().get(i));
 				int x = (int) (Math.random() * 100);
 				if ( x % 4 == 0) { 
-					engine.shootTank(engine.getTank().get(i).getId() % 4, engine.getTank().get(i));
+					engine.shootTank(engine.getTank().get(i).getID() % 4, engine.getTank().get(i));
 				}
 			}
 
 			// the following is to be used for powerup spawning, randomly. 
-			/*int a = (int) (Math.random() * 100);
-		if ( a % 40 == 0 ) {
-			engine.spawnPowerup();
-		}*/
+			int a = (int) (Math.random() * 101);
+			if ( a % 20 == 0 ) {
+				engine.spawnPowerup();
+			}
+
 			for ( int i = 0; i < engine.getMapSize(); i++) {
 				for ( int j = 0; j < engine.getMapSize(); j++) {
 					if (engine.getMapItem(i, j) instanceof EnemyTank) {

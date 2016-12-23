@@ -5,13 +5,14 @@ public class IronWall extends Wall implements Destroyable{
 	private int hitsToDestroy;
 	private int type;
 	private static final int SCORE = 25;
-	private static final int ID = 4;
+	//private static final int ID = 4;
 
 
 	public IronWall(int x, int y){
 		super(x, y);
 		this.hitsToDestroy = 2;
 		this.type = 2;
+		this.id = 4;
 	}
 	public int getType(){
 		return type;
@@ -21,7 +22,6 @@ public class IronWall extends Wall implements Destroyable{
 	}
 	public int getHitsToDestroy() { return hitsToDestroy; }
 	public void decreaseHitsToDestroy() { --hitsToDestroy; }
-	public int getId() { return ID; };
 
 	@Override
 	public boolean getDestroyed(GameEngine engine) {

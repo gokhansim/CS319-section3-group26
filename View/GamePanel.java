@@ -34,6 +34,10 @@ public class GamePanel extends JPanel{
 	private BufferedImage bulletR;
 	private BufferedImage bulletD;
 	private BufferedImage bulletL;
+	private BufferedImage extraLife;
+	private BufferedImage ultimateProtection;
+	private BufferedImage shield;
+	private BufferedImage doubleShots;
 
 	private KeyboardListener keyboardListener;
 
@@ -41,12 +45,10 @@ public class GamePanel extends JPanel{
 	private int dx = 0;
 	private int dy = 0;
 	private int direction = 0; // By Default -> points to the top
-<<<<<<< HEAD
-=======
+
 	
 	private JLabel scores;
 	private JLabel lives;
->>>>>>> c96a6381039ba6d61a5bcec783588cd714aebadc
 
 	public GamePanel( ){
 		this.setBackground(Color.BLACK);
@@ -54,7 +56,7 @@ public class GamePanel extends JPanel{
 		//this.setMaximumSize(this.getPreferredSize());
 		this.setPreferredSize(new Dimension(750, 800));
 		this.setLayout(null);
-		//
+		/*
 		JLabel scoreLabel = new JLabel("score", JLabel.CENTER);
 		scoreLabel.setForeground(Color.RED);
 		scoreLabel.setBackground(Color.WHITE);
@@ -62,7 +64,7 @@ public class GamePanel extends JPanel{
 		scoreLabel.setSize(450,150);
 		scoreLabel.setLocation(760,760);
 		this.add(scoreLabel);
-		//
+		*/
 		this.setMaximumSize(this.getPreferredSize());
 		keyboardListener = new KeyboardListener();
 		this.addKeyListener( keyboardListener );
@@ -97,6 +99,10 @@ public class GamePanel extends JPanel{
 			this.bulletR = ImageIO.read(new File("Resources/BulletR.png"));
 			this.bulletD = ImageIO.read(new File("Resources/BulletD.png"));
 			this.bulletL = ImageIO.read(new File("Resources/BulletL.png"));
+			this.shield = ImageIO.read(new File("Resources/Shield.png"));
+			this.extraLife = ImageIO.read(new File("Resources/ExtraLife.png"));
+			this.ultimateProtection = ImageIO.read(new File("Resources/UltimateProtection.png"));
+			this.doubleShots = ImageIO.read(new File("Resources/DoubleShot.png"));
 
 		}
 		catch (IOException ex) {
@@ -200,6 +206,22 @@ public class GamePanel extends JPanel{
 					else if( intMap[i][j] == 6){
 						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
 						g2d.drawImage(this.sacredObject, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
+					}
+					else if( intMap[i][j] == 24){
+						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
+						g2d.drawImage(this.extraLife, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
+					}
+					else if( intMap[i][j] == 25){
+						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
+						g2d.drawImage(this.doubleShots, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
+					}
+					else if( intMap[i][j] == 26){
+						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
+						g2d.drawImage(this.ultimateProtection, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
+					}
+					else if( intMap[i][j] == 27){
+						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
+						g2d.drawImage(this.shield, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 				}
 			}
