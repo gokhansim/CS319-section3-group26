@@ -23,6 +23,7 @@ public class Game {
 	private MainFrame frame;
 	private GameEngine engine;
 	private int volume;
+	private SoundManager war;
 
 	/*
 	private boolean running = false;
@@ -40,6 +41,7 @@ public class Game {
 		this.frame.setVisible(true);
 		// this.InputMngr = new InputManager();
 		this.highScoreMngr = new HighScoreManager();
+		this.war = new SoundManager("war.wav");
 		//this.start();
 		this.updateView();
 		gameLoop();
@@ -175,6 +177,7 @@ public class Game {
 				this.startLevel(1);
 				this.frame.startGame();
                 this.frame.updateCaseView(caseNo);
+				this.war.playMusic();
 				break;
 			}
 			// Level Change

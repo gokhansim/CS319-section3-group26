@@ -19,7 +19,7 @@ public class GameOverPanel extends JPanel {
 
     public GameOverPanel(){
         this.setBackground(Color.BLACK);
-        this.setPreferredSize(new Dimension(1000, 1000));
+        this.setPreferredSize(new Dimension(750, 800));
         this.setLayout(null);
         this.setMaximumSize(this.getPreferredSize());
         // this.addKeyListener(new GamePanel.KeyboardListener());
@@ -29,9 +29,9 @@ public class GameOverPanel extends JPanel {
 
         // Customizing Font
         try {
-            this.customFont = createFont(Font.TRUETYPE_FONT, new File("Resources/WeekendWarrior.ttf")).deriveFont(100f);
-            this.buttonFont = customFont.deriveFont(30f);
-            this.hoverFont = customFont.deriveFont(33f);
+            this.customFont = createFont(Font.TRUETYPE_FONT, new File("Resources/WeekendWarrior.ttf")).deriveFont(70f);
+            this.buttonFont = customFont.deriveFont(24f);
+            this.hoverFont = customFont.deriveFont(27f);
             //GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             //ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("Resources/WeekendWarrior.ttf")));
         }
@@ -49,8 +49,8 @@ public class GameOverPanel extends JPanel {
         overLabel.setFont(this.customFont);
         overLabel.setForeground(Color.RED);
         overLabel.setBackground(Color.BLACK);
-        overLabel.setSize(750,150);
-        overLabel.setLocation(120,380);
+        overLabel.setSize(600,150);
+        overLabel.setLocation(80,250);
         this.add(overLabel);
 
         // BUTTONS
@@ -59,7 +59,7 @@ public class GameOverPanel extends JPanel {
         playButton.setFont(this.buttonFont);
         playButton.setSize( 300, 200 );
         this.add(playButton);
-        playButton.setLocation(160,480);
+        playButton.setLocation(110,330);
         playButton.setOpaque(false);
         playButton.setContentAreaFilled(false);
         playButton.setBorderPainted(false);
@@ -79,7 +79,7 @@ public class GameOverPanel extends JPanel {
         exitButton.setFont(this.buttonFont);
         exitButton.setSize( 300, 200 );
         this.add(exitButton);
-        exitButton.setLocation(560,480);
+        exitButton.setLocation(370,330);
         exitButton.setOpaque(false);
         exitButton.setContentAreaFilled(false);
         exitButton.setBorderPainted(false);
