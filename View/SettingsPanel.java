@@ -30,7 +30,7 @@ public class SettingsPanel extends JPanel {
 	public SettingsPanel(){
 		
 	    this.setBackground(Color.BLACK);
-        this.setPreferredSize(new Dimension(1000, 1000));
+        this.setPreferredSize(new Dimension(750, 800));
         this.setLayout(null);
         menuListener = new MenuListener();
        
@@ -64,8 +64,8 @@ public class SettingsPanel extends JPanel {
         nameLabel.setFont(this.customFont);
         nameLabel.setForeground(Color.RED);
         nameLabel.setBackground(Color.BLACK);
-        nameLabel.setSize(450,150);
-        nameLabel.setLocation(265,30);
+        nameLabel.setSize(440,150);
+        nameLabel.setLocation(160,30);
         this.add(nameLabel);
         
 
@@ -76,7 +76,7 @@ public class SettingsPanel extends JPanel {
 	    changeLevelLabel.setForeground(Color.RED);
 	    changeLevelLabel.setBackground(Color.BLACK);
 	    changeLevelLabel.setSize(450,150);
-	    changeLevelLabel.setLocation(265,150);
+	    changeLevelLabel.setLocation(160,150);
         this.add(changeLevelLabel);
         
         //Buttons
@@ -85,7 +85,7 @@ public class SettingsPanel extends JPanel {
         level1Button.setFont(this.buttonFont);
         level1Button.setSize( 150, 100 );
         this.add(level1Button);
-        level1Button.setLocation(400,270);
+        level1Button.setLocation(300,270);
         level1Button.setOpaque(false);
         level1Button.setContentAreaFilled(false);
         level1Button.setBorderPainted(false);
@@ -106,7 +106,7 @@ public class SettingsPanel extends JPanel {
         level2Button.setFont(this.buttonFont);
         level2Button.setSize( 150, 100 );
         this.add(level2Button);
-        level2Button.setLocation(400,330);
+        level2Button.setLocation(300,330);
         level2Button.setOpaque(false);
         level2Button.setContentAreaFilled(false);
         level2Button.setBorderPainted(false);
@@ -127,7 +127,7 @@ public class SettingsPanel extends JPanel {
         level3Button.setFont(this.buttonFont);
         level3Button.setSize( 150, 100 );
         this.add(level3Button);
-        level3Button.setLocation(400,390);
+        level3Button.setLocation(300,390);
         level3Button.setOpaque(false);
         level3Button.setContentAreaFilled(false);
         level3Button.setBorderPainted(false);
@@ -148,7 +148,7 @@ public class SettingsPanel extends JPanel {
         level4Button.setFont(this.buttonFont);
         level4Button.setSize( 150, 100 );
         this.add(level4Button);
-        level4Button.setLocation(400,450);
+        level4Button.setLocation(300,450);
         level4Button.setOpaque(false);
         level4Button.setContentAreaFilled(false);
         level4Button.setBorderPainted(false);
@@ -169,7 +169,7 @@ public class SettingsPanel extends JPanel {
         level5Button.setFont(this.buttonFont);
         level5Button.setSize( 150, 100 );
         this.add(level5Button);
-        level5Button.setLocation(400,510);
+        level5Button.setLocation(300,510);
         level5Button.setOpaque(false);
         level5Button.setContentAreaFilled(false);
         level5Button.setBorderPainted(false);
@@ -191,15 +191,15 @@ public class SettingsPanel extends JPanel {
 	    changeVolumeLable.setForeground(Color.RED);
 	    changeVolumeLable.setBackground(Color.BLACK);
 	    changeVolumeLable.setSize(450,150);
-	    changeVolumeLable.setLocation(265,570);
+	    changeVolumeLable.setLocation(160,570);
         this.add(changeVolumeLable);
         
         //Back to main menu button
         JButton backToMain = new JButton("Back");
         backToMain.setFont(this.buttonFont);
-        backToMain.setSize( 300, 200 );
+        backToMain.setSize( 200, 200 );
         this.add(backToMain);
-        backToMain.setLocation(45,750);
+        backToMain.setLocation(25,650);
         backToMain.setOpaque(false);
         backToMain.setContentAreaFilled(false);
         backToMain.setBorderPainted(false);

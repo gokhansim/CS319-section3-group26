@@ -151,17 +151,18 @@ public class GameEngine {
 
 		else if(level == 2){
 			this.cleanMap();
+			this.tank.clear();
 			this.setEnemyTanksLeft(3);
 			playerTank = new PlayerTank(9,9);
 			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
 
-			EnemyTank enemyTank = new EnemyTank(0,0, 3, 10 );
-			this.createGameBody(enemyTank, enemyTank.getX(), enemyTank.getY() );
-			EnemyTank enemyTank2 = new EnemyTank(9,0, 3, 10 );//will be change to crazed 
-			this.createGameBody(enemyTank2, enemyTank2.getX(), enemyTank2.getY() );
-			EnemyTank enemyTank3 = new EnemyTank(0,9, 3, 10 ); //this will be changed to crazed
-			this.createGameBody(enemyTank3, enemyTank3.getX(), enemyTank3.getY() );
-
+			tank.add(new EnemyTank(0,0, 3, 10 ));
+			tank.add(new EnemyTank(9,0, 3, 10 ));//will be change to crazed 
+			tank.add(new EnemyTank(0,9, 3, 10 )); //this will be changed to crazed
+			
+			for ( int i = 0; i < tank.size(); i++) {
+				this.createGameBody(tank.get(i), tank.get(i).getX(), tank.get(i).getY() );
+			}
 			this.createGameBody(new BrickWall(2, 0), 2, 0);
 			this.createGameBody(new BrickWall(1, 1), 1, 1);
 			this.createGameBody(new BrickWall(7, 0), 7, 0);
@@ -199,20 +200,18 @@ public class GameEngine {
 
 		else if(level == 3){
 			this.cleanMap();
+			this.tank.clear();
 			this.setEnemyTanksLeft(4);
 			playerTank = new PlayerTank(4,8);
 			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
 
-			EnemyTank enemyTank = new EnemyTank(0,0, 3, 10 );
-			this.createGameBody(enemyTank, enemyTank.getX(), enemyTank.getY() );
+			this.tank.add(new EnemyTank(0,0, 3, 10 ));
 			EnemyTank enemyTank2 = new EnemyTank(9,0, 3, 10 );//will be change to crazed 
 			this.createGameBody(enemyTank2, enemyTank2.getX(), enemyTank2.getY() );
 			EnemyTank enemyTank3 = new EnemyTank(0,9, 3, 10 ); //this will be changed to crazed
 			this.createGameBody(enemyTank3, enemyTank3.getX(), enemyTank3.getY() );
 			EnemyTank enemyTank4 = new EnemyTank(9,9, 3, 10 ); 					
 			this.createGameBody(enemyTank4, enemyTank4.getX(), enemyTank4.getY() );
-
-
 
 			this.createGameBody(new BrickWall(1, 1), 1, 1);
 			this.createGameBody(new BrickWall(3, 1), 3, 1);

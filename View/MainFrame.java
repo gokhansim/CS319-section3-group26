@@ -27,6 +27,8 @@ public class MainFrame extends JFrame{
 		instance = this;
 		this.game = game;
 		this.setResizable(true);
+		this.setSize(750, 800);
+		this.setResizable(false);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(3);
 

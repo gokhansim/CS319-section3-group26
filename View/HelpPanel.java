@@ -24,14 +24,14 @@ public class HelpPanel extends JPanel {
     
     public HelpPanel(){
     	this.setBackground(Color.BLACK);
-        this.setPreferredSize(new Dimension(1000, 1000));
+        this.setPreferredSize(new Dimension(750, 800));
         this.setLayout(null);
         menuListener = new MenuListener();
         
         try {
             this.customFont = createFont(Font.TRUETYPE_FONT, new File("Resources/WeekendWarrior.ttf")).deriveFont(70f);
-            this.buttonFont = customFont.deriveFont(30f);
-            this.hoverFont = customFont.deriveFont(33f);
+            this.buttonFont = customFont.deriveFont(27f);
+            this.hoverFont = customFont.deriveFont(30f);
             //GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             //ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("Resources/WeekendWarrior.ttf")));
         }
@@ -50,16 +50,16 @@ public class HelpPanel extends JPanel {
         nameLabel.setFont(this.customFont);
         nameLabel.setForeground(Color.RED);
         nameLabel.setBackground(Color.BLACK);
-        nameLabel.setSize(450,150);
-        nameLabel.setLocation(265,30);
+        nameLabel.setSize(400,150);
+        nameLabel.setLocation(180,30);
         this.add(nameLabel);
         
         //Back to main menu button
         JButton backToMain = new JButton("Back");
         backToMain.setFont(this.buttonFont);
-        backToMain.setSize( 300, 200 );
+        backToMain.setSize( 250, 200 );
         this.add(backToMain);
-        backToMain.setLocation(45,750);
+        backToMain.setLocation(45,610);
         backToMain.setOpaque(false);
         backToMain.setContentAreaFilled(false);
         backToMain.setBorderPainted(false);
