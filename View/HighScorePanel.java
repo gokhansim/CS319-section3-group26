@@ -23,14 +23,14 @@ public class HighScorePanel extends JPanel {
 	public HighScorePanel(HighScoreManager hsm){
 	
 		this.setBackground(Color.BLACK);
-		this.setPreferredSize(new Dimension(1000, 1000));
+		this.setPreferredSize(new Dimension(750, 800));
         this.setLayout(null);
        	menuListener = new MenuListener();
         
 		try {
 		    this.customFont = createFont(Font.TRUETYPE_FONT, new File("Resources/WeekendWarrior.ttf")).deriveFont(50f);
-		    this.buttonFont = customFont.deriveFont(30f);
-		    this.hoverFont = customFont.deriveFont(33f);
+		    this.buttonFont = customFont.deriveFont(27f);
+		    this.hoverFont = customFont.deriveFont(30f);
 		}
 		catch (IOException e) {
 		    this.customFont = new Font("Century", 1, 20);
@@ -48,7 +48,7 @@ public class HighScorePanel extends JPanel {
 		scoresLabel.setForeground(Color.RED);
 		scoresLabel.setBackground(Color.BLACK);
 		scoresLabel.setSize(450,150);
-		scoresLabel.setLocation(265,30);
+		scoresLabel.setLocation(165,30);
 		this.add(scoresLabel);
 
 		JLabel firstScoreLabel;
@@ -86,39 +86,39 @@ public class HighScorePanel extends JPanel {
 			fifthScoreLabel = new JLabel("5. -", JLabel.CENTER);
 
 		firstScoreLabel.setOpaque(true);
-		firstScoreLabel.setFont(this.customFont);
+		firstScoreLabel.setFont(this.buttonFont);
 		firstScoreLabel.setForeground(Color.RED);
 		firstScoreLabel.setBackground(Color.BLACK);
-		firstScoreLabel.setSize(450,150);
-		firstScoreLabel.setLocation(265,150);
+		firstScoreLabel.setSize(250,100);
+		firstScoreLabel.setLocation(180,150);
 
 		secondScoreLabel.setOpaque(true);
-		secondScoreLabel.setFont(this.customFont);
+		secondScoreLabel.setFont(this.buttonFont);
 		secondScoreLabel.setForeground(Color.RED);
 		secondScoreLabel.setBackground(Color.BLACK);
-		secondScoreLabel.setSize(450,150);
-		secondScoreLabel.setLocation(265,270);
+		secondScoreLabel.setSize(250,100);
+		secondScoreLabel.setLocation(180,240);
 
 		thirdScoreLabel.setOpaque(true);
-		thirdScoreLabel.setFont(this.customFont);
+		thirdScoreLabel.setFont(this.buttonFont);
 		thirdScoreLabel.setForeground(Color.RED);
 		thirdScoreLabel.setBackground(Color.BLACK);
-		thirdScoreLabel.setSize(450,150);
-		thirdScoreLabel.setLocation(265,390);
+		thirdScoreLabel.setSize(250,100);
+		thirdScoreLabel.setLocation(180,330);
 
 		fourthScoreLabel.setOpaque(true);
-		fourthScoreLabel.setFont(this.customFont);
+		fourthScoreLabel.setFont(this.buttonFont);
 		fourthScoreLabel.setForeground(Color.RED);
 		fourthScoreLabel.setBackground(Color.BLACK);
-		fourthScoreLabel.setSize(450,150);
-		fourthScoreLabel.setLocation(265,510);
+		fourthScoreLabel.setSize(250,100);
+		fourthScoreLabel.setLocation(180,420);
 
 		fifthScoreLabel.setOpaque(true);
-		fifthScoreLabel.setFont(this.customFont);
+		fifthScoreLabel.setFont(this.buttonFont);
 		fifthScoreLabel.setForeground(Color.RED);
 		fifthScoreLabel.setBackground(Color.BLACK);
-		fifthScoreLabel.setSize(450,150);
-		fifthScoreLabel.setLocation(265,630);
+		fifthScoreLabel.setSize(250,100);
+		fifthScoreLabel.setLocation(180,510);
 
 		this.add(firstScoreLabel);
 		this.add(secondScoreLabel);
@@ -131,7 +131,7 @@ public class HighScorePanel extends JPanel {
 		backToMain.setFont(this.buttonFont);
 		backToMain.setSize( 300, 200 );
 		this.add(backToMain);
-		backToMain.setLocation(45,750);
+		backToMain.setLocation(25,610);
 		backToMain.setOpaque(false);
 		backToMain.setContentAreaFilled(false);
 		backToMain.setBorderPainted(false);

@@ -26,7 +26,7 @@ public class MainFrame extends JFrame{
 		super("Siege");
 		instance = this;
 		this.game = game;
-		this.setSize(1024, 768);
+		this.setSize(750, 800);
 		this.setResizable(false);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(3);

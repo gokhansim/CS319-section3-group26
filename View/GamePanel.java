@@ -46,7 +46,7 @@ public class GamePanel extends JPanel{
 
 	public GamePanel( ){
 		this.setBackground(Color.BLACK);
-		this.setPreferredSize(new Dimension(1200, 1000));
+		this.setPreferredSize(new Dimension(750, 800));
 		this.setLayout(null);
 		this.setMaximumSize(this.getPreferredSize());
 		keyboardListener = new KeyboardListener();
@@ -121,61 +121,61 @@ public class GamePanel extends JPanel{
 				if( intMap[i][j] != -1){
 					if( intMap[i][j] == 0){
 						if( this.direction == 0) {
-							g2d.drawImage(this.playerTankU, (xCoordinate + (i * 100)), (yCoordinate + (j * 100)), 100, 100, Color.gray, null);
+							g2d.drawImage(this.playerTankU, (xCoordinate + (i * 75)), (yCoordinate + (j * 75)), 75, 75, Color.gray, null);
 						}
 						if( this.direction == 1) {
-							g2d.drawImage(this.playerTankR, (xCoordinate + (i * 100)), (yCoordinate + (j * 100)), 100, 100, Color.gray, null);
+							g2d.drawImage(this.playerTankR, (xCoordinate + (i * 75)), (yCoordinate + (j * 75)), 75, 75, Color.gray, null);
 						}
 						if( this.direction == 2) {
-							g2d.drawImage(this.playerTankD, (xCoordinate + (i * 100)), (yCoordinate + (j * 100)), 100, 100, Color.gray, null);
+							g2d.drawImage(this.playerTankD, (xCoordinate + (i * 75)), (yCoordinate + (j * 75)), 75, 75, Color.gray, null);
 						}
 						if( this.direction == 3) {
-							g2d.drawImage(this.playerTankL, (xCoordinate + (i * 100)), (yCoordinate + (j * 100)), 100, 100, Color.gray, null);
+							g2d.drawImage(this.playerTankL, (xCoordinate + (i * 75)), (yCoordinate + (j * 75)), 75, 75, Color.gray, null);
 						}
 					}
 					else if( intMap[i][j] == 10){
 						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
-						g2d.drawImage(this.enemyTankR, (xCoordinate + (i*100)), (yCoordinate + (j*100)), 100, 100, Color.gray, null);
+						g2d.drawImage(this.enemyTankR, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 					else if( intMap[i][j] == 11){
 						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
-						g2d.drawImage(this.enemyTankL, (xCoordinate + (i*100)), (yCoordinate + (j*100)), 100, 100, Color.gray, null);
+						g2d.drawImage(this.enemyTankL, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 					else if( intMap[i][j] == 12){
 						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
-						g2d.drawImage(this.enemyTankD, (xCoordinate + (i*100)), (yCoordinate + (j*100)), 100, 100, Color.gray, null);
+						g2d.drawImage(this.enemyTankD, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 					else if( intMap[i][j] == 13){
 						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
-						g2d.drawImage(this.enemyTankU, (xCoordinate + (i*100)), (yCoordinate + (j*100)), 100, 100, Color.gray, null);
+						g2d.drawImage(this.enemyTankU, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 					else if( intMap[i][j] == 20){
-						g2d.drawImage(this.bulletU, (xCoordinate + (i*100)), (yCoordinate + (j*100)), 100, 100, Color.gray, null);
+						g2d.drawImage(this.bulletU, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 					else if( intMap[i][j] == 21){
-						g2d.drawImage(this.bulletR, (xCoordinate + (i*100)), (yCoordinate + (j*100)), 100, 100, Color.gray, null);
+						g2d.drawImage(this.bulletR, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 					else if( intMap[i][j] == 22){
-						g2d.drawImage(this.bulletD, (xCoordinate + (i*100)), (yCoordinate + (j*100)), 100, 100, Color.gray, null);
+						g2d.drawImage(this.bulletD, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 					else if( intMap[i][j] == 23){
-						g2d.drawImage(this.bulletL, (xCoordinate + (i*100)), (yCoordinate + (j*100)), 100, 100, Color.gray, null);
+						g2d.drawImage(this.bulletL, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 					else if( intMap[i][j] == 3){
 						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
-						g2d.drawImage(this.brickWall, (xCoordinate + (i*100)), (yCoordinate + (j*100)), 100, 100, Color.gray, null);
+						g2d.drawImage(this.brickWall, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 					else if( intMap[i][j] == 4){
 						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
-						g2d.drawImage(this.ironWall, (xCoordinate + (i*100)), (yCoordinate + (j*100)), 100, 100, Color.gray, null);
+						g2d.drawImage(this.ironWall, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 					else if( intMap[i][j] == 5){
 						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
-						g2d.drawImage(this.steelWall, (xCoordinate + (i*100)), (yCoordinate + (j*100)), 100, 100, Color.gray, null);
+						g2d.drawImage(this.steelWall, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 					else if( intMap[i][j] == 6){
 						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
-						g2d.drawImage(this.sacredObject, (xCoordinate + (i*100)), (yCoordinate + (j*100)), 100, 100, Color.gray, null);
+						g2d.drawImage(this.sacredObject, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 				}
 			}
