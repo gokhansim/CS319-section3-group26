@@ -13,12 +13,10 @@ public class GameEngine {
 	private CollisionManager colMngr;
 	private int score;
 	protected boolean isGameOver;
-	PlayerTank playerTank;
-	private ArrayList<EnemyTank> tank;
-	
-
-	private int enemyTanksLeft;
-	private ArrayList<Bullet> bulletList;
+	private PlayerTank playerTank; // the player tank
+	private ArrayList<EnemyTank> tank; // list of the enemy tanks that are active in the game
+	private int enemyTanksLeft; 
+	private ArrayList<Bullet> bulletList; //list of the bullets that are active in the game
 
 	public GameEngine(){
 		this.map = new GameBody[MAP_SIZE][MAP_SIZE];

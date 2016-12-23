@@ -25,7 +25,7 @@ public class MainMenuPanel extends JPanel{
 
     public MainMenuPanel( ) {
         this.setBackground(Color.BLACK);
-        this.setPreferredSize(new Dimension(1000, 1000));
+        this.setPreferredSize(new Dimension(1200, 1000));
         this.setLayout(null);
         this.setMaximumSize(this.getPreferredSize());
         this.setFocusable(true);
@@ -66,7 +66,7 @@ public class MainMenuPanel extends JPanel{
         nameLabel.setForeground(Color.RED);
         nameLabel.setBackground(Color.BLACK);
         nameLabel.setSize(450,150);
-        nameLabel.setLocation(265,150);
+        nameLabel.setLocation(365,150);
         this.add(nameLabel);
 
         // BUTTONS
@@ -75,7 +75,7 @@ public class MainMenuPanel extends JPanel{
         playButton.setFont(this.buttonFont);
         playButton.setSize( 150, 100 );
         this.add(playButton);
-        playButton.setLocation(420,480);
+        playButton.setLocation(520,480);
         playButton.setOpaque(false);
         playButton.setContentAreaFilled(false);
         playButton.setBorderPainted(false);
@@ -95,7 +95,7 @@ public class MainMenuPanel extends JPanel{
         helpButton.setFont(this.buttonFont);
         helpButton.setSize( 150, 100 );
         this.add(helpButton);
-        helpButton.setLocation(420,560);
+        helpButton.setLocation(520,560);
         helpButton.setOpaque(false);
         helpButton.setContentAreaFilled(false);
         helpButton.setBorderPainted(false);
@@ -115,7 +115,7 @@ public class MainMenuPanel extends JPanel{
         settingsButton.setFont(this.buttonFont);
         settingsButton.setSize( 240, 100 );
         this.add(settingsButton);
-        settingsButton.setLocation(375,640);
+        settingsButton.setLocation(475,640);
         settingsButton.setOpaque(false);
         settingsButton.setContentAreaFilled(false);
         settingsButton.setBorderPainted(false);
@@ -135,7 +135,7 @@ public class MainMenuPanel extends JPanel{
         highScoreButton.setFont(this.buttonFont);
         highScoreButton.setSize( 300, 100 );
         this.add(highScoreButton);
-        highScoreButton.setLocation(345,720);
+        highScoreButton.setLocation(445,720);
         highScoreButton.setOpaque(false);
         highScoreButton.setContentAreaFilled(false);
         highScoreButton.setBorderPainted(false);
@@ -155,7 +155,7 @@ public class MainMenuPanel extends JPanel{
         exitButton.setFont(this.buttonFont);
         exitButton.setSize( 150, 100 );
         this.add(exitButton);
-        exitButton.setLocation(418,800);
+        exitButton.setLocation(518,800);
         exitButton.setOpaque(false);
         exitButton.setContentAreaFilled(false);
         exitButton.setBorderPainted(false);
@@ -181,8 +181,8 @@ public class MainMenuPanel extends JPanel{
         int xCoordinate = 0;
         int yCoordinate = 0;
 
-        g2d.drawImage(this.playerTank, (235  ), (600 ), 110, 110, Color.gray, null);
-        g2d.drawImage(this.playerTank, (640  ), (600 ), 110, 110, Color.gray, null);
+        g2d.drawImage(this.playerTank, (335  ), (600 ), 110, 110, Color.gray, null);
+        g2d.drawImage(this.playerTank, (740  ), (600 ), 110, 110, Color.gray, null);
     }
 
     private class MenuListener implements ActionListener {

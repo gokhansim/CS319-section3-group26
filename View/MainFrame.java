@@ -26,8 +26,7 @@ public class MainFrame extends JFrame{
 		super("Siege");
 		instance = this;
 		this.game = game;
-		this.setSize(1024, 768);
-		this.setResizable(false);
+		this.setResizable(true);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(3);
 
@@ -47,21 +46,22 @@ public class MainFrame extends JFrame{
 		this.add(settingsPanel);
 		this.add(scorePanel);
 		this.add(gameOverPanel);
+		// this.add(gameScorePanel);
 		// this.addKeyListener(gamePanel.new KeyboardListener());
 		this.gamePanel.setFocusable(true);
 		this.gamePanel.requestFocusInWindow();
-		
 	
-		////
 		
 		this.container = new JPanel();
 		this.container.setLayout(new BorderLayout());
 		this.container.add((Component)this.activePanel, "Center");
-		this.add( this.container);
-		this.activePanel.setVisible(true);
-		
-
+		this.add(this.container);
+		this.container.setVisible(true);
 		this.pack();
+		
+		/*
+		 * To make the game full screen, uncomment the following. Put this.pack() in between the two lines.
+		 */
 		//Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		//this.setSize(screen.width, screen.height);
 	}
