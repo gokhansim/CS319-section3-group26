@@ -41,9 +41,17 @@ public class GamePanel extends JPanel{
 	private int dx = 0;
 	private int dy = 0;
 	private int direction = 0; // By Default -> points to the top
+<<<<<<< HEAD
+=======
+	
+	private JLabel scores;
+	private JLabel lives;
+>>>>>>> c96a6381039ba6d61a5bcec783588cd714aebadc
 
 	public GamePanel( ){
 		this.setBackground(Color.BLACK);
+		//this.setPreferredSize(new Dimension(1200, 1000));
+		//this.setMaximumSize(this.getPreferredSize());
 		this.setPreferredSize(new Dimension(750, 800));
 		this.setLayout(null);
 		//
@@ -60,6 +68,17 @@ public class GamePanel extends JPanel{
 		this.addKeyListener( keyboardListener );
 		this.setFocusable(true);
 		this.requestFocusInWindow(true);
+		
+		/*
+		this.scores = new JLabel("Score: 0");
+		this.scores.setBackground(Color.GRAY);
+		this.add(scores, "East");
+		
+		this.lives = new JLabel("Lives: 3");
+		this.add(lives, "East");
+		*/
+		this.repaint();
+
 		// this.timer = new Timer(this.delay, new TimerListener());
 		try{
 			this.playerTankU = ImageIO.read(new File("Resources/playerTankU.png"));
@@ -85,7 +104,7 @@ public class GamePanel extends JPanel{
 		}
 
 		//----------
-/*
+
 		JLabel scoreLabel = new JLabel("score", JLabel.CENTER);
 		scoreLabel.setOpaque(true);
 		// scoreLabel.setFont();
@@ -97,7 +116,7 @@ public class GamePanel extends JPanel{
 		this.add(scoreLabel);
 		this.revalidate();
 		this.repaint();
-*/
+
 		//----------
 
 	}
@@ -112,8 +131,6 @@ public class GamePanel extends JPanel{
 		this.intMap = map;
 		this.repaint();
 	}
-
-
 
 	@Override
 	public void paintComponent(Graphics g) {

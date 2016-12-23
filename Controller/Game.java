@@ -11,7 +11,7 @@ public class Game {
 	/*
     private Runnable r = new EnemyTankThread(this);
     Thread thr = new Thread(r);
-*/
+	 */
 	private int level;
 	private int score;
 	private int enemyTanksLeft;
@@ -44,6 +44,7 @@ public class Game {
 		this.war = new SoundManager("war.wav");
 		//this.start();
 		this.updateView();
+		System.out.println(frame.getSize());
 		gameLoop();
 	}
 
@@ -115,8 +116,8 @@ public class Game {
 		this.frame.updateCaseView(6);
 	}
 
-	public void updateScore(int score) {
-
+	public void updateScore(int addedScore) {
+		this.score += addedScore;
 	}
 
 	public void writeHighScore(int score) {
@@ -164,7 +165,6 @@ public class Game {
 	}
 
 	public void isLivesZero() {
-
 	}
 
 	public void changeGameCase(int caseNo, int level){
@@ -256,7 +256,7 @@ public class Game {
 	      // us our final value to wait for
 	      // remember this is in ms, whereas our lastLoopTime etc. vars are in ns.
 	      try {
-	            Thread.sleep(20);
+	            Thread.sleep(50);
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }
@@ -264,24 +264,31 @@ public class Game {
 	}
 	
 	public void doLoop () {
-		for ( int i = 0; i < engine.getTank().size(); i++) {
-			engine.moveEnemy(engine.getTank().get(i));
-			int x = (int) (Math.random() * 100);
-			System.out.println(x);
-			if ( x % 4 == 0) { 
-				engine.shootTank(engine.getTank().get(i).getId() % 4, engine.getTank().get(i));
+		if ( engine.getTank().size() != 0) {
+			for ( int i = 0; i < engine.getTank().size(); i++) {
+				engine.moveEnemy(engine.getTank().get(i));
+				int x = (int) (Math.random() * 100);
+				if ( x % 4 == 0) { 
+					engine.shootTank(engine.getTank().get(i).getId() % 4, engine.getTank().get(i));
+				}
 			}
-		}
-		for ( int i = 0; i < engine.getMapSize(); i++) {
-			for ( int j = 0; j < engine.getMapSize(); j++) {
-				if (engine.getMapItem(i, j) instanceof EnemyTank) {
-					if (!engine.getTank().contains(engine.getMapItem(i, j))) {
-						engine.destroyGameBody(engine.getMapItem(i,j));
+
+			// the following is to be used for powerup spawning, randomly. 
+			/*int a = (int) (Math.random() * 100);
+		if ( a % 40 == 0 ) {
+			engine.spawnPowerup();
+		}*/
+			for ( int i = 0; i < engine.getMapSize(); i++) {
+				for ( int j = 0; j < engine.getMapSize(); j++) {
+					if (engine.getMapItem(i, j) instanceof EnemyTank) {
+						if (!engine.getTank().contains(engine.getMapItem(i, j))) {
+							engine.destroyGameBody(engine.getMapItem(i,j));
+						}
 					}
 				}
 			}
+			engine.moveBullet();
 		}
-		engine.moveBullet();
 		this.updateView();
 	}
 

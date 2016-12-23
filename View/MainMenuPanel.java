@@ -25,6 +25,7 @@ public class MainMenuPanel extends JPanel{
 
     public MainMenuPanel( ) {
         this.setBackground(Color.BLACK);
+        this.setPreferredSize(new Dimension(1200, 1000));
         this.setPreferredSize(new Dimension(750, 800));
         this.setLayout(null);
         this.setMaximumSize(this.getPreferredSize());
@@ -66,7 +67,12 @@ public class MainMenuPanel extends JPanel{
         nameLabel.setForeground(Color.RED);
         nameLabel.setBackground(Color.BLACK);
         nameLabel.setSize(450,150);
+<<<<<<< HEAD
         nameLabel.setLocation(150,100);
+=======
+        nameLabel.setLocation(365,150);
+        nameLabel.setLocation(160,100);
+>>>>>>> c96a6381039ba6d61a5bcec783588cd714aebadc
         this.add(nameLabel);
 
         // BUTTONS
@@ -75,7 +81,14 @@ public class MainMenuPanel extends JPanel{
         playButton.setFont(this.buttonFont);
         playButton.setSize( 150, 100 );
         this.add(playButton);
+<<<<<<< HEAD
         playButton.setLocation(300,340);
+=======
+
+        playButton.setLocation(520,480);
+        playButton.setLocation(310,340);
+
+>>>>>>> c96a6381039ba6d61a5bcec783588cd714aebadc
         playButton.setOpaque(false);
         playButton.setContentAreaFilled(false);
         playButton.setBorderPainted(false);
@@ -95,7 +108,15 @@ public class MainMenuPanel extends JPanel{
         helpButton.setFont(this.buttonFont);
         helpButton.setSize( 150, 100 );
         this.add(helpButton);
+<<<<<<< HEAD
         helpButton.setLocation(300,410);
+=======
+
+        helpButton.setLocation(520,560);
+
+        helpButton.setLocation(310,410);
+
+>>>>>>> c96a6381039ba6d61a5bcec783588cd714aebadc
         helpButton.setOpaque(false);
         helpButton.setContentAreaFilled(false);
         helpButton.setBorderPainted(false);
@@ -115,7 +136,15 @@ public class MainMenuPanel extends JPanel{
         settingsButton.setFont(this.buttonFont);
         settingsButton.setSize( 240, 100 );
         this.add(settingsButton);
+<<<<<<< HEAD
         settingsButton.setLocation(257,480);
+=======
+
+        settingsButton.setLocation(475,640);
+
+        settingsButton.setLocation(267,480);
+
+>>>>>>> c96a6381039ba6d61a5bcec783588cd714aebadc
         settingsButton.setOpaque(false);
         settingsButton.setContentAreaFilled(false);
         settingsButton.setBorderPainted(false);
@@ -135,7 +164,14 @@ public class MainMenuPanel extends JPanel{
         highScoreButton.setFont(this.buttonFont);
         highScoreButton.setSize( 300, 100 );
         this.add(highScoreButton);
+<<<<<<< HEAD
         highScoreButton.setLocation(224,550);
+=======
+        highScoreButton.setLocation(445,720);
+
+        highScoreButton.setLocation(237,550);
+
+>>>>>>> c96a6381039ba6d61a5bcec783588cd714aebadc
         highScoreButton.setOpaque(false);
         highScoreButton.setContentAreaFilled(false);
         highScoreButton.setBorderPainted(false);
@@ -155,7 +191,15 @@ public class MainMenuPanel extends JPanel{
         exitButton.setFont(this.buttonFont);
         exitButton.setSize( 150, 100 );
         this.add(exitButton);
+<<<<<<< HEAD
         exitButton.setLocation(300,620);
+=======
+
+        exitButton.setLocation(518,800);
+
+        exitButton.setLocation(310,620);
+
+>>>>>>> c96a6381039ba6d61a5bcec783588cd714aebadc
         exitButton.setOpaque(false);
         exitButton.setContentAreaFilled(false);
         exitButton.setBorderPainted(false);
@@ -181,8 +225,17 @@ public class MainMenuPanel extends JPanel{
         int xCoordinate = 0;
         int yCoordinate = 0;
 
+<<<<<<< HEAD
         g2d.drawImage(this.playerTank, (140  ), (480 ), 90, 90, Color.gray, null);
         g2d.drawImage(this.playerTank, (520  ), (480 ), 90, 90, Color.gray, null);
+=======
+        g2d.drawImage(this.playerTank, (335  ), (600 ), 110, 110, Color.gray, null);
+        g2d.drawImage(this.playerTank, (740  ), (600 ), 110, 110, Color.gray, null);
+
+        g2d.drawImage(this.playerTank, (150  ), (480 ), 90, 90, Color.gray, null);
+        g2d.drawImage(this.playerTank, (530  ), (480 ), 90, 90, Color.gray, null);
+
+>>>>>>> c96a6381039ba6d61a5bcec783588cd714aebadc
     }
 
     private class MenuListener implements ActionListener {
