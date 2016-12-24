@@ -509,7 +509,7 @@ public class GameEngine {
 				}
 				else { 
 					switch(dir) {
-					case 0: 
+					case 0:
 						y = 1;
 						if ( t instanceof CrazedTank)
 							t.setID(16);
@@ -518,7 +518,7 @@ public class GameEngine {
 						else
 							t.setID(12);
 						break;
-					case 1: 
+					case 1:
 						y = -1;
 						if ( t instanceof CrazedTank)
 							t.setID(17);
@@ -527,7 +527,7 @@ public class GameEngine {
 						else
 							t.setID(13);
 						break;
-					case 2: 
+					case 2:
 						x = 1;
 						if ( t instanceof CrazedTank)
 							t.setID(14);
@@ -593,7 +593,7 @@ public class GameEngine {
 				}
 				else { 
 					switch(dir) {
-					case 0: 
+					case 0:
 						y = 1;
 						if ( t instanceof CrazedTank)
 							t.setID(16);
@@ -602,7 +602,7 @@ public class GameEngine {
 						else
 							t.setID(12);
 						break;
-					case 1: 
+					case 1:
 						y = -1;
 						if ( t instanceof CrazedTank)
 							t.setID(17);
@@ -611,7 +611,7 @@ public class GameEngine {
 						else
 							t.setID(13);
 						break;
-					case 2: 
+					case 2:
 						x = 1;
 						if ( t instanceof CrazedTank)
 							t.setID(14);

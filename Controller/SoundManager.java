@@ -25,7 +25,8 @@ public class SoundManager {
 					InputStream in = SoundManager.class.getClassLoader().getResourceAsStream("Resources/war.wav");
 					AudioInputStream inputStream = AudioSystem.getAudioInputStream(in);
 					clip.open(inputStream);
-					clip.start();
+					clip.loop(Clip.LOOP_CONTINUOUSLY);
+
 				} catch (Exception e) {
 					System.err.println(e.getMessage());
 				}
