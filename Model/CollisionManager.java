@@ -14,10 +14,11 @@ public class CollisionManager {
 				}
 				return ((BrickWall)GameBody2).getDestroyed(engine);
 			}
-			else if ( GameBody2 instanceof IronWall && ((IronWall) GameBody2).getHitsToDestroy() == 1){
+			else if ( GameBody2 instanceof IronWall){ // && ((IronWall) GameBody2).getHitsToDestroy() == 1){
 				if( ((Bullet)GameBody1).getShooter() == 1){
-					engine.addScore( ((BrickWall) GameBody2).getScore() );
+					engine.addScore( ((IronWall) GameBody2).getScore() ); // ------->>  at each shot takes 25 points.
 				}
+
 				return ((IronWall)GameBody2).getDestroyed(engine);
 			}
 			else if ( GameBody2 instanceof EnemyTank){
