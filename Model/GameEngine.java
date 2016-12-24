@@ -407,23 +407,49 @@ public class GameEngine {
 		Bullet bullet;
 		if (direction == 0) {
 			if (t.getY() - 1 > -1) {
-				bullet = new Bullet(t.getX(), (t.getY() - 1), t.getShootSpeed(), direction);
-				createGameBody(bullet, t.getX(), t.getY() - 1);
+				if( t instanceof PlayerTank){
+					bullet = new Bullet(t.getX(), (t.getY() - 1), t.getShootSpeed(), direction,1);
+					createGameBody(bullet, t.getX(), t.getY() - 1);
+				}
+				else if (t instanceof EnemyTank) {
+					bullet = new Bullet(t.getX(), (t.getY() - 1), t.getShootSpeed(), direction, 0);
+					createGameBody(bullet, t.getX(), t.getY() - 1);
+				}
 			}
 		} else if (direction == 1) {
 			if (t.getX() + 1 < 10) {
-				bullet = new Bullet(t.getX() + 1, t.getY(), t.getShootSpeed(), direction);
-				createGameBody(bullet,t.getX() + 1, t.getY());
+				if( t instanceof PlayerTank){
+					bullet = new Bullet(t.getX(), (t.getY() - 1), t.getShootSpeed(), direction,1);
+					createGameBody(bullet, t.getX(), t.getY() - 1);
+				}
+				else{
+					bullet = new Bullet(t.getX(), (t.getY() - 1), t.getShootSpeed(), direction, 0);
+					createGameBody(bullet, t.getX(), t.getY() - 1);
+				}
 			}
 		} else if (direction == 2) {
 			if (t.getY() + 1 < 10) {
-				bullet = new Bullet(t.getX(), (t.getY() + 1), t.getShootSpeed(), direction);
-				createGameBody(bullet, t.getX(), t.getY() + 1);
+				if( t instanceof PlayerTank){
+					bullet = new Bullet(t.getX(), (t.getY() - 1), t.getShootSpeed(), direction,1);
+					createGameBody(bullet, t.getX(), t.getY() - 1);
+				}
+				else{
+					bullet = new Bullet(t.getX(), (t.getY() - 1), t.getShootSpeed(), direction, 0);
+					createGameBody(bullet, t.getX(), t.getY() - 1);
+				}
+
 			}
 		} else if (direction == 3) {
 			if (t.getX() - 1 > -1) {
-				bullet = new Bullet(t.getX() - 1, (t.getY()), t.getShootSpeed(), direction);
-				createGameBody(bullet,t.getX() - 1, t.getY());
+				if( t instanceof PlayerTank){
+					bullet = new Bullet(t.getX(), (t.getY() - 1), t.getShootSpeed(), direction,1);
+					createGameBody(bullet, t.getX(), t.getY() - 1);
+				}
+				else{
+					bullet = new Bullet(t.getX(), (t.getY() - 1), t.getShootSpeed(), direction, 0);
+					createGameBody(bullet, t.getX(), t.getY() - 1);
+				}
+
 			}
 		}
 	}

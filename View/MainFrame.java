@@ -15,8 +15,13 @@ public class MainFrame extends JFrame{
 	private MainMenuPanel menuPanel;
 	private SettingsPanel settingsPanel;
 	private HelpPanel helpPanel;
-	private HighScorePanel scorePanel;
+	private HighScorePanel highScorePanel;
 	private GameOverPanel gameOverPanel;
+
+	private JSplitPane splitPane;
+	private ScorePanel scorePanel;
+	private WideGamePanel widePanel;
+
 	private JPanel activePanel;
 	private boolean isClosed;
 
@@ -32,11 +37,15 @@ public class MainFrame extends JFrame{
 
 		// Panel initializations
 		this.menuPanel = new MainMenuPanel();
-		this.gamePanel = new GamePanel();
 		this.helpPanel = new HelpPanel();
 		this.settingsPanel = new SettingsPanel();
-		this.scorePanel = new HighScorePanel(game.getHighScoreManager());
+		this.highScorePanel = new HighScorePanel(game.getHighScoreManager());
 		this.gameOverPanel = new GameOverPanel();
+		this.widePanel = new WideGamePanel();
+        this.scorePanel = new ScorePanel();
+        this.splitPane = new JSplitPane();
+
+        this.gamePanel = new GamePanel();
 		this.activePanel = menuPanel;
 		
 		///CHANGED
@@ -44,13 +53,15 @@ public class MainFrame extends JFrame{
 		this.add(menuPanel);
 		this.add(helpPanel);
 		this.add(settingsPanel);
-		this.add(scorePanel);
+		//this.add(scorePanel);
 		this.add(gameOverPanel);
+		//this.add(widePanel);
 		// this.add(gameScorePanel);
 		// this.addKeyListener(gamePanel.new KeyboardListener());
+		/*
 		this.gamePanel.setFocusable(true);
 		this.gamePanel.requestFocusInWindow();
-	
+		*/
 		
 		this.container = new JPanel();
 		this.container.setLayout(new BorderLayout());
@@ -75,6 +86,10 @@ public class MainFrame extends JFrame{
 		return instance;
 	}
 
+	public JPanel getGamePanel(){ return this.gamePanel; }
+
+	public JPanel getScorePanel() { return scorePanel; }
+
 	public void setActivePanel(JPanel activePanel){ this.activePanel = activePanel; }
 
 	public void startGame() {
@@ -89,7 +104,8 @@ public class MainFrame extends JFrame{
 		this.game.shootPlayer(direction);
 	}
 
-	public void updateView() {
+	public void updateView(int score) {
+	    this.scorePanel.updateScore(score);
 		this.gamePanel.draw( game.getIntMap() );
 	}
 
@@ -101,7 +117,12 @@ public class MainFrame extends JFrame{
 				break;
 			}
 			case 1: {
+				/*
 				this.setActivePanel(this.gamePanel);
+				*/
+				this.widePanel.add(this.gamePanel);
+				this.widePanel.add(this.scorePanel);
+				this.setActivePanel(this.widePanel);
 				break;
 			}
 			case 3:{
@@ -120,13 +141,18 @@ public class MainFrame extends JFrame{
 				break;
 			}
 			case 7:{
-				this.setActivePanel(this.scorePanel);
+				this.setActivePanel(this.highScorePanel);
 				break;
 			}
 		}
 		if( !isClosed) {
 			this.getContentPane().add(activePanel);
-			activePanel.requestFocusInWindow();
+			if( activePanel == widePanel ){
+			    gamePanel.requestFocusInWindow();
+            }
+            else {
+                activePanel.requestFocusInWindow();
+            }
 			this.getContentPane().revalidate();
 			this.getContentPane().repaint();
 		}

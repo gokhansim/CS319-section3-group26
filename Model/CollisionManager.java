@@ -8,6 +8,9 @@ public class CollisionManager {
 			if ( GameBody2 instanceof SteelWall) {
 				return false;
 			} else if ( GameBody2 instanceof BrickWall) {
+				if( ((Bullet)GameBody1).getShooter() == 1){
+					engine.addScore( ((BrickWall) GameBody2).getScore() );
+				}
 				return ((BrickWall)GameBody2).getDestroyed(engine);
 			} else if ( GameBody2 instanceof IronWall && ((IronWall) GameBody2).getHitsToDestroy() == 1){
 				return ((IronWall)GameBody2).getDestroyed(engine);

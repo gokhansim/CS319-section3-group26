@@ -210,7 +210,7 @@ public class Game {
 	}
 
 	public void updateView() {
-		this.frame.updateView();
+		this.frame.updateView( engine.getScore() );
 	}
 
 
@@ -296,6 +296,7 @@ public class Game {
 	}
 
 	// --  THREAD  ---------------------------------
+	/*
 	public class EnemyTankThread implements Runnable {
         private final Game game2;
 
@@ -307,6 +308,7 @@ public class Game {
         	
         }
     }
+    */
 	//-----------------------------------------------
 
 }

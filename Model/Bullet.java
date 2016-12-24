@@ -5,11 +5,13 @@ public class Bullet extends GameBody implements Destroyable{
 
 	private int moveSpeed;
 	private int direction;
+	private int shooter;
 
-	public Bullet( int x, int y, int moveSpeed, int direction){
+	public Bullet( int x, int y, int moveSpeed, int direction, int shooter){
 		super(x, y);
 		this.moveSpeed = moveSpeed;
 		this.direction = direction;
+		this.shooter = shooter;  // if shooter = 1 -> bullet from the playerTank.
 		if( direction == 0){
 			this.id = 20;
 		}
@@ -24,6 +26,7 @@ public class Bullet extends GameBody implements Destroyable{
 		}
 	}
 
+	public int getShooter() { return this.shooter; }
 	public int getMoveSpeed() { return moveSpeed; }
 	public int getDirection() { return direction; }
 
