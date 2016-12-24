@@ -9,7 +9,7 @@ public class HighScoreManager {
 	
 	public HighScoreManager(){
 		scoreList = new ArrayList<Integer>();
-		this.readHighScore;
+		this.readHighScore();
 	}
 	
 	//takes the score when the game ends and adds it to the high scores if it is in the top 5

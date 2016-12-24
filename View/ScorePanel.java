@@ -76,6 +76,7 @@ public class ScorePanel extends JPanel {
         });
         backToMain.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+
                 MainFrame.getInstance().changeCase(0, 1);
             }
         } );

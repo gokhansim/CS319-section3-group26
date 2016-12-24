@@ -104,6 +104,7 @@ public class Game {
 		switch (caseNo) {
 			case 0: { // show main menu
 				this.frame.updateCaseView(caseNo);
+				this.war.stop();
 				break;
 			}
 			case 1: {
@@ -119,6 +120,7 @@ public class Game {
                 this.settingsMngr.changeLevel(level);
 				//this.frame.startGame();
                 this.frame.updateCaseView(1);
+				this.war.playMusic();
                 break;
             }
             // Settings Panel
@@ -134,13 +136,14 @@ public class Game {
 			//Exit Panel
 			case 5: {
 				this.frame.updateCaseView(caseNo);
+				this.war.stop();
 				break;
 			}
 			case 6: {
 				this.frame.updateCaseView(caseNo);
 				break;
 			}
-			//HighScore Panle
+			//HighScore Panel
 
 			case 7:{
 				this.frame.updateCaseView(caseNo);
@@ -198,7 +201,9 @@ public class Game {
 	        }
 	   }
 	}
-	
+
+	// --  THREAD  ---------------------------------
+
 	public void doLoop () {
 		if (!engine.getIsGameOver()) {
 			if (engine.getTank().size()> 0) {
@@ -206,12 +211,12 @@ public class Game {
 					for ( int i = 0; i < engine.getTank().size(); i++) {
 						engine.moveEnemy(engine.getTank().get(i));
 						int x = (int) (Math.random() * 100);
-						if ( x % 10 == 0) { 
+						if ( x % 10 == 0) {
 							engine.shootTank(engine.getTank().get(i).getID() % 4, engine.getTank().get(i));
 						}
 					}
 
-					// the following is to be used for powerup spawning, randomly. 
+					// the following is to be used for powerup spawning, randomly.
 					int a = (int) (Math.random() * 101);
 					if ( a % 50 == 0 ) {
 						engine.spawnPowerup();
@@ -240,20 +245,6 @@ public class Game {
 		this.updateView();
 	}
 
-	// --  THREAD  ---------------------------------
-	/*
-	public class EnemyTankThread implements Runnable {
-        private final Game game2;
-
-	    public EnemyTankThread( Game game){
-             game2 = game;
-        }
-
-        public void run(){
-        	
-        }
-    }
-    */
 	//-----------------------------------------------
 
 }
