@@ -195,6 +195,9 @@ public class GamePanel extends JPanel{
 						g2d.drawImage(this.enemyTankU, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 
+					//-------------------------------------------------------------------------------------------------
+					//BULLETS
+					//-------------------------------------------------------------------------------------------------
 					else if( intMap[i][j] == 200){
 						g2d.drawImage(this.enemyBulletU, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
@@ -220,6 +223,8 @@ public class GamePanel extends JPanel{
 					else if( intMap[i][j] == 231){
 						g2d.drawImage(this.playerBulletL, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
+					//-------------------------------------------------------------------------------------------------
+
 					else if( intMap[i][j] == 3){
 						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
 						g2d.drawImage(this.brickWall, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);

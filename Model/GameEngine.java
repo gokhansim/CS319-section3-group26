@@ -494,15 +494,15 @@ public class GameEngine {
 				}
 				else { 
 					switch(dir) {
-					case 0: 
+					case 0:
 						y = 1;
 						t.setID(12);
 						break;
-					case 1: 
+					case 1:
 						y = -1;
 						t.setID(13);
 						break;
-					case 2: 
+					case 2:
 						x = 1;
 						t.setID(10);
 						break;
@@ -541,15 +541,15 @@ public class GameEngine {
 				}
 				else { 
 					switch(dir) {
-					case 0: 
+					case 0:
 						y = 1;
 						t.setID(12);
 						break;
-					case 1: 
+					case 1:
 						y = -1;
 						t.setID(13);
 						break;
-					case 2: 
+					case 2:
 						x = 1;
 						t.setID(10);
 						break;
