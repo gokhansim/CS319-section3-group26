@@ -127,9 +127,9 @@ public class GameEngine {
 			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
 
 
-			tank.add(new EnemyTank(0,0, 3, 10 ));
+			tank.add(new Panzer(0,0, 3, 10 ));
 			this.createGameBody(tank.get(0), tank.get(0).getX(), tank.get(0).getY() );
-			tank.add(new EnemyTank(6,0, 3, 10 ));
+			tank.add(new CrazedTank(6,0, 3, 10 ));
 			this.createGameBody(tank.get(1), tank.get(1).getX(), tank.get(1).getY() );
 
 			IronWall ironWall = new IronWall(3,8);
@@ -402,7 +402,7 @@ public class GameEngine {
 
 	public void shootTank ( int direction, Tank t){
 		Bullet bullet;
-		if (direction == 0) {
+		if (direction == 1) {
 			if (t.getY() - 1 > -1) {
 				if( t instanceof PlayerTank){
 					bullet = new Bullet(t.getX(), (t.getY() - 1), t.getShootSpeed(), direction,1);
@@ -413,7 +413,7 @@ public class GameEngine {
 					createGameBody(bullet, t.getX(), t.getY() - 1);
 				}
 			}
-		} else if (direction == 1) {
+		} else if (direction == 2) {
 			if (t.getX() + 1 < 10) {
 				if( t instanceof PlayerTank){
 					bullet = new Bullet(t.getX() + 1, (t.getY()), t.getShootSpeed(), direction,1);
@@ -424,7 +424,7 @@ public class GameEngine {
 					createGameBody(bullet, t.getX() + 1, t.getY());
 				}
 			}
-		} else if (direction == 2) {
+		} else if (direction == 0) {
 			if (t.getY() + 1 < 10) {
 				if( t instanceof PlayerTank){
 					bullet = new Bullet(t.getX(), (t.getY() + 1), t.getShootSpeed(), direction,1);
@@ -457,7 +457,8 @@ public class GameEngine {
 		int x = 0;
 		int y = 0;
 		int dir = t.getID() % 4; 
-		// 0 - up 1 - down 2 - right 3- left
+		// for dir;
+		// 0 - down 1 - up 2 - right 3- left
 		//int direction = 0;
 		if( t.getHistToKill() > 0){
 			try {
@@ -467,43 +468,82 @@ public class GameEngine {
 			}
 			if ( flag) {
 				int next = (int) (Math.random() * 100);
-				if ( next < 50 || isBlocked(t)) {
+				if ( next < 30 || isBlocked(t)) {
 					int a = (int) (Math.random() * 4);
-					if ( a == 0 && dir != 0) {
-						y = 1;
-						t.setID(12);
+					if ( a == 0) { 
+						y = 1; // DOWN
+						if ( t instanceof CrazedTank)
+							t.setID(16);
+						else if ( t instanceof Panzer)
+							t.setID(20);
+						else
+							t.setID(12);
 					}
-
 					else if (a == 1) {
-						y = -1;
-						t.setID(13);
+						y = -1; //UP
+						if ( t instanceof CrazedTank)
+							t.setID(17);
+						else if ( t instanceof Panzer)
+							t.setID(21);
+						else
+							t.setID(13);
 					}
-					else if (a == 2 && dir != 0){
+					else if (a == 2){
 						x = 1;
-						t.setID(10);
+						if ( t instanceof CrazedTank)
+							t.setID(14);
+						else if ( t instanceof Panzer)
+							t.setID(18);
+						else
+							t.setID(10);
 					}
 					else if (a == 3) {
 						x = -1;
-						t.setID(11);
+						if ( t instanceof CrazedTank)
+							t.setID(15);
+						else if ( t instanceof Panzer)
+							t.setID(19);
+						else
+							t.setID(11);
 					}
 				}
 				else { 
 					switch(dir) {
 					case 0: 
 						y = 1;
-						t.setID(12);
+						if ( t instanceof CrazedTank)
+							t.setID(16);
+						else if ( t instanceof Panzer)
+							t.setID(20);
+						else
+							t.setID(12);
 						break;
 					case 1: 
 						y = -1;
-						t.setID(13);
+						if ( t instanceof CrazedTank)
+							t.setID(17);
+						else if ( t instanceof Panzer)
+							t.setID(21);
+						else
+							t.setID(13);
 						break;
 					case 2: 
 						x = 1;
-						t.setID(10);
+						if ( t instanceof CrazedTank)
+							t.setID(14);
+						else if ( t instanceof Panzer)
+							t.setID(18);
+						else
+							t.setID(10);
 						break;
 					case 3:
 						x = -1;
-						t.setID(11);
+						if ( t instanceof CrazedTank)
+							t.setID(15);
+						else if ( t instanceof Panzer)
+							t.setID(19);
+						else
+							t.setID(11);
 						break;
 					}
 
@@ -512,45 +552,82 @@ public class GameEngine {
 			}
 			else {
 				int next = (int) (Math.random() * 100);
-				if ( next < 50 && !isBlocked(t)) {
+				if ( next < 40 || isBlocked(t)) {
 					int a = (int) (Math.random() * 4);
-					if ( a == 0) {
-						y = 1;
-						t.setID(12);
+					if ( a == 0) { 
+						y = 1; // DOWN
+						if ( t instanceof CrazedTank)
+							t.setID(16);
+						else if ( t instanceof Panzer)
+							t.setID(20);
+						else
+							t.setID(12);
 					}
-
 					else if (a == 1) {
-						y = -1;
-						t.setID(13);
+						y = -1; //UP
+						if ( t instanceof CrazedTank)
+							t.setID(17);
+						else if ( t instanceof Panzer)
+							t.setID(21);
+						else
+							t.setID(13);
 					}
 					else if (a == 2){
 						x = 1;
-						t.setID(10);
+						if ( t instanceof CrazedTank)
+							t.setID(14);
+						else if ( t instanceof Panzer)
+							t.setID(18);
+						else
+							t.setID(10);
 					}
 					else if (a == 3) {
 						x = -1;
-						t.setID(11);
-					}
-					else {
+						if ( t instanceof CrazedTank)
+							t.setID(15);
+						else if ( t instanceof Panzer)
+							t.setID(19);
+						else
+							t.setID(11);
 					}
 				}
 				else { 
 					switch(dir) {
 					case 0: 
 						y = 1;
-						t.setID(12);
+						if ( t instanceof CrazedTank)
+							t.setID(16);
+						else if ( t instanceof Panzer)
+							t.setID(20);
+						else
+							t.setID(12);
 						break;
 					case 1: 
 						y = -1;
-						t.setID(13);
+						if ( t instanceof CrazedTank)
+							t.setID(17);
+						else if ( t instanceof Panzer)
+							t.setID(21);
+						else
+							t.setID(13);
 						break;
 					case 2: 
 						x = 1;
-						t.setID(10);
+						if ( t instanceof CrazedTank)
+							t.setID(14);
+						else if ( t instanceof Panzer)
+							t.setID(18);
+						else
+							t.setID(10);
 						break;
 					case 3:
 						x = -1;
-						t.setID(11);
+						if ( t instanceof CrazedTank)
+							t.setID(15);
+						else if ( t instanceof Panzer)
+							t.setID(19);
+						else
+							t.setID(11);
 						break;
 					}
 

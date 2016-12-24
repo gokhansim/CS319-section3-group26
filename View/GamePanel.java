@@ -26,6 +26,14 @@ public class GamePanel extends JPanel{
 	private BufferedImage enemyTankR;
 	private BufferedImage enemyTankD;
 	private BufferedImage enemyTankL;
+	private BufferedImage crazedTankU;
+	private BufferedImage crazedTankR;
+	private BufferedImage crazedTankD;
+	private BufferedImage crazedTankL;
+	private BufferedImage panzerU;
+	private BufferedImage panzerR;
+	private BufferedImage panzerD;
+	private BufferedImage panzerL;
 	private BufferedImage brickWall;
 	private BufferedImage ironWall;
 	private BufferedImage steelWall;
@@ -94,14 +102,27 @@ public class GamePanel extends JPanel{
 			this.playerTankD = ImageIO.read(new File("Resources/playerTankD.png"));
 			this.playerTankL = ImageIO.read(new File("Resources/playerTankL.png"));
 			this.playerTankR = ImageIO.read(new File("Resources/playerTankR.png"));
+			
 			this.enemyTankU = ImageIO.read(new File("Resources/EnemyTankU.png"));
 			this.enemyTankR = ImageIO.read(new File("Resources/EnemyTankR.png"));
 			this.enemyTankD = ImageIO.read(new File("Resources/EnemyTankD.png"));
 			this.enemyTankL = ImageIO.read(new File("Resources/EnemyTankL.png"));
+			
+			this.crazedTankD = ImageIO.read(new File("Resources/crazedD.png"));
+			this.crazedTankU = ImageIO.read(new File("Resources/crazedU.png"));
+			this.crazedTankL = ImageIO.read(new File("Resources/crazedL.png"));
+			this.crazedTankR = ImageIO.read(new File("Resources/crazedR.png"));
+			
+			this.panzerD = ImageIO.read(new File("Resources/panzerD.png"));
+			this.panzerU = ImageIO.read(new File("Resources/panzerU.png"));
+			this.panzerL = ImageIO.read(new File("Resources/panzerL.png"));
+			this.panzerR = ImageIO.read(new File("Resources/panzerR.png"));
+			
 			this.brickWall = ImageIO.read(new File("Resources/BrickWall.png"));
 			this.ironWall = ImageIO.read(new File("Resources/IronWall.png"));
 			this.steelWall = ImageIO.read(new File("Resources/SteelWall.png"));
 			this.sacredObject = ImageIO.read(new File("Resources/SacredObject.png"));
+			
 			this.playerBulletU = ImageIO.read(new File("Resources/playerBulletU.png"));
 			this.playerBulletR = ImageIO.read(new File("Resources/playerBulletR.png"));
 			this.playerBulletD = ImageIO.read(new File("Resources/playerBulletD.png"));
@@ -166,35 +187,54 @@ public class GamePanel extends JPanel{
 				if( intMap[i][j] != -1){
 					if( intMap[i][j] == 0){
 						if( this.direction == 0) {
-							g2d.drawImage(this.playerTankU, (xCoordinate + (i * 75)), (yCoordinate + (j * 75)), 75, 75, Color.gray, null);
+							g2d.drawImage(this.playerTankD, (xCoordinate + (i * 75)), (yCoordinate + (j * 75)), 75, 75, Color.gray, null);
 						}
 						if( this.direction == 1) {
-							g2d.drawImage(this.playerTankR, (xCoordinate + (i * 75)), (yCoordinate + (j * 75)), 75, 75, Color.gray, null);
+							g2d.drawImage(this.playerTankU, (xCoordinate + (i * 75)), (yCoordinate + (j * 75)), 75, 75, Color.gray, null);
 						}
 						if( this.direction == 2) {
-							g2d.drawImage(this.playerTankD, (xCoordinate + (i * 75)), (yCoordinate + (j * 75)), 75, 75, Color.gray, null);
+							g2d.drawImage(this.playerTankR, (xCoordinate + (i * 75)), (yCoordinate + (j * 75)), 75, 75, Color.gray, null);
 						}
 						if( this.direction == 3) {
 							g2d.drawImage(this.playerTankL, (xCoordinate + (i * 75)), (yCoordinate + (j * 75)), 75, 75, Color.gray, null);
 						}
 					}
 					else if( intMap[i][j] == 10){
-						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
 						g2d.drawImage(this.enemyTankR, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 					else if( intMap[i][j] == 11){
-						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
 						g2d.drawImage(this.enemyTankL, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 					else if( intMap[i][j] == 12){
-						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
 						g2d.drawImage(this.enemyTankD, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 					else if( intMap[i][j] == 13){
-						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
 						g2d.drawImage(this.enemyTankU, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
-
+					else if (intMap[i][j] == 14) { // CRAZED UP
+						g2d.drawImage(this.crazedTankR, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
+					}
+					else if (intMap[i][j] == 15) { // CRAZED DOWN
+						g2d.drawImage(this.crazedTankL, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
+					}
+					else if (intMap[i][j] == 16) { // CRAZED LEFT
+						g2d.drawImage(this.crazedTankD, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
+					}
+					else if (intMap[i][j] == 17) { // CRAZED RIGHT
+						g2d.drawImage(this.crazedTankU, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
+					}
+					else if (intMap[i][j] == 18) { // PANZER UP
+						g2d.drawImage(this.panzerR, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
+					}
+					else if (intMap[i][j] == 19) { // PANZER DOWN
+						g2d.drawImage(this.panzerL, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
+					}
+					else if (intMap[i][j] == 20) { // PANZER LEFT
+						g2d.drawImage(this.panzerD, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
+					}
+					else if (intMap[i][j] == 21) { // PANZER RIGHT
+						g2d.drawImage(this.panzerU, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
+					}
 					else if( intMap[i][j] == 200){
 						g2d.drawImage(this.enemyBulletU, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
@@ -207,7 +247,6 @@ public class GamePanel extends JPanel{
 					else if( intMap[i][j] == 230){
 						g2d.drawImage(this.enemyBulletL, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
-
 					else if( intMap[i][j] == 201){
 						g2d.drawImage(this.playerBulletU, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
@@ -221,35 +260,27 @@ public class GamePanel extends JPanel{
 						g2d.drawImage(this.playerBulletL, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 					else if( intMap[i][j] == 3){
-						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
 						g2d.drawImage(this.brickWall, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 					else if( intMap[i][j] == 4){
-						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
 						g2d.drawImage(this.ironWall, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 					else if( intMap[i][j] == 5){
-						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
 						g2d.drawImage(this.steelWall, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 					else if( intMap[i][j] == 6){
-						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
 						g2d.drawImage(this.sacredObject, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 					else if( intMap[i][j] == 24){
-						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
 						g2d.drawImage(this.extraLife, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 					else if( intMap[i][j] == 25){
-						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
 						g2d.drawImage(this.doubleShots, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 					else if( intMap[i][j] == 26){
-						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
 						g2d.drawImage(this.ultimateProtection, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 					else if( intMap[i][j] == 27){
-						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
 						g2d.drawImage(this.shield, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 				}
@@ -293,19 +324,19 @@ public class GamePanel extends JPanel{
 				}
 				case KeyEvent.VK_UP: {
 					GamePanel.this.dy = -1;
-					GamePanel.this.direction = 0;
+					GamePanel.this.direction = 1;
 					MainFrame.getInstance().movePlayer(GamePanel.this.dx, GamePanel.this.dy);
 					break;
 				}
 				case KeyEvent.VK_RIGHT: {
 					GamePanel.this.dx = 1;
-					GamePanel.this.direction = 1;
+					GamePanel.this.direction = 2;
 					MainFrame.getInstance().movePlayer(GamePanel.this.dx, GamePanel.this.dy);
 					break;
 				}
 				case KeyEvent.VK_DOWN: {
 					GamePanel.this.dy = 1;
-					GamePanel.this.direction = 2;
+					GamePanel.this.direction = 0;
 					MainFrame.getInstance().movePlayer(GamePanel.this.dx, GamePanel.this.dy);
 					break;
 				}
