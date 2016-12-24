@@ -15,26 +15,7 @@ public class PlayerTank extends Tank implements Destroyable{
 		this.isUltimate = false;
 		this.id = 0;
 	}
-
-	public void getPowerUp( int type) {
-		// type1 -> Shield
-		if( type == 1){
-			this.shield = 3;
-		}
-		// type2 -> DoubleShots
-		else if( type == 2){
-			isDoubleShot = true;
-		}
-		// type3 -> ExtraLife
-		else if( type == 3){
-			this.increaseLife();
-		}
-		// type3 -> UltimateProtection
-		else if( type == 4){
-			isUltimate = true;
-		}
-	}
-
+	
 	public void endPowerUp(){
 		isDoubleShot = false;
 		this.shield = 0;

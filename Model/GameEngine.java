@@ -51,7 +51,9 @@ public class GameEngine {
 
 	public void addScore( int scoreGiven){ score = score + scoreGiven; }
 	public int getScore() { return score; }
-	public boolean getIsGameOver() { return isGameOver; }
+	public boolean getIsGameOver() { 
+		return isGameOver; 
+	}
 
 	public int getEnemyTanksLeft(){ return enemyTanksLeft; }
 	public void setEnemyTanksLeft( int enemyTanksLeft){ this.enemyTanksLeft = enemyTanksLeft;}
@@ -104,12 +106,6 @@ public class GameEngine {
 
 	public void destroyGameBody(GameBody body) {
 
-		//JUST FOR CHECK. TO BE REMOVED LATER
-		if (body instanceof PowerUp) {
-			System.out.println(this.playerTank.shield);
-			System.out.println(this.playerTank.getCurrentLives());
-		}
-		///////////////////////////////////////
 		int xCoor = body.getX();
 		int yCoor = body.getY();
 		if( map[xCoor][yCoor] != null ) {
