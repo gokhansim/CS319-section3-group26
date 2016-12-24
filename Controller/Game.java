@@ -275,7 +275,7 @@ public class Game {
 
 			// the following is to be used for powerup spawning, randomly. 
 			int a = (int) (Math.random() * 101);
-			if ( a % 20 == 0 ) {
+			if ( a % 50 == 0 ) {
 				engine.spawnPowerup();
 			}
 

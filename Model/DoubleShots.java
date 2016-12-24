@@ -10,5 +10,12 @@ public class DoubleShots extends PowerUp {
 	public void affect(PlayerTank x) {
 		x.isDoubleShot=true;
 	}
+
+	@Override
+	public boolean getDestroyed(GameEngine engine) {
+		engine.getPlayerTank().isDoubleShot = true;
+		engine.destroyGameBody(this);
+		return true;
+	}
 	
 }

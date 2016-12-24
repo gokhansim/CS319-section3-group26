@@ -14,4 +14,12 @@ public class ExtraLife extends PowerUp{
 		}
 	}
 
+	@Override
+	public boolean getDestroyed(GameEngine engine) {
+		if (engine.getPlayerTank().getCurrentLives() < 3) 
+			engine.getPlayerTank().increaseLife();
+		engine.destroyGameBody(this);
+		return true;
+	}
+
 }

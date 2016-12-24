@@ -7,9 +7,12 @@ public class Shield extends PowerUp{
 		super(x,y);
 		this.id = 27;
 	}
+	
 	@Override
-	public void affect(PlayerTank x) {
-		x.shield = 3;
+	public boolean getDestroyed(GameEngine engine) {
+		engine.getPlayerTank().shield = 1;
+		engine.destroyGameBody(this);
+		return true;
 	}
 	
 }

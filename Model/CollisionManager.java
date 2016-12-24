@@ -17,6 +17,13 @@ public class CollisionManager {
 				engine.isGameOver = true; //!(((SacredObject)GameBody2).getIsDestroyed());
 				engine.cleanMap();
 				return ((SacredObject)GameBody2).getDestroyed(engine);
+			} else if (GameBody2 instanceof PlayerTank) {
+				return ((PlayerTank) GameBody2).getDestroyed(engine);
+			}
+		}
+		else if (GameBody1 instanceof PlayerTank) {
+			if (GameBody2 instanceof PowerUp) {
+				return ((PowerUp)GameBody2).getDestroyed(engine);
 			}
 		}
 

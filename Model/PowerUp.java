@@ -1,6 +1,6 @@
 package Model;
 
-public abstract class PowerUp extends GameBody {
+public abstract class PowerUp extends GameBody implements Destroyable {
 	private final int TIME_TO_EXPIRE = 10;
 	
 	public PowerUp(int x, int y) {
