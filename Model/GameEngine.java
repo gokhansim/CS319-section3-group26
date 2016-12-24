@@ -28,6 +28,7 @@ public class GameEngine {
 			}
 		}
 		this.score = 0;
+		this.playerTank = new PlayerTank(4,7);
 		tank = new ArrayList<EnemyTank>();
 		bulletList =  new ArrayList<Bullet>();
 		this.isGameOver = false;
@@ -122,7 +123,7 @@ public class GameEngine {
 			this.cleanMap();
 			tank.clear();
 			this.setEnemyTanksLeft(2);
-			playerTank = new PlayerTank(4,7);
+
 			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
 
 
@@ -158,8 +159,8 @@ public class GameEngine {
 		else if(level == 2){
 			this.cleanMap();
 			this.tank.clear();
-			this.setEnemyTanksLeft(3);
-			playerTank = new PlayerTank(9,9);
+			playerTank.setX(9);
+			playerTank.setY(9);
 			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
 
 			tank.add(new EnemyTank(0,0, 3, 10 ));
@@ -207,17 +208,18 @@ public class GameEngine {
 		else if(level == 3){
 			this.cleanMap();
 			this.tank.clear();
-			this.setEnemyTanksLeft(4);
-			playerTank = new PlayerTank(4,8);
+			this.playerTank.setX(4);
+			this.playerTank.setY(8);
 			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
 
 			this.tank.add(new EnemyTank(0,0, 3, 10 ));
-			EnemyTank enemyTank2 = new EnemyTank(9,0, 3, 10 );//will be change to crazed 
-			this.createGameBody(enemyTank2, enemyTank2.getX(), enemyTank2.getY() );
-			EnemyTank enemyTank3 = new EnemyTank(0,9, 3, 10 ); //this will be changed to crazed
-			this.createGameBody(enemyTank3, enemyTank3.getX(), enemyTank3.getY() );
-			EnemyTank enemyTank4 = new EnemyTank(9,9, 3, 10 ); 					
-			this.createGameBody(enemyTank4, enemyTank4.getX(), enemyTank4.getY() );
+			this.tank.add(new EnemyTank(9,0, 3, 10 ));//will be change to crazed 
+			this.tank.add(new EnemyTank(0,9, 3, 10 )); //this will be changed to crazed
+			this.tank.add(new EnemyTank(9,9, 3, 10 )); 		
+			
+			for ( int i = 0; i < tank.size(); i++) {
+				this.createGameBody(tank.get(i), tank.get(i).getX(), tank.get(i).getY() );
+			}
 
 			this.createGameBody(new BrickWall(1, 1), 1, 1);
 			this.createGameBody(new BrickWall(3, 1), 3, 1);
@@ -262,23 +264,21 @@ public class GameEngine {
 
 		else if(level == 4){
 			this.cleanMap();
-			this.setEnemyTanksLeft(6);
-			playerTank = new PlayerTank(4, 4);
+			this.tank.clear();
+			this.playerTank.setX(4);
+			this.playerTank.setY(4);
 			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
 
-			EnemyTank enemyTank = new EnemyTank(0, 0, 3, 10 );
-			this.createGameBody(enemyTank, enemyTank.getX(), enemyTank.getY() );
-			EnemyTank enemyTank2 = new EnemyTank(9, 0, 3, 10 );
-			this.createGameBody(enemyTank2, enemyTank2.getX(), enemyTank2.getY() );
-			EnemyTank enemyTank3 = new EnemyTank(0, 6, 3, 10 ); 
-			this.createGameBody(enemyTank3, enemyTank3.getX(), enemyTank3.getY() );
-			EnemyTank enemyTank4 = new EnemyTank(9, 6, 3, 10 ); 
-			this.createGameBody(enemyTank4, enemyTank4.getX(), enemyTank4.getY() );
-			EnemyTank enemyTank5 = new EnemyTank(2, 2, 3, 10 ); 
-			this.createGameBody(enemyTank5, enemyTank5.getX(), enemyTank5.getY() );
-			EnemyTank enemyTank6 = new EnemyTank(6, 2, 3, 10 ); 
-			this.createGameBody(enemyTank6, enemyTank6.getX(), enemyTank6.getY() );
-
+			this.tank.add(new EnemyTank(0, 0, 3, 10 ));
+			this.tank.add(new EnemyTank(9, 0, 3, 10 ));
+			this.tank.add( new EnemyTank(0, 6, 3, 10 )); 
+			this.tank.add(new EnemyTank(9, 6, 3, 10 )); 
+			this.tank.add(new EnemyTank(2, 2, 3, 10 )); 
+			this.tank.add(new EnemyTank(6, 2, 3, 10 )); 
+			
+			for ( int i = 0; i < tank.size(); i++) {
+				this.createGameBody(tank.get(i), tank.get(i).getX(), tank.get(i).getY() );
+			}
 			this.createGameBody(new SteelWall(1, 1), 1, 1);
 			this.createGameBody(new SteelWall(3, 1), 3, 1);
 			this.createGameBody(new SteelWall(5, 1), 5, 1);
@@ -321,22 +321,17 @@ public class GameEngine {
 
 		else if(level == 5){
 			this.cleanMap();
-			this.setEnemyTanksLeft(6);
-			playerTank = new PlayerTank(4,7);
+			this.tank.clear();
+			this.playerTank.setX(4);
+			this.playerTank.setY(7);
 			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
 
-			EnemyTank enemyTank = new EnemyTank(0,0, 3, 10 );
-			this.createGameBody(enemyTank, enemyTank.getX(), enemyTank.getY() );
-			EnemyTank enemyTank2 = new EnemyTank(9,0, 3, 10 );//will be change to crazed 
-			this.createGameBody(enemyTank2, enemyTank2.getX(), enemyTank2.getY() );
-			EnemyTank enemyTank3 = new EnemyTank(0,9, 3, 10 ); //this will be changed to crazed
-			this.createGameBody(enemyTank3, enemyTank3.getX(), enemyTank3.getY() );
-			EnemyTank enemyTank4 = new EnemyTank(9,9, 3, 10 ); 					
-			this.createGameBody(enemyTank4, enemyTank4.getX(), enemyTank4.getY() );
-			EnemyTank enemyTank5 = new EnemyTank(2,2, 3, 10 ); //this will be changed to crazed
-			this.createGameBody(enemyTank5, enemyTank5.getX(), enemyTank5.getY() );
-			EnemyTank enemyTank6 = new EnemyTank(7,2, 3, 10 ); 	
-			this.createGameBody(enemyTank6, enemyTank6.getX(), enemyTank6.getY() );
+			this.tank.add(new EnemyTank(0,0, 3, 10 ));
+			this.tank.add(new EnemyTank(9,0, 3, 10 ));//will be change to crazed 
+			this.tank.add(new EnemyTank(0,9, 3, 10 )); //this will be changed to crazed
+			this.tank.add(new EnemyTank(9,9, 3, 10 )); 					
+			this.tank.add(new EnemyTank(2,2, 3, 10 )); //this will be changed to crazed
+			this.tank.add(new EnemyTank(7,2, 3, 10 )); 	
 
 			this.createGameBody(new SteelWall(1,1), 1, 1);
 			this.createGameBody(new SteelWall(8, 1), 8, 1);
@@ -562,38 +557,6 @@ public class GameEngine {
 				}
 				flag = true;
 			}
-			/*
-			}
-			if(flag) {
-				x = (-1) + (int) (Math.random() * 3);
-				if( x != 0){
-					y = 0;
-					direction = x;
-					// setting EnemyTank id for image arrangements
-					if( direction == 1){
-						t.setID(10);
-					}
-					else if(direction == -1){
-						t.setID(11);
-					}
-				}
-				flag = false;
-			}
-			else{
-				y = (-1) + (int) (Math.random() * 3);
-				if( y != 0){
-					x = 0;
-					direction = y;
-					// setting EnemyTank id for image arrangements
-					if( direction == 1){
-						t.setID(12);
-					}
-					else if(direction == -1){
-						t.setID(13);
-					}
-				}
-				flag = true;
-			}*/
 
 			if( t.getX() + x < 10 && t.getX() + x > -1 && t.getY() + y < 10 && t.getY() + y > -1) {
 				if (intMap[t.getX() + x][t.getY() + y] == -1) {
