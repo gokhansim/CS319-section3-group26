@@ -20,6 +20,7 @@ public class ScorePanel extends JPanel {
     private Font buttonFont;
     private Font hoverFont;
     JLabel scoreLabel;
+    JLabel lifeLabel;
 
     public ScorePanel(){
         this.setBackground(Color.BLACK);
@@ -50,7 +51,7 @@ public class ScorePanel extends JPanel {
         scoreLabel.setBackground(Color.BLACK);
         this.add(scoreLabel, BorderLayout.WEST);
 
-        JLabel lifeLabel = new JLabel("current lives:", JLabel.CENTER);
+        lifeLabel = new JLabel("remaining lives:", JLabel.CENTER);
         lifeLabel.setFont(this.customFont);
         lifeLabel.setOpaque(true);
         lifeLabel.setForeground(Color.RED);
@@ -82,5 +83,9 @@ public class ScorePanel extends JPanel {
 
     public void updateScore( int score){
         this.scoreLabel.setText("score: " + String.valueOf(score));
+    }
+
+    public void updateLives( int remainingLives){
+        this.lifeLabel.setText("remaining lives: " + String.valueOf(remainingLives));
     }
 }

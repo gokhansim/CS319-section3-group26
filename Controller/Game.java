@@ -210,7 +210,7 @@ public class Game {
 	}
 
 	public void updateView() {
-		this.frame.updateView( engine.getScore() );
+		this.frame.updateView( engine.getScore(), engine.getPlayerTank().getCurrentLives() );
 	}
 
 
