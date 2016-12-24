@@ -3,6 +3,7 @@ package Controller;
 import Model.EnemyTank;
 import Model.GameEngine;
 import View.MainFrame;
+import View.MainMenuPanel;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -41,7 +42,6 @@ public class Game {
 		this.war = new SoundManager("war.wav");
 		//this.start();
 		this.updateView();
-		System.out.println(frame.getSize());
 		gameLoop();
 	}
 	
@@ -65,7 +65,11 @@ public class Game {
 	public void pauseGame() {
 
 	}
-
+	
+	public boolean isGameOver() {
+		return engine.getIsGameOver();
+	}
+	
 	public void resumeGame() {
 
 	}
@@ -76,6 +80,8 @@ public class Game {
 	}
 	public void shootPlayer(int direction) {
 		engine.shootTank(direction, engine.getPlayerTank());
+		if (engine.getPlayerTank().isDoubleShot()) 
+			engine.shootTank(direction, engine.getPlayerTank());
 		/*
 		if( !(engine.getIsGameOver()) ) {
 			this.updateView();
@@ -156,7 +162,7 @@ public class Game {
 	public void gameLoop()
 	{
 	   long lastLoopTime = System.nanoTime();
-	   final int TARGET_FPS = 1;
+	   final int TARGET_FPS = 10;
 	   final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;   
 	   long lastFpsTime = 0;
 
@@ -192,10 +198,10 @@ public class Game {
 	      // us our final value to wait for
 	      // remember this is in ms, whereas our lastLoopTime etc. vars are in ns.
 	      try {
-	            Thread.sleep(50);
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
+	    	  Thread.sleep(10);
+	      } catch (Exception e) {
+	    	  e.printStackTrace();
+	      }
 	   }
 	}
 	
@@ -235,7 +241,22 @@ public class Game {
 			}
 		}
 		else {
-			this.changeGameCase(6, 1);
+			if (!(this.frame.getActivePanel() instanceof MainMenuPanel))
+				this.endGame();
+			else {
+				engine = new GameEngine();
+				settingsMngr = new SettingsManager(this);
+				intMap = engine.getIntMap();
+				this.startLevel(this.level);
+				//thr.start();
+				this.frame = MainFrame.getInstance(this);
+				this.frame.setVisible(true);
+				// this.InputMngr = new InputManager();
+				this.highScoreMngr = new HighScoreManager();
+				this.war = new SoundManager("war.wav");
+				//this.start();
+				this.updateView();
+			}
 		}
 		this.updateView();
 	}

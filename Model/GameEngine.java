@@ -452,6 +452,10 @@ public class GameEngine {
 	}
 
 
+	public void setGameOver(boolean isGameOver) {
+		this.isGameOver = isGameOver;
+	}
+
 	public void moveEnemy(EnemyTank t)  {
 		boolean flag = true;
 		int x = 0;
@@ -462,7 +466,7 @@ public class GameEngine {
 		//int direction = 0;
 		if( t.getHistToKill() > 0){
 			try {
-				Thread.sleep(150);
+				Thread.sleep(100);
 			} catch(InterruptedException e){
 				return;
 			}
