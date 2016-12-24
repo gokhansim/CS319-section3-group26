@@ -664,7 +664,7 @@ public class GameEngine {
 	}
 
 	public void checkBullet(Bullet b) {
-		if( b.getID() == 23){
+		if( b.getID() == 230 || b.getID() == 231){
 			if ( b.getX() - 1 >= 0) {
 				this.destroyGameBody(b);
 				b.move(-1, 0);
@@ -675,7 +675,7 @@ public class GameEngine {
 				removeBullet(b);
 			}
 		}
-		else if( b.getID() == 22){
+		else if( b.getID() == 220 || b.getID() == 221){
 			if ( b.getY() + 1 < 10) {
 				this.destroyGameBody(b);
 				b.move(0, 1);
@@ -686,7 +686,7 @@ public class GameEngine {
 				removeBullet(b);
 			}
 		}
-		else if( b.getID() == 21){
+		else if( b.getID() == 210 || b.getID() == 211){
 			if ( b.getX() +1 < 10) {
 				this.destroyGameBody(b);
 				b.move(1, 0);
@@ -697,7 +697,7 @@ public class GameEngine {
 				removeBullet(b);
 			}
 		}
-		else if( b.getID() == 20){
+		else if( b.getID() == 200 || b.getID() == 201){
 			if (b.getY() - 1 >= 0) {
 				this.destroyGameBody(b);
 				b.move(0, -1);

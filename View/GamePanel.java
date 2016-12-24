@@ -30,10 +30,14 @@ public class GamePanel extends JPanel{
 	private BufferedImage ironWall;
 	private BufferedImage steelWall;
 	private BufferedImage sacredObject;
-	private BufferedImage bulletU;
-	private BufferedImage bulletR;
-	private BufferedImage bulletD;
-	private BufferedImage bulletL;
+	private BufferedImage playerBulletU;
+	private BufferedImage playerBulletR;
+	private BufferedImage playerBulletD;
+	private BufferedImage playerBulletL;
+	private BufferedImage enemyBulletU;
+	private BufferedImage enemyBulletR;
+	private BufferedImage enemyBulletD;
+	private BufferedImage enemyBulletL;
 	private BufferedImage extraLife;
 	private BufferedImage ultimateProtection;
 	private BufferedImage shield;
@@ -98,10 +102,16 @@ public class GamePanel extends JPanel{
 			this.ironWall = ImageIO.read(new File("Resources/IronWall.png"));
 			this.steelWall = ImageIO.read(new File("Resources/SteelWall.png"));
 			this.sacredObject = ImageIO.read(new File("Resources/SacredObject.png"));
-			this.bulletU = ImageIO.read(new File("Resources/BulletU.png"));
-			this.bulletR = ImageIO.read(new File("Resources/BulletR.png"));
-			this.bulletD = ImageIO.read(new File("Resources/BulletD.png"));
-			this.bulletL = ImageIO.read(new File("Resources/BulletL.png"));
+			this.playerBulletU = ImageIO.read(new File("Resources/playerBulletU.png"));
+			this.playerBulletR = ImageIO.read(new File("Resources/playerBulletR.png"));
+			this.playerBulletD = ImageIO.read(new File("Resources/playerBulletD.png"));
+			this.playerBulletL = ImageIO.read(new File("Resources/playerBulletL.png"));
+
+			this.enemyBulletU = ImageIO.read(new File("Resources/EnemyBulletU.png"));
+			this.enemyBulletR = ImageIO.read(new File("Resources/EnemyBulletR.png"));
+			this.enemyBulletD = ImageIO.read(new File("Resources/EnemyBulletD.png"));
+			this.enemyBulletL = ImageIO.read(new File("Resources/EnemyBulletL.png"));
+
 			this.shield = ImageIO.read(new File("Resources/Shield.png"));
 			this.extraLife = ImageIO.read(new File("Resources/ExtraLife.png"));
 			this.ultimateProtection = ImageIO.read(new File("Resources/UltimateProtection.png"));
@@ -184,17 +194,31 @@ public class GamePanel extends JPanel{
 						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);
 						g2d.drawImage(this.enemyTankU, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
-					else if( intMap[i][j] == 20){
-						g2d.drawImage(this.bulletU, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
+
+					else if( intMap[i][j] == 200){
+						g2d.drawImage(this.enemyBulletU, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
-					else if( intMap[i][j] == 21){
-						g2d.drawImage(this.bulletR, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
+					else if( intMap[i][j] == 210){
+						g2d.drawImage(this.enemyBulletR, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
-					else if( intMap[i][j] == 22){
-						g2d.drawImage(this.bulletD, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
+					else if( intMap[i][j] == 220){
+						g2d.drawImage(this.enemyBulletD, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
-					else if( intMap[i][j] == 23){
-						g2d.drawImage(this.bulletL, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
+					else if( intMap[i][j] == 230){
+						g2d.drawImage(this.enemyBulletL, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
+					}
+
+					else if( intMap[i][j] == 201){
+						g2d.drawImage(this.playerBulletU, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
+					}
+					else if( intMap[i][j] == 211){
+						g2d.drawImage(this.playerBulletR, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
+					}
+					else if( intMap[i][j] == 221){
+						g2d.drawImage(this.playerBulletD, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
+					}
+					else if( intMap[i][j] == 231){
+						g2d.drawImage(this.playerBulletL, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
 					else if( intMap[i][j] == 3){
 						//System.out.println( "at " + "( " + i + ", " + j + ")" + "  ->  " + intMap[i][j]);

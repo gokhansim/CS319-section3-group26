@@ -12,17 +12,29 @@ public class Bullet extends GameBody implements Destroyable{
 		this.moveSpeed = moveSpeed;
 		this.direction = direction;
 		this.shooter = shooter;  // if shooter = 1 -> bullet from the playerTank.
-		if( direction == 0){
-			this.id = 20;
+		if( direction == 0 && shooter == 0){
+			this.id = 200;
 		}
-		else if( direction == 1){
-			this.id = 21;
+		else if( direction == 0 && shooter == 1){
+			this.id = 201;
 		}
-		else if( direction == 2){
-			this.id = 22;
+		else if( direction == 1 && shooter == 0){
+			this.id = 210;
 		}
-		else if( direction == 3){
-			this.id = 23;
+		else if( direction == 1 && shooter == 1){
+			this.id = 211;
+		}
+		else if( direction == 2 && shooter == 0){
+			this.id = 220;
+		}
+		else if( direction == 2 && shooter == 1){
+			this.id = 221;
+		}
+		else if( direction == 3 && shooter == 0){
+			this.id = 230;
+		}
+		else if( direction == 3 && shooter == 1){
+			this.id = 231;
 		}
 	}
 
