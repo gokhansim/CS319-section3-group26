@@ -81,16 +81,8 @@ public class Game {
 	}
 	public void shootPlayer(int direction) {
 		engine.shootTank(direction, engine.getPlayerTank());
-		if (engine.getPlayerTank().isDoubleShot())
-			engine.shootTank(direction, engine.getPlayerTank());
-		/*
-		if( !(engine.getIsGameOver()) ) {
-			this.updateView();
-		}
-		else{
-			this.endGame();
-		}
-		*/
+		if (engine.getPlayerTank().isDoubleShot() == true)
+			engine.shootTank(direction+1, engine.getPlayerTank());
 
 		if( !(engine.getIsGameOver()) && ( engine.getTank().size() != 0) ) {
 			this.updateView();
@@ -239,7 +231,7 @@ public class Game {
 
 						// the following is to be used for powerup spawning, randomly.
 						int a = (int) (Math.random() * 101);
-						if ( a % 50 == 0 ) {
+						if ( a % 5 == 0 ) {
 							engine.spawnPowerup();
 						}
 
