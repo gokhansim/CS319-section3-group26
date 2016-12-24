@@ -104,7 +104,8 @@ public class MainFrame extends JFrame{
 		this.game.shootPlayer(direction);
 	}
 
-	public void updateView(int score) {
+	public void updateView(int score, int lives) {
+	    this.scorePanel.updateLives(lives);
 	    this.scorePanel.updateScore(score);
 		this.gamePanel.draw( game.getIntMap() );
 	}
