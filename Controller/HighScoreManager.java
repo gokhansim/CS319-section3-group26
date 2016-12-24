@@ -36,7 +36,7 @@ public class HighScoreManager {
 		if(added){
 	
 			try{
-				FileOutputStream fos = new FileOutputStream(new File("C:/Users/HP/Downloads/test.txt"));
+				FileOutputStream fos = new FileOutputStream(new File("Resources/highScores.txt"));
 				ObjectOutputStream oos = new ObjectOutputStream(fos);
 				oos.writeObject( scoreList );
 				oos.close();
@@ -56,7 +56,7 @@ public class HighScoreManager {
 	//for updating scoreList each time
 	private void readHighScore(){
 		try{
-			FileInputStream fis = new FileInputStream(new File("C:/Users/HP/Downloads/test.txt"));
+			FileInputStream fis = new FileInputStream(new File("Resources/highScores.txt"));
 			ObjectInputStream ois = new ObjectInputStream(fis);
 		
 			try {
