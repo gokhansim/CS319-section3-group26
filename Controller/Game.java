@@ -130,6 +130,7 @@ public class Game {
 				this.frame.updateCaseView(caseNo);
 				break;
 			}
+			//Exit Panel
 			case 5: {
 				this.frame.updateCaseView(caseNo);
 				break;
@@ -138,6 +139,8 @@ public class Game {
 				this.frame.updateCaseView(caseNo);
 				break;
 			}
+			//HighScore Panle
+
 			case 7:{
 				this.frame.updateCaseView(caseNo);
 			}
