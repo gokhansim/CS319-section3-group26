@@ -153,10 +153,6 @@ public class Game {
 		this.frame.updateView( engine.getScore(), engine.getPlayerTank().getCurrentLives() );
 	}
 
-
-	public HighScoreManager getHighScoreManager(){
-		return highScoreMngr;
-	}
 	public void gameLoop()
 	{
 	   long lastLoopTime = System.nanoTime();
