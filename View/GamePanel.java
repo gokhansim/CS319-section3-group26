@@ -240,6 +240,7 @@ public class GamePanel extends JPanel{
 					//-------------------------------------------------------------------------------------------------
 					//BULLETS
 					//-------------------------------------------------------------------------------------------------
+
 					else if( intMap[i][j] == 200){
 						g2d.drawImage(this.enemyBulletU, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}

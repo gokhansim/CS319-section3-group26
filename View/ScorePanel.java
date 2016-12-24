@@ -2,10 +2,12 @@ package View;
 
 import javafx.scene.layout.BorderRepeat;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -58,7 +60,7 @@ public class ScorePanel extends JPanel {
         lifeLabel.setBackground(Color.BLACK);
         this.add(lifeLabel, BorderLayout.CENTER);
 
-        JButton backToMain = new JButton("Back");
+        JButton backToMain = new JButton("pause");
         this.add(backToMain, BorderLayout.EAST);
         backToMain.setFont(this.customFont);
         // backToMain.addActionListener(menuListener);
@@ -76,10 +78,11 @@ public class ScorePanel extends JPanel {
         });
         backToMain.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
-                MainFrame.getInstance().changeCase(0, 1);
+                MainFrame.getInstance().changeCase(8, 1);
             }
         } );
+
+
     }
 
     public void updateScore( int score){

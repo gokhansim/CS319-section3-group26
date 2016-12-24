@@ -143,9 +143,10 @@ public class MainFrame extends JFrame{
 				break;
 			}
 			case 7:{
-				this.setActivePanel(this.highScorePanel);
-				break;
-			}
+                this.setActivePanel(this.highScorePanel);
+                break;
+            }
+
 		}
 		if( !isClosed) {
 			this.getContentPane().add(activePanel);

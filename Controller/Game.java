@@ -45,7 +45,7 @@ public class Game {
 		this.updateView();
 		gameLoop();
 	}
-	
+
 	public int[][] getIntMap() { return intMap; }
 
 	public void startLevel(int level) {
@@ -66,11 +66,11 @@ public class Game {
 	public void pauseGame() {
 		isGamePaused = true;
 	}
-	
+
 	public void resumeGame() {
 		isGamePaused = false;
 	}
-	
+
 	public boolean isGameOver() {
 		return engine.getIsGameOver();
 	}
@@ -81,7 +81,7 @@ public class Game {
 	}
 	public void shootPlayer(int direction) {
 		engine.shootTank(direction, engine.getPlayerTank());
-		if (engine.getPlayerTank().isDoubleShot()) 
+		if (engine.getPlayerTank().isDoubleShot())
 			engine.shootTank(direction, engine.getPlayerTank());
 		/*
 		if( !(engine.getIsGameOver()) ) {
@@ -103,7 +103,7 @@ public class Game {
 		}
 
 	}
-	
+
 	public void changeGameCase(int caseNo, int level){
 		switch (caseNo) {
 			case 0: { // show main menu
@@ -152,6 +152,19 @@ public class Game {
 			case 7:{
 				this.frame.updateCaseView(caseNo);
 			}
+
+			// PAUSECASE
+			case 8:{
+				if( level == 1) {
+					this.pauseGame();
+					this.war.stop();
+				}
+				else{
+					this.resumeGame();
+				}
+			}
+
+
 		}
 
 	}
@@ -164,7 +177,7 @@ public class Game {
 	{
 	   long lastLoopTime = System.nanoTime();
 	   final int TARGET_FPS = 10;
-	   final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;   
+	   final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;
 	   long lastFpsTime = 0;
 
 	   // keep looping round til the game ends
@@ -180,22 +193,22 @@ public class Game {
 
 	      // update the frame counter
 	      lastFpsTime += updateLength;
-	      
-	      
+
+
 	      // update our FPS counter if a second has passed since
 	      // we last recorded
 	      if (lastFpsTime >= 1000000000)
 	      {
 	         lastFpsTime = 0;
 	      }
-	      
+
 	      // update the game logic
 	      this.doLoop();
-	      
-	      
+
+
 	      // we want each frame to take 10 milliseconds, to do this
 	      // we've recorded when we started the frame. We add 10 milliseconds
-	      // to this and then factor in the current time to give 
+	      // to this and then factor in the current time to give
 	      // us our final value to wait for
 	      // remember this is in ms, whereas our lastLoopTime etc. vars are in ns.
 	      try {
@@ -210,22 +223,25 @@ public class Game {
 
 	public void doLoop () {
 		if (!engine.getIsGameOver()) {
+
 			if (!this.isGamePaused) {
 				if (engine.getTank().size()> 0) {
 					if ( engine.getTank().size() != 0) {
 						for ( int i = 0; i < engine.getTank().size(); i++) {
 							engine.moveEnemy(engine.getTank().get(i));
 							int x = (int) (Math.random() * 100);
-							if ( x % 10 == 0) { 
+							if ( x % 10 == 0) {
 								engine.shootTank(engine.getTank().get(i).getID() % 4, engine.getTank().get(i));
 							}
+
+
 						}
+
 						// the following is to be used for powerup spawning, randomly.
 						int a = (int) (Math.random() * 101);
 						if ( a % 50 == 0 ) {
 							engine.spawnPowerup();
 						}
-
 
 						for ( int i = 0; i < engine.getMapSize(); i++) {
 							for ( int j = 0; j < engine.getMapSize(); j++) {
