@@ -18,10 +18,14 @@ public class SoundManager {
 	public String getName() {
 		return this.name;
 	}
-
+	/*
 	public void setIsStopped(boolean isStopped){
 		this.isStopped = isStopped;
 	}
+	public boolean getIsStopped(){
+		return this.isStopped;
+	}
+	*/
 
 	public void playMusic(){
 		sThread.run();
@@ -31,7 +35,7 @@ public class SoundManager {
 	}
 
 	public class SoundThread implements Runnable{
-		boolean isStopped;
+		boolean isStopped = true;
 		Clip clip;
 		InputStream in;
 		AudioInputStream inputStream;
@@ -40,13 +44,13 @@ public class SoundManager {
 			this.isStopped = isStopped;
 		}
 
-
 		public void run() {
 			try {
 				clip = AudioSystem.getClip();
 				in = SoundManager.class.getClassLoader().getResourceAsStream("Resources/war.wav");
 				inputStream = AudioSystem.getAudioInputStream(in);
 				clip.open(inputStream);
+				this.setStopped(false);
 				clip.loop(Clip.LOOP_CONTINUOUSLY);
 			} catch (Exception e) {
 				System.err.println(e.getMessage());
@@ -54,7 +58,9 @@ public class SoundManager {
 		}
 
 		public void stop(){
+			if( !isStopped ) {
 				clip.stop();
+			}
 		}
 	}
 

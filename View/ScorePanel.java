@@ -27,7 +27,7 @@ public class ScorePanel extends JPanel {
     public ScorePanel(){
         this.setBackground(Color.BLACK);
         this.setPreferredSize(new Dimension(750, 50));
-        this.setLayout(new BorderLayout());
+        this.setLayout(new GridLayout(1,4));
 
         this.setFocusable(true);
         this.requestFocusInWindow(true);
@@ -51,17 +51,17 @@ public class ScorePanel extends JPanel {
         scoreLabel.setOpaque(true);
         scoreLabel.setForeground(Color.RED);
         scoreLabel.setBackground(Color.BLACK);
-        this.add(scoreLabel, BorderLayout.WEST);
+        this.add(scoreLabel);
 
-        lifeLabel = new JLabel("remaining lives:", JLabel.CENTER);
+        lifeLabel = new JLabel("lives:", JLabel.CENTER);
         lifeLabel.setFont(this.customFont);
         lifeLabel.setOpaque(true);
         lifeLabel.setForeground(Color.RED);
         lifeLabel.setBackground(Color.BLACK);
-        this.add(lifeLabel, BorderLayout.CENTER);
+        this.add(lifeLabel);
 
         JButton backToMain = new JButton("pause");
-        this.add(backToMain, BorderLayout.EAST);
+        this.add(backToMain);
         backToMain.setFont(this.customFont);
         // backToMain.addActionListener(menuListener);
         backToMain.setOpaque(false);
@@ -82,6 +82,50 @@ public class ScorePanel extends JPanel {
             }
         } );
 
+        JButton resumeButton = new JButton("resume");
+        this.add(resumeButton);
+        resumeButton.setFont(this.customFont);
+        // backToMain.addActionListener(menuListener);
+        resumeButton.setOpaque(false);
+        resumeButton.setContentAreaFilled(false);
+        resumeButton.setBorderPainted(false);
+        resumeButton.setForeground(Color.RED);
+        resumeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt){
+                resumeButton.setFont(hoverFont);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                resumeButton.setFont(buttonFont);
+            }
+        });
+        resumeButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                MainFrame.getInstance().changeCase(8, 2);
+            }
+        } );
+
+        JButton backButton = new JButton("back");
+        this.add(backButton);
+        backButton.setFont(this.customFont);
+        // backToMain.addActionListener(menuListener);
+        backButton.setOpaque(false);
+        backButton.setContentAreaFilled(false);
+        backButton.setBorderPainted(false);
+        backButton.setForeground(Color.RED);
+        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt){
+                backButton.setFont(hoverFont);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                backButton.setFont(buttonFont);
+            }
+        });
+        backButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                MainFrame.getInstance().changeCase(0, 2);
+            }
+        } );
+
 
     }
 
@@ -90,6 +134,6 @@ public class ScorePanel extends JPanel {
     }
 
     public void updateLives( int remainingLives){
-        this.lifeLabel.setText("remaining lives: " + String.valueOf(remainingLives));
+        this.lifeLabel.setText("lives: " + String.valueOf(remainingLives));
     }
 }

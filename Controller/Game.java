@@ -153,6 +153,8 @@ public class Game {
 				}
 				else{
 					this.resumeGame();
+					this.war.playMusic();
+					this.frame.getGamePanel().requestFocusInWindow();
 				}
 			}
 
