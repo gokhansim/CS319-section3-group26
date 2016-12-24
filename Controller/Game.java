@@ -210,15 +210,6 @@ public class Game {
 
 	public void doLoop () {
 		if (!engine.getIsGameOver()) {
-<<<<<<< HEAD
-			if (engine.getTank().size()> 0) {
-				if ( engine.getTank().size() != 0) {
-					for ( int i = 0; i < engine.getTank().size(); i++) {
-						engine.moveEnemy(engine.getTank().get(i));
-						int x = (int) (Math.random() * 100);
-						if ( x % 10 == 0) {
-							engine.shootTank(engine.getTank().get(i).getID() % 4, engine.getTank().get(i));
-=======
 			if (!this.isGamePaused) {
 				if (engine.getTank().size()> 0) {
 					if ( engine.getTank().size() != 0) {
@@ -228,22 +219,13 @@ public class Game {
 							if ( x % 10 == 0) { 
 								engine.shootTank(engine.getTank().get(i).getID() % 4, engine.getTank().get(i));
 							}
->>>>>>> 797f3f09cf105eb3624648eef514668982b47ea4
 						}
-
-<<<<<<< HEAD
-					// the following is to be used for powerup spawning, randomly.
-					int a = (int) (Math.random() * 101);
-					if ( a % 50 == 0 ) {
-						engine.spawnPowerup();
-					}
-=======
-						// the following is to be used for powerup spawning, randomly. 
+						// the following is to be used for powerup spawning, randomly.
 						int a = (int) (Math.random() * 101);
 						if ( a % 50 == 0 ) {
 							engine.spawnPowerup();
 						}
->>>>>>> 797f3f09cf105eb3624648eef514668982b47ea4
+
 
 						for ( int i = 0; i < engine.getMapSize(); i++) {
 							for ( int j = 0; j < engine.getMapSize(); j++) {
@@ -269,16 +251,16 @@ public class Game {
 			else {
 				engine = new GameEngine();
 				settingsMngr = new SettingsManager(this);
-				intMap = engine.getIntMap();
-				this.startLevel(this.level);
-				//thr.start();
-				this.frame = MainFrame.getInstance(this);
-				this.frame.setVisible(true);
-				// this.InputMngr = new InputManager();
-				this.highScoreMngr = new HighScoreManager();
-				this.war = new SoundManager("war.wav");
-				//this.start();
-				this.updateView();
+					intMap = engine.getIntMap();
+					this.startLevel(this.level);
+					//thr.start();
+					this.frame = MainFrame.getInstance(this);
+					this.frame.setVisible(true);
+					// this.InputMngr = new InputManager();
+					this.highScoreMngr = new HighScoreManager();
+					this.war = new SoundManager("war.wav");
+					//this.start();
+					this.updateView();
 			}
 		}
 		this.updateView();
