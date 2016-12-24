@@ -24,7 +24,6 @@ public class HelpPanel extends JPanel {
     private MenuListener menuListener;
     private BufferedImage keybordImage;
     private BufferedImage spaceButton;
-    private BufferedImage pauseButton;
     
     public HelpPanel(){
     	this.setBackground(Color.BLACK);
@@ -51,7 +50,6 @@ public class HelpPanel extends JPanel {
         try {
             this.keybordImage = ImageIO.read(new File("Resources/ArrowKeys.png"));
             this.spaceButton = ImageIO.read(new File("Resources/spaceButton.png"));
-            this.pauseButton = ImageIO.read(new File("Resources/pauseButton.png"));
         }
         catch(IOException ex){
             ex.printStackTrace();
@@ -75,15 +73,6 @@ public class HelpPanel extends JPanel {
         moveLabel.setSize(200,30);
         moveLabel.setLocation(100,450);
         this.add(moveLabel);
-        
-        JLabel pauseLabel = new JLabel("Pause", JLabel.CENTER);
-        pauseLabel.setOpaque(true);
-        pauseLabel.setFont(this.buttonFont);
-        pauseLabel.setForeground(Color.RED);
-        pauseLabel.setBackground(Color.BLACK);
-        pauseLabel.setSize(200,30);
-        pauseLabel.setLocation(450,350);
-        this.add(pauseLabel);
         
         JLabel shootLabel = new JLabel("Attack", JLabel.CENTER);
         shootLabel.setOpaque(true);
@@ -123,7 +112,6 @@ public class HelpPanel extends JPanel {
            int yCoordinate = 0;
         		   
            g2d.drawImage(this.keybordImage, (100  ), (220 ), 200, 200, Color.black, null);
-           g2d.drawImage(this.pauseButton, (500  ), (220 ), 100, 100, Color.black, null);
            g2d.drawImage(this.spaceButton, (100  ), (510 ), 400, 100, Color.black, null);
 }
     
