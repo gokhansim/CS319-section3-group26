@@ -47,62 +47,6 @@ public class Game {
 		System.out.println(frame.getSize());
 		gameLoop();
 	}
-
-	// THREAD TRIALS
-	/*
-	public synchronized void start(){
-		if( running){
-			return;
-		}
-
-		running = true;
-		thread = new Thread(this);
-		thread.start();
-	}
-
-	public synchronized void stop(){
-		if( !running){
-			return;
-		}
-		try {
-			thread.join();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-	public void run(){
-		long lastTime = System.nanoTime();
-		final double amountOfTicks = 60.0;
-		double ns = 1000000000 / amountOfTicks;
-		double delta = 0;
-		long timer = System.currentTimeMillis();
-
-		while(running){
-			long now = System.nanoTime();
-			delta += (now - lastTime) / ns;
-			lastTime = now;
-			if(delta >= 1){
-				this.tick();
-				delta--;
-			}
-			this.render();
-
-			if( System.currentTimeMillis() - timer > 1000){
-				timer += 1000;
-			}
-		}
-		this.stop();
-	}
-
-	public void tick(){
-		this.moveEnemyTank();
-		this.shootPlayer();
-		//this.movePlayer();
-	}
-	public void render(){
-		this.updateView();
-	}
-	*/
 	
 	public int[][] getIntMap() { return intMap; }
 
@@ -136,11 +80,6 @@ public class Game {
 		engine.movePlayer(x, y);
 		this.updateView();
 	}
-
-	public void moveEnemyTank() {
-		
-	}
-
 	public void shootPlayer(int direction) {
 		engine.shootTank(direction, engine.getPlayerTank());
 		/*
@@ -199,6 +138,10 @@ public class Game {
 				break;
 			}
 			case 5: {
+				this.frame.updateCaseView(caseNo);
+				break;
+			}
+			case 6: {
 				this.frame.updateCaseView(caseNo);
 				break;
 			}
@@ -269,7 +212,7 @@ public class Game {
 				for ( int i = 0; i < engine.getTank().size(); i++) {
 					engine.moveEnemy(engine.getTank().get(i));
 					int x = (int) (Math.random() * 100);
-					if ( x % 4 == 0) { 
+					if ( x % 10 == 0) { 
 						engine.shootTank(engine.getTank().get(i).getID() % 4, engine.getTank().get(i));
 					}
 				}
@@ -291,6 +234,9 @@ public class Game {
 				}
 				engine.moveBullet();
 			}
+		}
+		else {
+			this.changeGameCase(6, 1);
 		}
 		this.updateView();
 	}

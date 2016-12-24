@@ -390,16 +390,18 @@ public class GameEngine {
 	}
 
 	public void movePlayer(int x, int y){
-		if( intMap[playerTank.getX()+x][playerTank.getY()+y] == -1 ){
-			this.destroyGameBody(playerTank);
-			playerTank.move(x,y);
-			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
-		}
-		else if (map[playerTank.getX()+x][playerTank.getY()+y] instanceof PowerUp) {
-			this.colMngr.checkCollision(this.playerTank, map[playerTank.getX()+x][playerTank.getY()+y], this);
-			this.destroyGameBody(playerTank);
-			playerTank.move(x,y);
-			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
+		if (playerTank.getX() + x < 10 && playerTank.getX() + x > -1 && playerTank.getY() + y < 10 && playerTank.getY() + y > -1) {
+			if( intMap[playerTank.getX()+x][playerTank.getY()+y] == -1 ){
+				this.destroyGameBody(playerTank);
+				playerTank.move(x,y);
+				this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
+			}
+			else if (map[playerTank.getX()+x][playerTank.getY()+y] instanceof PowerUp) {
+				this.colMngr.checkCollision(this.playerTank, map[playerTank.getX()+x][playerTank.getY()+y], this);
+				this.destroyGameBody(playerTank);
+				playerTank.move(x,y);
+				this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
+			}
 		}
 	}
 
