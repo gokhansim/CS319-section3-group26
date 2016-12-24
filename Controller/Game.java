@@ -3,6 +3,7 @@ package Controller;
 import Model.EnemyTank;
 import Model.GameEngine;
 import View.MainFrame;
+import View.MainMenuPanel;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -15,19 +16,19 @@ public class Game {
 	private int level;
 	private int[][] intMap;
 	private HighScoreManager highScoreMngr;
-	private InputManager inputMngr;
 	private SoundManager soundMngr;
 	private SettingsManager settingsMngr;
 	private MainFrame frame;
 	private GameEngine engine;
 	private int volume;
 	private SoundManager war;
+	private boolean isGamePaused;
 
 	/*
 	private boolean running = false;
 	private Thread thread;
 	*/
-	public Game(int level){
+	public Game(int level) {
 		engine = new GameEngine();
 		settingsMngr = new SettingsManager(this);
 		intMap = engine.getIntMap();
@@ -40,8 +41,8 @@ public class Game {
 		this.highScoreMngr = new HighScoreManager();
 		this.war = new SoundManager("war.wav");
 		//this.start();
+		isGamePaused = false;
 		this.updateView();
-		System.out.println(frame.getSize());
 		gameLoop();
 	}
 	
@@ -63,11 +64,15 @@ public class Game {
 	}
 
 	public void pauseGame() {
-
+		isGamePaused = true;
 	}
-
+	
 	public void resumeGame() {
-
+		isGamePaused = false;
+	}
+	
+	public boolean isGameOver() {
+		return engine.getIsGameOver();
 	}
 
 	public void movePlayer(int x, int y) {
@@ -76,6 +81,8 @@ public class Game {
 	}
 	public void shootPlayer(int direction) {
 		engine.shootTank(direction, engine.getPlayerTank());
+		if (engine.getPlayerTank().isDoubleShot()) 
+			engine.shootTank(direction, engine.getPlayerTank());
 		/*
 		if( !(engine.getIsGameOver()) ) {
 			this.updateView();
@@ -96,10 +103,7 @@ public class Game {
 		}
 
 	}
-
-	public void isLivesZero() {
-	}
-
+	
 	public void changeGameCase(int caseNo, int level){
 		switch (caseNo) {
 			case 0: { // show main menu
@@ -159,7 +163,7 @@ public class Game {
 	public void gameLoop()
 	{
 	   long lastLoopTime = System.nanoTime();
-	   final int TARGET_FPS = 1;
+	   final int TARGET_FPS = 10;
 	   final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;   
 	   long lastFpsTime = 0;
 
@@ -195,10 +199,10 @@ public class Game {
 	      // us our final value to wait for
 	      // remember this is in ms, whereas our lastLoopTime etc. vars are in ns.
 	      try {
-	            Thread.sleep(50);
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
+	    	  Thread.sleep(10);
+	      } catch (Exception e) {
+	    	  e.printStackTrace();
+	      }
 	   }
 	}
 
@@ -206,6 +210,7 @@ public class Game {
 
 	public void doLoop () {
 		if (!engine.getIsGameOver()) {
+<<<<<<< HEAD
 			if (engine.getTank().size()> 0) {
 				if ( engine.getTank().size() != 0) {
 					for ( int i = 0; i < engine.getTank().size(); i++) {
@@ -213,34 +218,68 @@ public class Game {
 						int x = (int) (Math.random() * 100);
 						if ( x % 10 == 0) {
 							engine.shootTank(engine.getTank().get(i).getID() % 4, engine.getTank().get(i));
+=======
+			if (!this.isGamePaused) {
+				if (engine.getTank().size()> 0) {
+					if ( engine.getTank().size() != 0) {
+						for ( int i = 0; i < engine.getTank().size(); i++) {
+							engine.moveEnemy(engine.getTank().get(i));
+							int x = (int) (Math.random() * 100);
+							if ( x % 10 == 0) { 
+								engine.shootTank(engine.getTank().get(i).getID() % 4, engine.getTank().get(i));
+							}
+>>>>>>> 797f3f09cf105eb3624648eef514668982b47ea4
 						}
-					}
 
+<<<<<<< HEAD
 					// the following is to be used for powerup spawning, randomly.
 					int a = (int) (Math.random() * 101);
 					if ( a % 50 == 0 ) {
 						engine.spawnPowerup();
 					}
+=======
+						// the following is to be used for powerup spawning, randomly. 
+						int a = (int) (Math.random() * 101);
+						if ( a % 50 == 0 ) {
+							engine.spawnPowerup();
+						}
+>>>>>>> 797f3f09cf105eb3624648eef514668982b47ea4
 
-					for ( int i = 0; i < engine.getMapSize(); i++) {
-						for ( int j = 0; j < engine.getMapSize(); j++) {
-							if (engine.getMapItem(i, j) instanceof EnemyTank) {
-								if (!engine.getTank().contains(engine.getMapItem(i, j))) {
-									engine.destroyGameBody(engine.getMapItem(i,j));
+						for ( int i = 0; i < engine.getMapSize(); i++) {
+							for ( int j = 0; j < engine.getMapSize(); j++) {
+								if (engine.getMapItem(i, j) instanceof EnemyTank) {
+									if (!engine.getTank().contains(engine.getMapItem(i, j))) {
+										engine.destroyGameBody(engine.getMapItem(i,j));
+									}
 								}
 							}
 						}
+						engine.moveBullet();
 					}
-					engine.moveBullet();
 				}
-			}
-			else {
-				this.level++;
-				this.startLevel(level);
+				else {
+					this.level++;
+					this.startLevel(level);
+				}
 			}
 		}
 		else {
-			this.changeGameCase(6, 1);
+			if (!(this.frame.getActivePanel() instanceof MainMenuPanel))
+				this.endGame();
+			else {
+				engine = new GameEngine();
+				settingsMngr = new SettingsManager(this);
+				intMap = engine.getIntMap();
+				this.startLevel(this.level);
+				//thr.start();
+				this.frame = MainFrame.getInstance(this);
+				this.frame.setVisible(true);
+				// this.InputMngr = new InputManager();
+				this.highScoreMngr = new HighScoreManager();
+				this.war = new SoundManager("war.wav");
+				//this.start();
+				this.updateView();
+			}
 		}
 		this.updateView();
 	}

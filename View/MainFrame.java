@@ -91,6 +91,7 @@ public class MainFrame extends JFrame{
 	public JPanel getScorePanel() { return scorePanel; }
 
 	public void setActivePanel(JPanel activePanel){ this.activePanel = activePanel; }
+	public JPanel getActivePanel() { return this.activePanel; }
 
 	public void startGame() {
 		this.gamePanel.startGame();
