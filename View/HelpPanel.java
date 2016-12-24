@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class HelpPanel extends JPanel {
@@ -21,6 +22,9 @@ public class HelpPanel extends JPanel {
     private Font buttonFont;
     private Font hoverFont;
     private MenuListener menuListener;
+    private BufferedImage keybordImage;
+    private BufferedImage spaceButton;
+    private BufferedImage pauseButton;
     
     public HelpPanel(){
     	this.setBackground(Color.BLACK);
@@ -44,6 +48,15 @@ public class HelpPanel extends JPanel {
             this.buttonFont = new Font("Century", 1, 20);
         }
         
+        try {
+            this.keybordImage = ImageIO.read(new File("Resources/ArrowKeys.png"));
+            this.spaceButton = ImageIO.read(new File("Resources/spaceButton.png"));
+            this.pauseButton = ImageIO.read(new File("Resources/pauseButton.png"));
+        }
+        catch(IOException ex){
+            ex.printStackTrace();
+        }
+        
         //NameLabel : HELP
         JLabel nameLabel = new JLabel("HELP", JLabel.CENTER);
         nameLabel.setOpaque(true);
@@ -54,12 +67,39 @@ public class HelpPanel extends JPanel {
         nameLabel.setLocation(180,30);
         this.add(nameLabel);
         
+        JLabel moveLabel = new JLabel("Movement", JLabel.CENTER);
+        moveLabel.setOpaque(true);
+        moveLabel.setFont(this.buttonFont);
+        moveLabel.setForeground(Color.RED);
+        moveLabel.setBackground(Color.BLACK);
+        moveLabel.setSize(200,30);
+        moveLabel.setLocation(100,450);
+        this.add(moveLabel);
+        
+        JLabel pauseLabel = new JLabel("Pause", JLabel.CENTER);
+        pauseLabel.setOpaque(true);
+        pauseLabel.setFont(this.buttonFont);
+        pauseLabel.setForeground(Color.RED);
+        pauseLabel.setBackground(Color.BLACK);
+        pauseLabel.setSize(200,30);
+        pauseLabel.setLocation(450,350);
+        this.add(pauseLabel);
+        
+        JLabel shootLabel = new JLabel("Attack", JLabel.CENTER);
+        shootLabel.setOpaque(true);
+        shootLabel.setFont(this.buttonFont);
+        shootLabel.setForeground(Color.RED);
+        shootLabel.setBackground(Color.BLACK);
+        shootLabel.setSize(200,30);
+        shootLabel.setLocation(75,650);
+        this.add(shootLabel);
+        
         //Back to main menu button
         JButton backToMain = new JButton("Back");
         backToMain.setFont(this.buttonFont);
-        backToMain.setSize( 250, 200 );
+        backToMain.setSize( 200, 200 );
         this.add(backToMain);
-        backToMain.setLocation(45,610);
+        backToMain.setLocation(25,650);
         backToMain.setOpaque(false);
         backToMain.setContentAreaFilled(false);
         backToMain.setBorderPainted(false);
@@ -75,6 +115,17 @@ public class HelpPanel extends JPanel {
         });
     }
     
+    public void paintComponent(Graphics g){
+    	   super.paintComponent(g);
+
+           Graphics2D g2d = (Graphics2D) g.create();
+           int xCoordinate = 0;
+           int yCoordinate = 0;
+        		   
+           g2d.drawImage(this.keybordImage, (100  ), (220 ), 200, 200, Color.black, null);
+           g2d.drawImage(this.pauseButton, (500  ), (220 ), 100, 100, Color.black, null);
+           g2d.drawImage(this.spaceButton, (100  ), (510 ), 400, 100, Color.black, null);
+}
     
     private class MenuListener implements ActionListener{
     	

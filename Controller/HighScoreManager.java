@@ -6,11 +6,10 @@ import java.util.*;
 public class HighScoreManager {
 
 	private ArrayList<Integer> scoreList;
-	private File file;
 	
 	public HighScoreManager(){
 		scoreList = new ArrayList<Integer>();
-		file = new File("C:/Users/HP/Downloads/test.txt"); //must be changed
+		this.readHighScore;
 	}
 	
 	//takes the score when the game ends and adds it to the high scores if it is in the top 5
@@ -37,7 +36,7 @@ public class HighScoreManager {
 		if(added){
 	
 			try{
-				FileOutputStream fos = new FileOutputStream(file);
+				FileOutputStream fos = new FileOutputStream(new File("C:/Users/HP/Downloads/test.txt"));
 				ObjectOutputStream oos = new ObjectOutputStream(fos);
 				oos.writeObject( scoreList );
 				oos.close();
@@ -57,7 +56,7 @@ public class HighScoreManager {
 	//for updating scoreList each time
 	private void readHighScore(){
 		try{
-			FileInputStream fis = new FileInputStream(file);
+			FileInputStream fis = new FileInputStream(new File("C:/Users/HP/Downloads/test.txt"));
 			ObjectInputStream ois = new ObjectInputStream(fis);
 		
 			try {

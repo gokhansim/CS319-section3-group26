@@ -54,6 +54,7 @@ public class Game {
 	}
 
 	public void endGame() {
+		this.writeHighScore(this.engine.getScore());
 		this.frame.updateCaseView(6);
 	}
 
@@ -130,6 +131,7 @@ public class Game {
 				this.frame.updateCaseView(caseNo);
 				break;
 			}
+			//Exit Panel
 			case 5: {
 				this.frame.updateCaseView(caseNo);
 				break;
@@ -138,6 +140,8 @@ public class Game {
 				this.frame.updateCaseView(caseNo);
 				break;
 			}
+			//HighScore Panle
+
 			case 7:{
 				this.frame.updateCaseView(caseNo);
 			}
@@ -149,10 +153,6 @@ public class Game {
 		this.frame.updateView( engine.getScore(), engine.getPlayerTank().getCurrentLives() );
 	}
 
-
-	public HighScoreManager getHighScoreManager(){
-		return highScoreMngr;
-	}
 	public void gameLoop()
 	{
 	   long lastLoopTime = System.nanoTime();
@@ -206,9 +206,8 @@ public class Game {
 					for ( int i = 0; i < engine.getTank().size(); i++) {
 						engine.moveEnemy(engine.getTank().get(i));
 						int x = (int) (Math.random() * 100);
-						if ( x % 5 == 0) { 
+						if ( x % 10 == 0) { 
 							engine.shootTank(engine.getTank().get(i).getID() % 4, engine.getTank().get(i));
-							System.out.println(engine.getTank().get(i).getID() % 4);
 						}
 					}
 
