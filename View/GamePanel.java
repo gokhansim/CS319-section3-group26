@@ -41,12 +41,11 @@ public class GamePanel extends JPanel{
 	private int dx = 0;
 	private int dy = 0;
 	private int direction = 0; // By Default -> points to the top
-<<<<<<< HEAD
-=======
+
 	
 	private JLabel scores;
 	private JLabel lives;
->>>>>>> c96a6381039ba6d61a5bcec783588cd714aebadc
+
 
 	public GamePanel( ){
 		this.setBackground(Color.BLACK);
@@ -54,15 +53,6 @@ public class GamePanel extends JPanel{
 		//this.setMaximumSize(this.getPreferredSize());
 		this.setPreferredSize(new Dimension(750, 800));
 		this.setLayout(null);
-		//
-		JLabel scoreLabel = new JLabel("score", JLabel.CENTER);
-		scoreLabel.setForeground(Color.RED);
-		scoreLabel.setBackground(Color.WHITE);
-		scoreLabel.setBounds(100,100,200,30);
-		scoreLabel.setSize(450,150);
-		scoreLabel.setLocation(760,760);
-		this.add(scoreLabel);
-		//
 		this.setMaximumSize(this.getPreferredSize());
 		keyboardListener = new KeyboardListener();
 		this.addKeyListener( keyboardListener );
