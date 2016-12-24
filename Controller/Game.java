@@ -54,6 +54,7 @@ public class Game {
 	}
 
 	public void endGame() {
+		this.writeHighScore(this.engine.getScore());
 		this.frame.updateCaseView(6);
 	}
 
