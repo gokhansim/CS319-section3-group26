@@ -66,31 +66,6 @@ public class GameEngine {
 		if( map[x][y] == null ) {
 			map[x][y] = aBody;
 
-
-			/////////////////////////////////////////////////////////////////////////
-			// the following is not needed for now, if needed can be used later.
-			/*
-			if( aBody instanceof PlayerTank){
-				intMap[x][y] = ((PlayerTank)aBody).getID();
-			}
-			else if( aBody instanceof EnemyTank){
-				intMap[x][y] = ((EnemyTank)aBody).getID();
-			}
-			else if( aBody instanceof BrickWall){
-				intMap[x][y] = ((BrickWall)aBody).getID();
-			}
-			else if( aBody instanceof IronWall){
-				intMap[x][y] = ((IronWall)aBody).getID();
-			}
-			else if( aBody instanceof SteelWall){
-				intMap[x][y] = ((SteelWall)aBody).getID();
-			}
-			else if( aBody instanceof SacredObject){
-				intMap[x][y] = ((SacredObject)aBody).getID();
-			}*/
-			///////////////////////////////////////////////////////////////////////////
-
-
 			if( aBody instanceof Bullet){
 				bulletList.add((Bullet)aBody);
 			}
@@ -795,8 +770,9 @@ public class GameEngine {
 	public void updateMap() {
 
 	}
-	////////////////////////////////////////////////////
-	///////////GETTER AND SETTERS
+	////////////////////////////////////////////
+	///////////GETTER AND SETTERS///////////////
+	////////////////////////////////////////////
 	
 	public ArrayList<EnemyTank> getTank() {
 		return tank;
