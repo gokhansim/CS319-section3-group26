@@ -19,13 +19,15 @@ public class HighScorePanel extends JPanel {
 	private Font buttonFont;
 	private Font hoverFont;
 	MenuListener menuListener;
+	HighScoreManager hsm;
 	
-	public HighScorePanel(HighScoreManager hsm){
+	public HighScorePanel(){
 	
 		this.setBackground(Color.BLACK);
 		this.setPreferredSize(new Dimension(750, 800));
-        this.setLayout(null);
-       	menuListener = new MenuListener();
+       		this.setLayout(null);
+      	 	menuListener = new MenuListener();
+		hsm = new HighScoreManager();
         
 		try {
 		    this.customFont = createFont(Font.TRUETYPE_FONT, new File("Resources/WeekendWarrior.ttf")).deriveFont(50f);
@@ -57,33 +59,55 @@ public class HighScorePanel extends JPanel {
 		JLabel fourthScoreLabel;
 		JLabel fifthScoreLabel;
 
-		//ArrayList<Integer> scoreList = new ArrayList<Integer>();
-	      	//scoreList = hsm.showHighScore();
-
-	       //if(scoreList.get(0) != -1)
-		//	firstScoreLabel = new JLabel(("1. " + Integer.toString(scoreList.get(0))), JLabel.CENTER );
-	       //else 
+		try{
+			firstScoreLabel = new JLabel(("1. " + Integer.toString(hsm.showHighScore().get(0))), JLabel.CENTER );
+	       }
+	       catch(NullPointerException e) {
+	       		firstScoreLabel = new JLabel("1. -", JLabel.CENTER);
+	       }
+		catch(IndexOutOfBoundsException f){
 			firstScoreLabel = new JLabel("1. -", JLabel.CENTER);
+		}	
 
-	       //if(scoreList.get(1) != -1)
-		//	secondScoreLabel = new JLabel(("2. " + Integer.toString(scoreList.get(1))), JLabel.CENTER );
-	       //else 
+	        try{
+			secondScoreLabel = new JLabel(("2. " + Integer.toString(hsm.showHighScore().get(1))), JLabel.CENTER );
+	       }
+	       catch(NullPointerException e) {
+	       		secondScoreLabel = new JLabel("2. -", JLabel.CENTER);
+	       }
+	       	catch(IndexOutOfBoundsException f){
 			secondScoreLabel = new JLabel("2. -", JLabel.CENTER);
-
-	       //if(scoreList.get(1) != -1)
-		//	thirdScoreLabel = new JLabel(("3. " + Integer.toString(scoreList.get(2))), JLabel.CENTER );
-	      // else 
+		}	
+	       
+	        try{
+			thirdScoreLabel = new JLabel(("3. " + Integer.toString(hsm.showHighScore().get(2))), JLabel.CENTER );
+	       }
+	       catch(NullPointerException e) {
+	       		thirdScoreLabel = new JLabel("3. -", JLabel.CENTER);
+	       }
+	       	catch(IndexOutOfBoundsException f){
 			thirdScoreLabel = new JLabel("3. -", JLabel.CENTER);
-
-		//if(scoreList.get(1) != -1)
-		//	fourthScoreLabel = new JLabel(("4. " + Integer.toString(scoreList.get(3))), JLabel.CENTER );
-		//else 
+		}	
+	       
+	        try{
+			fourthScoreLabel = new JLabel(("4. " + Integer.toString(hsm.showHighScore().get(3))), JLabel.CENTER );
+	       }
+	       catch(NullPointerException e) {
+	       		fourthScoreLabel = new JLabel("4. -", JLabel.CENTER);
+	       }
+	       	catch(IndexOutOfBoundsException f){
 			fourthScoreLabel = new JLabel("4. -", JLabel.CENTER);
-
-		//if(scoreList.get(1) != -1)
-		//	//fifthScoreLabel = new JLabel(("5. " + Integer.toString(scoreList.get(4))), JLabel.CENTER );
-		//else 
+		}	
+	       
+	        try{	
+			fifthScoreLabel = new JLabel(("5. " + Integer.toString(hsm.showHighScore().get(4))), JLabel.CENTER );
+	       }
+	       catch(NullPointerException e) {
+	       		fifthScoreLabel = new JLabel("5. -", JLabel.CENTER);
+	       }
+	       	catch(IndexOutOfBoundsException f){
 			fifthScoreLabel = new JLabel("5. -", JLabel.CENTER);
+		}
 
 		firstScoreLabel.setOpaque(true);
 		firstScoreLabel.setFont(this.buttonFont);
