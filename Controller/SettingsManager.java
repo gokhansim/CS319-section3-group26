@@ -15,7 +15,7 @@ public class SettingsManager {
 
 
 	public void changeVolume(int volume) {
-
+		
 	}
 
 }
