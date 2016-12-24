@@ -264,30 +264,33 @@ public class Game {
 	}
 	
 	public void doLoop () {
-		if ( engine.getTank().size() != 0) {
-			for ( int i = 0; i < engine.getTank().size(); i++) {
-				engine.moveEnemy(engine.getTank().get(i));
-				int x = (int) (Math.random() * 100);
-				if ( x % 4 == 0) { 
-					engine.shootTank(engine.getTank().get(i).getId() % 4, engine.getTank().get(i));
+		if (!engine.getIsGameOver()) {
+			if ( engine.getTank().size() != 0) {
+				for ( int i = 0; i < engine.getTank().size(); i++) {
+					engine.moveEnemy(engine.getTank().get(i));
+					int x = (int) (Math.random() * 100);
+					if ( x % 4 == 0) { 
+						engine.shootTank(engine.getTank().get(i).getID() % 4, engine.getTank().get(i));
+					}
 				}
-			}
 
-			// the following is to be used for powerup spawning, randomly. 
-			/*int a = (int) (Math.random() * 100);
-		if ( a % 40 == 0 ) {
-			engine.spawnPowerup();
-		}*/
-			for ( int i = 0; i < engine.getMapSize(); i++) {
-				for ( int j = 0; j < engine.getMapSize(); j++) {
-					if (engine.getMapItem(i, j) instanceof EnemyTank) {
-						if (!engine.getTank().contains(engine.getMapItem(i, j))) {
-							engine.destroyGameBody(engine.getMapItem(i,j));
+				// the following is to be used for powerup spawning, randomly. 
+				int a = (int) (Math.random() * 101);
+				if ( a % 50 == 0 ) {
+					engine.spawnPowerup();
+				}
+
+				for ( int i = 0; i < engine.getMapSize(); i++) {
+					for ( int j = 0; j < engine.getMapSize(); j++) {
+						if (engine.getMapItem(i, j) instanceof EnemyTank) {
+							if (!engine.getTank().contains(engine.getMapItem(i, j))) {
+								engine.destroyGameBody(engine.getMapItem(i,j));
+							}
 						}
 					}
 				}
+				engine.moveBullet();
 			}
-			engine.moveBullet();
 		}
 		this.updateView();
 	}

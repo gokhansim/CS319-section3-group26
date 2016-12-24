@@ -1,12 +1,10 @@
 package View;
 
 import Controller.Game;
-import View.GamePanel.KeyboardListener;
+
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
 public class MainFrame extends JFrame{
 

@@ -81,7 +81,10 @@ public class MainMenuPanel extends JPanel{
         playButton.setFont(this.buttonFont);
         playButton.setSize( 150, 100 );
         this.add(playButton);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 210e3a50faf3a7b5fecf7861979266c9084663df
         playButton.setLocation(300,340);
 
 
@@ -116,7 +119,10 @@ public class MainMenuPanel extends JPanel{
 
         helpButton.setLocation(310,410);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 210e3a50faf3a7b5fecf7861979266c9084663df
         helpButton.setOpaque(false);
         helpButton.setContentAreaFilled(false);
         helpButton.setBorderPainted(false);
@@ -144,7 +150,10 @@ public class MainMenuPanel extends JPanel{
 
         settingsButton.setLocation(267,480);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 210e3a50faf3a7b5fecf7861979266c9084663df
         settingsButton.setOpaque(false);
         settingsButton.setContentAreaFilled(false);
         settingsButton.setBorderPainted(false);
@@ -164,14 +173,21 @@ public class MainMenuPanel extends JPanel{
         highScoreButton.setFont(this.buttonFont);
         highScoreButton.setSize( 300, 100 );
         this.add(highScoreButton);
+<<<<<<< HEAD
 
         highScoreButton.setLocation(224,550);
 
+=======
+        highScoreButton.setLocation(224,550);
+>>>>>>> 210e3a50faf3a7b5fecf7861979266c9084663df
         highScoreButton.setLocation(445,720);
 
         highScoreButton.setLocation(237,550);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 210e3a50faf3a7b5fecf7861979266c9084663df
         highScoreButton.setOpaque(false);
         highScoreButton.setContentAreaFilled(false);
         highScoreButton.setBorderPainted(false);
@@ -191,15 +207,22 @@ public class MainMenuPanel extends JPanel{
         exitButton.setFont(this.buttonFont);
         exitButton.setSize( 150, 100 );
         this.add(exitButton);
+<<<<<<< HEAD
 
         exitButton.setLocation(300,620);
 
+=======
+        exitButton.setLocation(300,620);
+>>>>>>> 210e3a50faf3a7b5fecf7861979266c9084663df
 
         exitButton.setLocation(518,800);
 
         exitButton.setLocation(310,620);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 210e3a50faf3a7b5fecf7861979266c9084663df
         exitButton.setOpaque(false);
         exitButton.setContentAreaFilled(false);
         exitButton.setBorderPainted(false);
@@ -228,6 +251,12 @@ public class MainMenuPanel extends JPanel{
 
         g2d.drawImage(this.playerTank, (140  ), (480 ), 90, 90, Color.gray, null);
         g2d.drawImage(this.playerTank, (520  ), (480 ), 90, 90, Color.gray, null);
+<<<<<<< HEAD
+=======
+
+        g2d.drawImage(this.playerTank, (335  ), (600 ), 110, 110, Color.gray, null);
+        g2d.drawImage(this.playerTank, (740  ), (600 ), 110, 110, Color.gray, null);
+>>>>>>> 210e3a50faf3a7b5fecf7861979266c9084663df
 
         g2d.drawImage(this.playerTank, (150  ), (480 ), 90, 90, Color.gray, null);
         g2d.drawImage(this.playerTank, (530  ), (480 ), 90, 90, Color.gray, null);

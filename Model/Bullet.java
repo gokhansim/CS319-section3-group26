@@ -5,7 +5,6 @@ public class Bullet extends GameBody implements Destroyable{
 
 	private int moveSpeed;
 	private int direction;
-	private int id;
 
 	public Bullet( int x, int y, int moveSpeed, int direction){
 		super(x, y);
@@ -26,7 +25,6 @@ public class Bullet extends GameBody implements Destroyable{
 	}
 
 	public int getMoveSpeed() { return moveSpeed; }
-	public int getId() { return id; }
 	public int getDirection() { return direction; }
 
 	public void move(int x, int y) {

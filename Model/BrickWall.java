@@ -11,6 +11,7 @@ public class BrickWall extends Wall implements Destroyable{
 		super(x, y);
 		type = 1;
 		this.isDestructible = true;
+		this.id = 3;
 	}
 	public int getType(){
 		return type;
@@ -20,8 +21,7 @@ public class BrickWall extends Wall implements Destroyable{
 	}
 
 	public void getIndestructible() { isDestructible = false; }
-	public int getId() { return ID; }
-
+	
 	@Override
 	public boolean getDestroyed(GameEngine engine) {
 		if( this.isDestructible ){

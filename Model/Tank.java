@@ -5,16 +5,12 @@ public abstract class Tank extends GameBody {
 	private int shootSpeed;
 	private int moveSpeed;
 	protected boolean isDoubleShot;
-	private int id;
 	
 	public Tank( int x, int y){
 		super(x, y);
 		this.isDoubleShot = false;
 		this.moveSpeed = 1;
 	}
-	
-	public int getId() { return id; }
-	public void setId(int id) { this.id = id; }
 	
 	public int getShootSpeed() {
 		return shootSpeed;
