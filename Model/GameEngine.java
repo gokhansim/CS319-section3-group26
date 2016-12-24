@@ -127,9 +127,9 @@ public class GameEngine {
 			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
 
 
-			tank.add(new Panzer(0,0, 3, 10 ));
+			tank.add(new Panzer(0,0));
 			this.createGameBody(tank.get(0), tank.get(0).getX(), tank.get(0).getY() );
-			tank.add(new CrazedTank(6,0, 3, 10 ));
+			tank.add(new CrazedTank(6,0));
 			this.createGameBody(tank.get(1), tank.get(1).getX(), tank.get(1).getY() );
 
 			IronWall ironWall = new IronWall(3,8);
@@ -163,9 +163,9 @@ public class GameEngine {
 			playerTank.setY(9);
 			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
 
-			tank.add(new EnemyTank(0,0, 3, 10 ));
-			tank.add(new EnemyTank(9,0, 3, 10 ));//will be change to crazed 
-			tank.add(new EnemyTank(0,9, 3, 10 )); //this will be changed to crazed
+			tank.add(new EnemyTank(0,0));
+			tank.add(new EnemyTank(9,0));//will be change to crazed 
+			tank.add(new EnemyTank(0,9)); //this will be changed to crazed
 
 			for ( int i = 0; i < tank.size(); i++) {
 				this.createGameBody(tank.get(i), tank.get(i).getX(), tank.get(i).getY() );
@@ -212,10 +212,10 @@ public class GameEngine {
 			this.playerTank.setY(8);
 			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
 
-			this.tank.add(new EnemyTank(0,0, 3, 10 ));
-			this.tank.add(new EnemyTank(9,0, 3, 10 ));//will be change to crazed 
-			this.tank.add(new EnemyTank(0,9, 3, 10 )); //this will be changed to crazed
-			this.tank.add(new EnemyTank(9,9, 3, 10 )); 		
+			this.tank.add(new EnemyTank(0, 0 ));
+			this.tank.add(new EnemyTank(9, 0 ));//will be change to crazed 
+			this.tank.add(new EnemyTank(0, 9 )); //this will be changed to crazed
+			this.tank.add(new EnemyTank(9, 9 )); 		
 			
 			for ( int i = 0; i < tank.size(); i++) {
 				this.createGameBody(tank.get(i), tank.get(i).getX(), tank.get(i).getY() );
@@ -269,12 +269,12 @@ public class GameEngine {
 			this.playerTank.setY(4);
 			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
 
-			this.tank.add(new EnemyTank(0, 0, 3, 10 ));
-			this.tank.add(new EnemyTank(9, 0, 3, 10 ));
-			this.tank.add( new EnemyTank(0, 6, 3, 10 )); 
-			this.tank.add(new EnemyTank(9, 6, 3, 10 )); 
-			this.tank.add(new EnemyTank(2, 2, 3, 10 )); 
-			this.tank.add(new EnemyTank(6, 2, 3, 10 )); 
+			this.tank.add(new EnemyTank(0, 0 ));
+			this.tank.add(new EnemyTank(9, 0));
+			this.tank.add(new EnemyTank(0, 6)); 
+			this.tank.add(new EnemyTank(9, 6)); 
+			this.tank.add(new EnemyTank(2, 2)); 
+			this.tank.add(new EnemyTank(6, 2)); 
 			
 			for ( int i = 0; i < tank.size(); i++) {
 				this.createGameBody(tank.get(i), tank.get(i).getX(), tank.get(i).getY() );
@@ -326,12 +326,12 @@ public class GameEngine {
 			this.playerTank.setY(7);
 			this.createGameBody(playerTank, playerTank.getX(), playerTank.getY() );
 
-			this.tank.add(new EnemyTank(0,0, 3, 10 ));
-			this.tank.add(new EnemyTank(9,0, 3, 10 ));//will be change to crazed 
-			this.tank.add(new EnemyTank(0,9, 3, 10 )); //this will be changed to crazed
-			this.tank.add(new EnemyTank(9,9, 3, 10 )); 					
-			this.tank.add(new EnemyTank(2,2, 3, 10 )); //this will be changed to crazed
-			this.tank.add(new EnemyTank(7,2, 3, 10 )); 	
+			this.tank.add(new EnemyTank(0,0));
+			this.tank.add(new EnemyTank(9,0));//will be change to crazed 
+			this.tank.add(new EnemyTank(0,9)); //this will be changed to crazed
+			this.tank.add(new EnemyTank(9,9)); 					
+			this.tank.add(new EnemyTank(2,2)); //this will be changed to crazed
+			this.tank.add(new EnemyTank(7,2)); 	
 
 			this.createGameBody(new SteelWall(1,1), 1, 1);
 			this.createGameBody(new SteelWall(8, 1), 8, 1);

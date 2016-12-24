@@ -2,13 +2,13 @@ package Model;
 
 public class EnemyTank extends Tank implements Destroyable{
 
-	private int hitsToKill;
-	private int scoreGiven;
+	protected int hitsToKill;
+	protected int scoreGiven;
 
-	public EnemyTank( int x, int y, int hitsToKill, int scoreGiven){
+	public EnemyTank( int x, int y){
 		super(x, y);
-		this.hitsToKill = hitsToKill;
-		this.scoreGiven = scoreGiven;
+		this.hitsToKill = 3;
+		this.scoreGiven = 10;
 		this.id = 13;
 		this.setShootSpeed(1);
 	};

@@ -206,9 +206,8 @@ public class Game {
 					for ( int i = 0; i < engine.getTank().size(); i++) {
 						engine.moveEnemy(engine.getTank().get(i));
 						int x = (int) (Math.random() * 100);
-						if ( x % 5 == 0) { 
+						if ( x % 10 == 0) { 
 							engine.shootTank(engine.getTank().get(i).getID() % 4, engine.getTank().get(i));
-							System.out.println(engine.getTank().get(i).getID() % 4);
 						}
 					}
 

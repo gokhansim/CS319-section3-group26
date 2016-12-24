@@ -211,7 +211,6 @@ public class GamePanel extends JPanel{
 					else if( intMap[i][j] == 13){
 						g2d.drawImage(this.enemyTankU, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
-<<<<<<< HEAD
 					else if (intMap[i][j] == 14) { // CRAZED UP
 						g2d.drawImage(this.crazedTankR, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
@@ -236,12 +235,10 @@ public class GamePanel extends JPanel{
 					else if (intMap[i][j] == 21) { // PANZER RIGHT
 						g2d.drawImage(this.panzerU, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
-=======
 
 					//-------------------------------------------------------------------------------------------------
 					//BULLETS
 					//-------------------------------------------------------------------------------------------------
->>>>>>> branch 'master' of https://github.com/gokhansim/CS319-section3-group26
 					else if( intMap[i][j] == 200){
 						g2d.drawImage(this.enemyBulletU, (xCoordinate + (i*75)), (yCoordinate + (j*75)), 75, 75, Color.gray, null);
 					}
